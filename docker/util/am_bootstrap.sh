@@ -26,7 +26,7 @@ KEYS_CTX="${SECURITY_CTX}/keys"
 is_configured() {
     echo "Testing if the configuration store is configured with an AM installation"
     test="ou=services,$BASE_DN"
-    r=`ldapsearch -y ${DIR_MANAGER_PW_FILE} -A -H "ldap://${CONFIGURATION_LDAP}" -D "uid=admin" -s base -l 5 -b "$test"  > /dev/null 2>&1`
+    ldapsearch -y ${DIR_MANAGER_PW_FILE} -A -H "ldap://${CONFIGURATION_LDAP}" -D "uid=admin" -s base -l 5 -b "$test"
     status=$?
     echo "Is configured exit status is $status"
     return $status
