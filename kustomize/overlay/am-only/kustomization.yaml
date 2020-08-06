@@ -1,0 +1,12 @@
+# am-only profile used for PIT tests
+namespace: default
+resources:
+  - ../../base/kustomizeConfig
+  - ../../base/forgeops-secrets
+  - ../../base/am
+  - ../../base/amster
+  - ../../base/ds/cts
+  - ../../base/ds/idrepo
+  - ../../base/ingress
+  - ../../base/ldif-importer
+

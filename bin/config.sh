@@ -29,7 +29,6 @@ _arg_component="all"
 
 # Profile defaults to cdk if not provided
 _arg_profile="${CDK_PROFILE:-cdk}"
-_arg_version="${CDK_VERSION:-7.0}"
 
 print_help()
 {
@@ -45,7 +44,6 @@ print_help()
 	printf '\t\t%s\n' "sync   - export and save"
 	printf '\t%s\n' "-c, --component: Select component - am, amster, idm, ig or all  (default: 'all')"
 	printf '\t%s\n' "-p, --profile: Select configuration source (default: 'cdk')"
-	printf '\t%s\n' "-v, --version: Select configuration version (default: '7.0')"
 	printf '\t%s\n' "-h, --help: Prints help"
 	printf '\n%s\n' "example to copy idm files: config.sh -c idm -p cdk init"
 }
@@ -79,17 +77,6 @@ parse_commandline()
 				;;
 			-p*)
 				_arg_profile="${_key##-p}"
-				;;
-			-v|--version)
-				test $# -lt 2 && die "Missing value for the optional argument '$_key'." 1
-			    _arg_version="$2"
-				shift
-				;;
-			--version=*)
-				_arg_version="${_key##--version=}"
-				;;
-			-v*)
-				_arg_version="${_key##-v}"
 				;;
 			-h|--help)
 				print_help
@@ -311,8 +298,8 @@ save_config()
 
 # chdir to the script root/..
 cd "$script_dir/.."
-PROFILE_ROOT="config/$_arg_version/$_arg_profile"
-DOCKER_ROOT="docker/$_arg_version"
+PROFILE_ROOT="config/$_arg_profile"
+DOCKER_ROOT="docker"
 
 
 if [ "$_arg_component" == "all" ]; then
@@ -327,12 +314,6 @@ init)
 		clean_config "$p"
 		init_config "$p"
 	done
-
-	rm -rf docker/forgeops-secrets/forgeops-secrets-image/config
-	mkdir -p docker/forgeops-secrets/forgeops-secrets-image/config
-
-	echo "Copying version to version.sh"
-	echo -n "CONFIG_VERSION=${_arg_version}" > docker/forgeops-secrets/forgeops-secrets-image/config/version.sh
 	;;
 add)
 	# Same as init - but do not delete existing files.

@@ -45,7 +45,7 @@ create_dev_config() {
 # This deploys to the ingress $FQDN in the $NAMESPACE
 namespace: $NAMESPACE
 resources:
-- ../kustomize/overlay/7.0/all
+- ../kustomize/overlay/all
 
 patchesStrategicMerge:
 - |-

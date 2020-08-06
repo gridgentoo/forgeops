@@ -1,0 +1,7 @@
+namespace: fbc
+resources:
+- ../../base/kustomizeConfig
+- ../../base/forgeops-secrets
+- ../../base/ds/idrepo
+- ../../base/ds/cts
+- ../../base/ldif-importer

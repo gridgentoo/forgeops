@@ -1,0 +1,8 @@
+namespace: prod
+resources:
+- ../../base/kustomizeConfig
+- ../../base/ds/cts
+- ../../base/ds/idrepo
+
+
+
