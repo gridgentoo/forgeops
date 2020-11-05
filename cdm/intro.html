@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>About the Cloud Deployment Model :: ForgeRock DevOps Documentation</title>
+    <link rel="canonical" href="https://ea.forgerock.com/docs/forgeops/forgeops/cdm/intro.html">
+    <link rel="prev" href="overview.html">
+    <link rel="next" href="architecture.html">
+    <meta name="generator" content="Antora 2.3.1">
+    <link rel="stylesheet" href="https://cdn.forgerock.com/docs-ui/adoc/dev/vendor.antora-styles.css">
+    <link rel="stylesheet" href="https://cdn.forgerock.com/docs-ui/adoc/dev/forgerock.antora-styles.css">
+  </head>
+  <body class="article">
+<backstage-site-header active-item="docs"></backstage-site-header>
+<div class="body">
+<div class="nav-container" data-component="forgeops" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">ForgeOps</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">Read This First</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../start/start-here.html">Start Here</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../start/start-here-skills.html">Assess Your Skill Level</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../forgeops.html">About the <code>forgeops</code> Repository (Pre-Release)</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text  nav-item-toggle">Cloud Developer's Kit (CDK)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/intro.html">About the CDK</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">CDK Architecture</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../cdk/minikube/concepts.html">On Minikube</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../cdk/cloud/concepts.html">On a Shared Cluster</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">Environment Setup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../cdk/minikube/setup/overview.html">Minikube</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdk/minikube/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdk/minikube/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdk/minikube/setup/vm.html">Minikube Virtual Machine</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdk/minikube/setup/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdk/minikube/setup/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdk/minikube/setup/docker.html">Minikube&#8217;s Docker Engine</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../cdk/cloud/setup/overview.html">Shared Cluster</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text  nav-item-toggle">GKE</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/clusterinfo.html">Cluster Details</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/context.html">Context for the Shared Cluster</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/docker.html"><code>docker push</code> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text  nav-item-toggle">EKS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/clusterinfo.html">Cluster Details</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/context.html">Context for the Shared Cluster</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/docker.html"><code>docker push</code> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text  nav-item-toggle">AKS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/clusterinfo.html">Cluster Details</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/context.html">Context for the Shared Cluster</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/docker.html"><code>docker push</code> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/deploy.html">Deployment</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/access.html">UI and API Access</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/develop.html">Custom Docker Image Development</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/troubleshoot.html">CDK Troubleshooting</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/shutdown.html">Shutdown and Removal</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text  nav-item-toggle">Cloud Deployment Model (CDM)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    
+    <a class="nav-link" href="intro.html">About the CDM</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="architecture.html">CDM Architecture</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">CDM Cookbook</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text  nav-item-toggle">Environment Setup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="gke/setup/setup-env.html">GKE</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="gke/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="gke/setup/project.html">Google Cloud Project Setup</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="gke/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="gke/setup/cluster.html">Kubernetes Cluster Creation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="gke/setup/secret-agent.html">Secret Agent Operator</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="gke/setup/nginx.html">NGINX Ingress Controller</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="gke/setup/cert-manager.html">Certificate Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="gke/setup/prometheus.html">Prometheus, Grafana, and Alertmanager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="gke/setup/push.html"><span class="command"><code>docker push</code></span> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="eks/setup/setup-env.html">EKS</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="eks/setup/architecture.html">Architecture Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="eks/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="eks/setup/aws-env.html">AWS Environment Setup</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="eks/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="eks/setup/cluster.html">Kubernetes Cluster Creation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="eks/setup/secret-agent.html">Secret Agent Operator</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="eks/setup/nginx.html">NGINX Ingress Controller</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="eks/setup/cert-manager.html">Certificate Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="eks/setup/prometheus.html">Prometheus, Grafana, and Alertmanager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="eks/setup/push.html"><span class="command"><code>docker push</code></span> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="aks/setup/setup-env.html">AKS</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="aks/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="aks/setup/subscription.html">Azure Subscription Setup</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="aks/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="aks/setup/cluster.html">Kubernetes Cluster Creation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="aks/setup/secret-agent.html">Secret Agent Operator</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="aks/setup/nginx.html">NGINX Ingress Controller</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="aks/setup/cert-manager.html">Certificate Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="aks/setup/prometheus.html">Prometheus, Grafana, and Alert Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="aks/setup/push.html"><span class="command"><code>docker push</code></span> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="deploy.html">CDM Deployment</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="access.html">UI and API Access</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text  nav-item-toggle">CDM Removal</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="gke/remove.html">GKE</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="eks/remove.html">EKS</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="aks/remove.html">AKS</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="next-steps.html">Next Steps</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text  nav-item-toggle">Deployment Topics</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../deployment/overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../deployment/base-docker-images.html">Base Docker Images</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">Backup and Restore</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/backup-restore.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text  nav-item-toggle">Cloud Storage Setup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../deployment/backup/gcs-backup.html">On Google Cloud</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../deployment/backup/aws-backup.html">On AWS</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../deployment/backup/azure-backup.html">On Azure</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/backup/backup-schedule.html">Enable DS Backup Schedules</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/backup/backup-restore.html">CDM Automatic Restore</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../deployment/monitoring.html">Monitoring</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../deployment/security.html">Security</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">CDM Benchmarks</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/benchmark/overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/benchmark/intro.html">About CDM Benchmarking</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/benchmark/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/benchmark/testusers.html">Test User Generation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/benchmark/authrate.html">Authentication Rate</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/benchmark/oauth2.html">OAuth 2.0 Authorization Code Flow</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../rn/rn.html">DevOps Release Notes</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../glossary.html">Glossary</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../support.html">Support From ForgeRock</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../legal.html">Legal Notices</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ForgeOps</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">ForgeOps</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+
+  <div class="content">
+<article class="doc">
+<h1 class="page">About the Cloud Deployment Model</h1>
+<div class="paragraph">
+<p>The ForgeRock Cloud Deployment Team has developed Docker images, Kustomize
+bases and overlays, Skaffold workflows, shell scripts, and other artifacts
+expressly to build the Cloud Deployment Model (CDM). The <code>forgeops</code> repository
+on GitHub contains the CDM artifacts you can use to deploy the ForgeRock Identity Platform
+in a cloud environment.</p>
+</div>
+<div class="paragraph">
+<p>The CDM is a reference implementation for ForgeRock cloud deployments.
+You can get a sample ForgeRock Identity Platform deployment up and running in the cloud
+quickly using the CDM. After deploying the CDM, you can use it to
+explore how you might configure your Kubernetes cluster before you deploy the
+platform in production.</p>
+</div>
+<div class="paragraph">
+<p>The CDM is a robust sample deployment for demonstration and exploration
+purposes only. <em>It is not a production deployment</em>.</p>
+</div>
+<div class="paragraph">
+<p>This documentation describes how to use the CDM to stand up a Kubernetes
+cluster in the cloud that runs the ForgeRock Identity Platform, and then access the
+platform&#8217;s GUIs and REST APIs. When you&#8217;re done, you can use the
+CDM to explore deployment customizations:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/start-cdm.png" alt="Illustrates the major tasks performed to deploy the CDM.">
+</div>
+</div>
+<div class="paragraph">
+<p>Standing up a Kubernetes cluster and deploying the platform using the
+CDM is an activity you might want to perform as a learning and exploration
+exercise before you put together a project plan for deploying the platform
+in production. To better understand how this activity fits in to the overall
+deployment process, see
+<a href="../start/start-here.html#cdm-sandbox" class="page">Deploy the CDM</a>.</p>
+</div>
+<div class="paragraph">
+<p>Using the CDM artifacts and this documentation, you can quickly get the
+ForgeRock Identity Platform running in a Kubernetes cloud environment. You deploy the
+CDM to begin to familiarize yourself with some of the steps you&#8217;ll need
+to perform when deploying the platform in the cloud for production use.
+These steps include creating a cluster suitable for deploying the
+ForgeRock Identity Platform, installing the platform, and accessing its UIs and APIs.</p>
+</div>
+<div class="paragraph">
+<p><strong>Standardizes the process</strong>. The ForgeRock Cloud Deployment Team&#8217;s mission is
+to standardize a process for deploying ForgeRock Identity Platform natively in the cloud.
+The Team is made up of technical consultants and cloud software developers.
+We&#8217;ve had numerous interactions with ForgeRock customers, and discussed common
+deployment issues. Based on our interactions, we standardized on Kubernetes as
+the cloud platform, and we developed the CDM artifacts to make deployment
+of the platform easier in the cloud.</p>
+</div>
+<div class="paragraph">
+<p><strong>Simplifies baseline deployment</strong>. We then developed artifacts&#x2014;Dockerfiles,
+Kustomize bases and overlays, Skaffold workflows, and shell scripts&#x2014;to
+simplify the deployment process. We deployed small-sized, medium-sized, and
+large-sized production-quality Kubernetes clusters, and kept them up and running
+24x7. We conducted continuous integration and continuous deployment as we added
+new capabilities and fixed problems in the system. We maintained, benchmarked,
+and tuned the system for optimized performance. Most importantly, we documented
+the process so you could replicate it.</p>
+</div>
+<div class="paragraph">
+<p><strong>Eliminates guesswork</strong>. If you use our CDM artifacts and follow the
+instructions in this documentation without deviation, you can successfully
+deploy the $ForgeRock Identity Platform in the cloud. The CDM takes the guesswork out
+out of setting up a cloud environment. It bypasses the
+deploy-test-integrate-test-repeat cycle many customers struggle through when
+spinning up the ForgeRock Identity Platform in the cloud for the first time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Prepares you to deploy in production</strong>. After you&#8217;ve deployed the CDM,
+you&#8217;ll be ready to start working with experts on deploying in production. We
+strongly recommend that you engage a ForgeRock technical consultant or partner
+to assist you with deploying the platform in production.</p>
+</div>
+<h2 id="next_step" class="discrete">Next Step</h2>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-check-square-o"></i> <a href="#">Become familiar with the CDM</a></p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> <mark><a href="architecture.html" class="page">Understand CDM architecture</a></mark></p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Set up your local environment and create a cluster (<a href="gke/setup/setup-env.html" class="page">GKE</a>|<a href="eks/setup/setup-env.html" class="page">EKS</a>|<a href="aks/setup/setup-env.html" class="page">AKS</a>)</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> <a href="deploy.html" class="page">Deploy the platform</a></p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> <a href="access.html" class="page">Access platform UIs and APIs</a></p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> <a href="next-steps.html" class="page">Explore your deployment and start planning for production</a></p>
+</li>
+</ul>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="overview.html">Overview</a></span>
+  <span class="next"><a href="architecture.html">CDM Architecture</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+  <div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">ForgeOps</a></li>
+    <li>Cloud Deployment Model (CDM)</li>
+    <li><a href="intro.html">About the CDM</a></li>
+  </ul>
+</nav>
+</div>
+</main>
+</div>
+<backstage-site-footer></backstage-site-footer>
+<script src="https://cdn.forgerock.com/docs-ui/adoc/dev/vendor.antora-scripts.js"></script>
+<script src="https://cdn.forgerock.com/docs-ui/adoc/dev/forgerock.antora-scripts.js"></script>
+  </body>
+</html>

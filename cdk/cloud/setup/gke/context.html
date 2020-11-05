@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Context for the Shared Cluster :: ForgeRock DevOps Documentation</title>
+    <link rel="canonical" href="https://ea.forgerock.com/docs/forgeops/forgeops/cdk/cloud/setup/gke/context.html">
+    <link rel="prev" href="clusterinfo.html">
+    <link rel="next" href="namespace.html">
+    <meta name="generator" content="Antora 2.3.1">
+    <link rel="stylesheet" href="https://cdn.forgerock.com/docs-ui/adoc/dev/vendor.antora-styles.css">
+    <link rel="stylesheet" href="https://cdn.forgerock.com/docs-ui/adoc/dev/forgerock.antora-styles.css">
+  </head>
+  <body class="article">
+<backstage-site-header active-item="docs"></backstage-site-header>
+<div class="body">
+<div class="nav-container" data-component="forgeops" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../../../index.html">ForgeOps</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">Read This First</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../start/start-here.html">Start Here</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../start/start-here-skills.html">Assess Your Skill Level</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../../forgeops.html">About the <code>forgeops</code> Repository (Pre-Release)</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text  nav-item-toggle">Cloud Developer's Kit (CDK)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../intro.html">About the CDK</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">CDK Architecture</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../minikube/concepts.html">On Minikube</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../concepts.html">On a Shared Cluster</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">Environment Setup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../../../minikube/setup/overview.html">Minikube</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../../../minikube/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../../../minikube/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../../../minikube/setup/vm.html">Minikube Virtual Machine</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../../../minikube/setup/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../../../minikube/setup/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../../../minikube/setup/docker.html">Minikube&#8217;s Docker Engine</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../overview.html">Shared Cluster</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text  nav-item-toggle">GKE</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="clusterinfo.html">Cluster Details</a>
+    
+  </li>
+  <li class="nav-item is-current-page" data-depth="4">
+    
+    <a class="nav-link" href="context.html">Context for the Shared Cluster</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="docker.html"><code>docker push</code> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text  nav-item-toggle">EKS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../eks/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../eks/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../eks/clusterinfo.html">Cluster Details</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../eks/context.html">Context for the Shared Cluster</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../eks/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../eks/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../eks/docker.html"><code>docker push</code> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text  nav-item-toggle">AKS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../aks/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../aks/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../aks/clusterinfo.html">Cluster Details</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../aks/context.html">Context for the Shared Cluster</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../aks/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../aks/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../aks/docker.html"><code>docker push</code> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../deploy.html">Deployment</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../access.html">UI and API Access</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../develop.html">Custom Docker Image Development</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../troubleshoot.html">CDK Troubleshooting</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../shutdown.html">Shutdown and Removal</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text  nav-item-toggle">Cloud Deployment Model (CDM)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../../cdm/overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../../cdm/intro.html">About the CDM</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../../cdm/architecture.html">CDM Architecture</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">CDM Cookbook</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text  nav-item-toggle">Environment Setup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../../../../cdm/gke/setup/setup-env.html">GKE</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/gke/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/gke/setup/project.html">Google Cloud Project Setup</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/gke/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/gke/setup/cluster.html">Kubernetes Cluster Creation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/gke/setup/secret-agent.html">Secret Agent Operator</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/gke/setup/nginx.html">NGINX Ingress Controller</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/gke/setup/cert-manager.html">Certificate Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/gke/setup/prometheus.html">Prometheus, Grafana, and Alertmanager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/gke/setup/push.html"><span class="command"><code>docker push</code></span> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../../../../cdm/eks/setup/setup-env.html">EKS</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/eks/setup/architecture.html">Architecture Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/eks/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/eks/setup/aws-env.html">AWS Environment Setup</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/eks/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/eks/setup/cluster.html">Kubernetes Cluster Creation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/eks/setup/secret-agent.html">Secret Agent Operator</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/eks/setup/nginx.html">NGINX Ingress Controller</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/eks/setup/cert-manager.html">Certificate Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/eks/setup/prometheus.html">Prometheus, Grafana, and Alertmanager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/eks/setup/push.html"><span class="command"><code>docker push</code></span> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../../../../cdm/aks/setup/setup-env.html">AKS</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/aks/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/aks/setup/subscription.html">Azure Subscription Setup</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/aks/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/aks/setup/cluster.html">Kubernetes Cluster Creation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/aks/setup/secret-agent.html">Secret Agent Operator</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/aks/setup/nginx.html">NGINX Ingress Controller</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/aks/setup/cert-manager.html">Certificate Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/aks/setup/prometheus.html">Prometheus, Grafana, and Alert Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../../../../cdm/aks/setup/push.html"><span class="command"><code>docker push</code></span> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../cdm/deploy.html">CDM Deployment</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../cdm/access.html">UI and API Access</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text  nav-item-toggle">CDM Removal</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../../../../cdm/gke/remove.html">GKE</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../../../../cdm/eks/remove.html">EKS</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../../../../cdm/aks/remove.html">AKS</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../cdm/next-steps.html">Next Steps</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text  nav-item-toggle">Deployment Topics</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../../deployment/overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../../deployment/base-docker-images.html">Base Docker Images</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">Backup and Restore</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../deployment/backup-restore.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text  nav-item-toggle">Cloud Storage Setup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../../../../deployment/backup/gcs-backup.html">On Google Cloud</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../../../../deployment/backup/aws-backup.html">On AWS</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../../../../deployment/backup/azure-backup.html">On Azure</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../deployment/backup/backup-schedule.html">Enable DS Backup Schedules</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../deployment/backup/backup-restore.html">CDM Automatic Restore</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../../deployment/monitoring.html">Monitoring</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../../deployment/security.html">Security</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">CDM Benchmarks</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../deployment/benchmark/overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../deployment/benchmark/intro.html">About CDM Benchmarking</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../deployment/benchmark/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../deployment/benchmark/testusers.html">Test User Generation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../deployment/benchmark/authrate.html">Authentication Rate</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../../../../deployment/benchmark/oauth2.html">OAuth 2.0 Authorization Code Flow</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../../rn/rn.html">DevOps Release Notes</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../../glossary.html">Glossary</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../../support.html">Support From ForgeRock</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../../../../legal.html">Legal Notices</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ForgeOps</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">ForgeOps</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+
+  <div class="content">
+<article class="doc">
+<h1 class="page">Context for the Shared Cluster</h1>
+<div class="paragraph">
+<p>Kubernetes uses contexts to access Kubernetes clusters. Before you can access
+the shared cluster, you must create a context on your local computer if it&#8217;s not
+already present.</p>
+</div>
+<div class="paragraph">
+<p>Perform the following procedure to create a context for the shared cluster:</p>
+</div>
+<div class="openblock procedure">
+<div class="title">Create a Context for a GKE Cluster</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the <span class="command"><code>kubectx</code></span> command and review the output. The current
+Kubernetes context is highlighted:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the current context references the shared cluster, there is nothing
+further to do. Proceed to <a href="namespace.html" class="page">Namespace</a>.</p>
+</li>
+<li>
+<p>If the context of the shared cluster is present in the <span class="command"><code>kubectx</code></span>
+command output, set the context as follows:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>kubectx my-context</strong>
+Switched to context "my-context".</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After you have set the context, proceed to
+<a href="namespace.html" class="page">Namespace</a>.</p>
+</div>
+</li>
+<li>
+<p>If the context of the shared cluster is not present in the
+<span class="command"><code>kubectx</code></span> command output, continue to the next step in this
+procedure.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Configure the Google Cloud SDK standard component to use your Google account.
+Run the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>gcloud auth login</strong></pre>
+</div>
+</div>
+</li>
+<li>
+<p>A browser window prompts you to log in to Google. Log in using your Google
+account.</p>
+<div class="paragraph">
+<p>A second screen requests several permissions. Select Allow.</p>
+</div>
+<div class="paragraph">
+<p>A third screen should appear with the heading, "You are now authenticated with
+the Google Cloud SDK!"</p>
+</div>
+</li>
+<li>
+<p>Return to the terminal window and run the following command. Use the cluster
+name, zone, and project name you
+<a href="clusterinfo.html" class="page">obtained from your cluster administrator</a>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>gcloud container clusters \
+ get-credentials <em>cluster-name</em> --zone <em>google-zone</em> --project <em>google-project</em></strong>
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated for <em>cluster-name</em>.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run the <span class="command"><code>kubectx</code></span> command again and verify that the context for
+our Kubernetes cluster is now the current context.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<h2 id="next_step" class="discrete">Next Step</h2>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-check-square-o"></i> <a href="forgeops.html" class="page">Get the forgeops repository</a></p>
+</li>
+<li>
+<p><i class="fa fa-check-square-o"></i> <a href="sw.html" class="page">Install third-party software</a></p>
+</li>
+<li>
+<p><i class="fa fa-check-square-o"></i> <a href="clusterinfo.html" class="page">Get details about the shared GKE cluster</a></p>
+</li>
+<li>
+<p><i class="fa fa-check-square-o"></i> <a href="#">Create a Kubernetes context</a></p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> <mark><a href="namespace.html" class="page">Create a Kubernetes namespace</a></mark></p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> <a href="hostname.html" class="page">Set up hostname resolution</a></p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> <a href="docker.html" class="page">Prepare to push Docker images</a></p>
+</li>
+</ul>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="clusterinfo.html">Cluster Details</a></span>
+  <span class="next"><a href="namespace.html">Namespace</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+  <div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../../../index.html">ForgeOps</a></li>
+    <li>Cloud Developer's Kit (CDK)</li>
+    <li>Environment Setup</li>
+    <li><a href="../overview.html">Shared Cluster</a></li>
+    <li>GKE</li>
+    <li><a href="context.html">Context for the Shared Cluster</a></li>
+  </ul>
+</nav>
+</div>
+</main>
+</div>
+<backstage-site-footer></backstage-site-footer>
+<script src="https://cdn.forgerock.com/docs-ui/adoc/dev/vendor.antora-scripts.js"></script>
+<script src="https://cdn.forgerock.com/docs-ui/adoc/dev/forgerock.antora-scripts.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Base Docker Images :: ForgeRock DevOps Documentation</title>
+    <link rel="canonical" href="https://ea.forgerock.com/docs/forgeops/forgeops/deployment/base-docker-images.html">
+    <link rel="prev" href="overview.html">
+    <link rel="next" href="backup-restore.html">
+    <meta name="generator" content="Antora 2.3.1">
+    <link rel="stylesheet" href="https://cdn.forgerock.com/docs-ui/adoc/dev/vendor.antora-styles.css">
+    <link rel="stylesheet" href="https://cdn.forgerock.com/docs-ui/adoc/dev/forgerock.antora-styles.css">
+  </head>
+  <body class="article">
+<backstage-site-header active-item="docs"></backstage-site-header>
+<div class="body">
+<div class="nav-container" data-component="forgeops" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">ForgeOps</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">Read This First</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../start/start-here.html">Start Here</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../start/start-here-skills.html">Assess Your Skill Level</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../forgeops.html">About the <code>forgeops</code> Repository (Pre-Release)</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text  nav-item-toggle">Cloud Developer's Kit (CDK)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/intro.html">About the CDK</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">CDK Architecture</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../cdk/minikube/concepts.html">On Minikube</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../cdk/cloud/concepts.html">On a Shared Cluster</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">Environment Setup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../cdk/minikube/setup/overview.html">Minikube</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdk/minikube/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdk/minikube/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdk/minikube/setup/vm.html">Minikube Virtual Machine</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdk/minikube/setup/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdk/minikube/setup/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdk/minikube/setup/docker.html">Minikube&#8217;s Docker Engine</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../cdk/cloud/setup/overview.html">Shared Cluster</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text  nav-item-toggle">GKE</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/clusterinfo.html">Cluster Details</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/context.html">Context for the Shared Cluster</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/gke/docker.html"><code>docker push</code> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text  nav-item-toggle">EKS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/clusterinfo.html">Cluster Details</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/context.html">Context for the Shared Cluster</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/eks/docker.html"><code>docker push</code> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text  nav-item-toggle">AKS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/clusterinfo.html">Cluster Details</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/context.html">Context for the Shared Cluster</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdk/cloud/setup/aks/docker.html"><code>docker push</code> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/deploy.html">Deployment</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/access.html">UI and API Access</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/develop.html">Custom Docker Image Development</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/troubleshoot.html">CDK Troubleshooting</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdk/shutdown.html">Shutdown and Removal</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text  nav-item-toggle">Cloud Deployment Model (CDM)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdm/overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdm/intro.html">About the CDM</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdm/architecture.html">CDM Architecture</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">CDM Cookbook</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text  nav-item-toggle">Environment Setup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../cdm/gke/setup/setup-env.html">GKE</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/project.html">Google Cloud Project Setup</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/cluster.html">Kubernetes Cluster Creation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/secret-agent.html">Secret Agent Operator</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/nginx.html">NGINX Ingress Controller</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/cert-manager.html">Certificate Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/prometheus.html">Prometheus, Grafana, and Alertmanager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/push.html"><span class="command"><code>docker push</code></span> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../cdm/eks/setup/setup-env.html">EKS</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/architecture.html">Architecture Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/aws-env.html">AWS Environment Setup</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/cluster.html">Kubernetes Cluster Creation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/secret-agent.html">Secret Agent Operator</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/nginx.html">NGINX Ingress Controller</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/cert-manager.html">Certificate Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/prometheus.html">Prometheus, Grafana, and Alertmanager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/push.html"><span class="command"><code>docker push</code></span> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../cdm/aks/setup/setup-env.html">AKS</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/subscription.html">Azure Subscription Setup</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/cluster.html">Kubernetes Cluster Creation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/secret-agent.html">Secret Agent Operator</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/nginx.html">NGINX Ingress Controller</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/cert-manager.html">Certificate Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/prometheus.html">Prometheus, Grafana, and Alert Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/push.html"><span class="command"><code>docker push</code></span> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../cdm/deploy.html">CDM Deployment</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../cdm/access.html">UI and API Access</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text  nav-item-toggle">CDM Removal</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdm/gke/remove.html">GKE</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdm/eks/remove.html">EKS</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdm/aks/remove.html">AKS</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../cdm/next-steps.html">Next Steps</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text  nav-item-toggle">Deployment Topics</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    
+    <a class="nav-link" href="base-docker-images.html">Base Docker Images</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">Backup and Restore</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="backup-restore.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text  nav-item-toggle">Cloud Storage Setup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="backup/gcs-backup.html">On Google Cloud</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="backup/aws-backup.html">On AWS</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="backup/azure-backup.html">On Azure</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="backup/backup-schedule.html">Enable DS Backup Schedules</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="backup/backup-restore.html">CDM Automatic Restore</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="monitoring.html">Monitoring</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="security.html">Security</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">CDM Benchmarks</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="benchmark/overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="benchmark/intro.html">About CDM Benchmarking</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="benchmark/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="benchmark/testusers.html">Test User Generation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="benchmark/authrate.html">Authentication Rate</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="benchmark/oauth2.html">OAuth 2.0 Authorization Code Flow</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../rn/rn.html">DevOps Release Notes</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../glossary.html">Glossary</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../support.html">Support From ForgeRock</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../legal.html">Legal Notices</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ForgeOps</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">ForgeOps</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+
+  <div class="content">
+<article class="doc">
+<h1 class="page">Base Docker Images</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>ForgeRock provides a set of unsupported, evaluation-only base images for the
+ForgeRock Identity Platform. These images are available in ForgeRock&#8217;s public Docker
+registry.</p>
+</div>
+<div class="paragraph">
+<p>Developers working with the CDK use the base images from ForgeRock to
+build customized Docker images for a fully-configured ForgeRock Identity Platform
+deployment:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/containerization-dev.svg" alt="Brief overview of containers for developers.">
+</div>
+</div>
+<div class="paragraph">
+<p>Users working with the CDM also use the base images from ForgeRock to
+perform proof-of-concept deployments.</p>
+</div>
+<div class="paragraph">
+<p>The base images from ForgeRock are evaluation-only. <em>They are not supported for
+production use.</em> Because of this, you must build your own base images before you
+deploy in production:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/containerization-prod.svg" alt="Brief overview of containers in production.">
+</div>
+</div>
+<div class="paragraph">
+<p>This topic tells you how to build your own base images, which you can deploy
+in production.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="base-images"><a class="anchor" href="#base-images"></a>Your Own Base Docker Images</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Perform the following procedure to build base Docker images that you can use in
+production deployments of the ForgeRock Identity Platform. After you&#8217;ve built the base
+images, push them to your Docker registry:</p>
+</div>
+<div class="openblock procedure">
+<div class="title">Build and Deploy Your Own Base Docker Images</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download the latest versions of the AM, Amster, IDM, and
+DS <code>.zip</code> files from <a href="https://ea.forgerock.com/nightlies">ForgeRock&#8217;s early access site</a>.
+Optionally, you can also download the latest version of the IG <code>.zip</code>
+file.</p>
+</li>
+<li>
+<p>Build the base image for Amster. This image must be available in order
+to build the base image for AM in the next step:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Unzip the Amster <code>.zip</code> file:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>unzip Amster-7.0.0.zip -d amster</strong></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Change to the <span class="path"><code>amster/samples/docker</code></span> directory in the expanded
+<code>.zip</code> file output.</p>
+</li>
+<li>
+<p>Run the <span class="command"><code>setup.sh</code></span> script:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>./setup.sh</strong>
+
++ mkdir -p build
++ find ../.. '!' -name .. '!' -name samples '!' -name docker -maxdepth 1 -exec cp -R '{}' build/ ';'
++ cp ../../docker/amster-install.sh ../../docker/docker-entrypoint.sh ../../docker/export.sh ../../docker/tar.sh build</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Build the <code>amster</code> Docker image:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>docker build --tag amster:7.0 .</strong>
+
+Sending build context to Docker daemon   51.7MB
+Step 1/12 : FROM gcr.io/forgerock-io/java-11:latest
+ --&#8594; 4d0811d78b02
+Step 2/12 : ENV FORGEROCK_HOME /home/forgerock
+ --&#8594; Running in 472b8b0e1200
+Removing intermediate container 472b8b0e1200
+. . .</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Build the base image for AM:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Unzip the AM <code>.zip</code> file.</p>
+</li>
+<li>
+<p>Change to the <span class="path"><code>openam/samples/docker</code></span> directory in the expanded
+<code>.zip</code> file output.</p>
+</li>
+<li>
+<p>Update and run the <span class="command"><code>setup.sh</code></span> script:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>chmod u+x setup.sh</strong>
+$ <strong>sed -i'.tmp' -e 's/[Oo]pen[Aa][Mm]/AM/g' setup.sh</strong>
+$ <strong>./setup.sh</strong></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Change to the <span class="path"><code>images/am-empty</code></span> directory.</p>
+</li>
+<li>
+<p>Set privileges on scripts in the <span class="path"><code>images/am-empty</code></span> directory:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>chmod u+x docker-entrypoint.sh</strong>
+$ <strong>chmod u+x scripts/</strong>*</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Update the WAR file name in the Dockerfile:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>sed -i'.tmp' -e 's/openam.war/AM.war/g' Dockerfile</strong></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Build the <code>am-empty</code> Docker image:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>docker build --tag am-empty:7.0 .</strong>
+
+Sending build context to Docker daemon  198.7MB
+Step 1/27 : FROM tomcat:9-jdk11-adoptopenjdk-hotspot AS base
+9-jdk11-adoptopenjdk-hotspot: Pulling from library/tomcat
+a1125296b23d: Pull complete
+3c742a4a0f38: Pull complete
+4c5ea3b32996: Pull complete
+1b4be91ead68: Pull complete
+0cbfb179272d: Pull complete
+9648e8b5b6e1: Pull complete
+d1aef586a7d1: Pull complete
+ddd6eed10da2: Pull complete
+3f5d89f2e2b4: Pull complete
+Digest: sha256:ee307e4f1a1f5596b3636eb9107aa7989c768716bf0157651b28a4e34ff0846f
+Status: Downloaded newer image for tomcat:9-jdk11-adoptopenjdk-hotspot
+ --&#8594; 4f1036cadd4b
+Step 2/27 : RUN apt-get update -y &amp;&amp;     apt-get install -y binutils wget unzip
+ --&#8594; Running in ef6f6c08ba9b
+. . .</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Change to the <span class="path"><code>../am-base</code></span> directory.</p>
+</li>
+<li>
+<p>Set privileges on scripts in the <span class="path"><code>images/am-base</code></span> directory:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>chmod u+x docker-entrypoint.sh</strong>
+$ <strong>chmod u+x scripts/</strong>*</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Build the <code>am-base</code> Docker image:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>docker build --build-arg docker_tag=7.0 --tag <em>my-registry</em>/am-base:7.0 .</strong>
+
+Sending build context to Docker daemon  27.27MB
+Step 1/27 : ARG docker_tag=latest
+Step 2/27 : FROM amster:${docker_tag} as amster
+ --&#8594; 50d60dbf29f5
+Step 3/27 : FROM am-empty:${docker_tag} AS generator
+ --&#8594; 0b258dc0c896
+Step 4/27 : USER 0
+ --&#8594; Running in 0512b3042833
+Removing intermediate container 0512b3042833
+ --&#8594; 59dfa4e1043e
+. . .</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Now that the AM image is built, tag the base image for Amster
+in advance of pushing it to your private repository:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>docker tag amster:7.0 <em>my-registry</em>/amster:7.0</strong></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Build the base image for DS:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Unzip the DS <code>.zip</code> file.</p>
+</li>
+<li>
+<p>Change to the <span class="path"><code>opendj</code></span> directory in the expanded <code>.zip</code> file output.</p>
+</li>
+<li>
+<p>Run the <span class="command"><code>samples/docker/setup.sh</code></span> script to create a server:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>./samples/docker/setup.sh</strong>
+
++ rm -f template/config/tools.properties
++ cp -r samples/docker/Dockerfile samples/docker/README.md . . .
++ rm -rf&#8201;&#8212;&#8201;README README.md bat '*.zip' opendj_logo.png setup.bat upgrade.bat setup.sh
++ ./setup --serverId docker --hostname localhost . . .
+
+Validating parameters&#8230;&#8203;.. Done
+Configuring certificates&#8230;&#8203;&#8230;&#8203;. Done
+. . .</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Build the <code>ds</code> base image:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>docker build --tag <em>my-registry</em>/ds:7.0 .</strong>
+
+Sending build context to Docker daemon  54.19MB
+Sending build context to Docker daemon  55.31MB
+Step 1/14 : FROM gcr.io/forgerock-io/java-11:latest
+ --&#8594; 4d0811d78b02
+Step 2/14 : COPY --chown=forgerock:root . /opt/opendj/
+ --&#8594; 75c3db504d4c
+Step 3/14 : USER 11111
+ --&#8594; Running in 2346c3e1d73f
+Removing intermediate container 2346c3e1d73f
+ --&#8594; d66c728f8d2e
+Step 4/14 : WORKDIR /opt/opendj
+ --&#8594; Running in 2aa62e2d415f
+Removing intermediate container 2aa62e2d415f
+ --&#8594; 9e2cdf65ae56
+. . .</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Build the base image for IDM:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Unzip the IDM <code>.zip</code> file.</p>
+</li>
+<li>
+<p>Change to the <span class="path"><code>openidm</code></span> directory in the expanded <code>.zip</code>
+file output.</p>
+</li>
+<li>
+<p>Build the <code>idm</code> base image:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>docker build . --file bin/Custom.Dockerfile --tag <em>my-registry</em>/idm:7.0</strong>
+
+Sending build context to Docker daemon  220.2MB
+Step 1/7 : FROM gcr.io/forgerock-io/java-11:latest
+ --&#8594; 4d0811d78b02
+Step 2/7 : RUN apt-get update &amp;&amp;     apt-get install -y ttf-dejavu
+ --&#8594; Running in e0943ff14f4b
+Get:1 <a href="http://deb.debian.org/debian" class="bare">http://deb.debian.org/debian</a> stable InRelease [121 kB]
+Get:2 <a href="http://deb.debian.org/debian" class="bare">http://deb.debian.org/debian</a> stable-updates InRelease [51.9 kB]
+Get:3 <a href="http://deb.debian.org/debian" class="bare">http://deb.debian.org/debian</a> stable/main amd64 Packages [7905 kB]
+Get:4 <a href="http://security.debian.org/debian-security" class="bare">http://security.debian.org/debian-security</a> stable/updates InRelease [65.4 kB]
+Get:5 <a href="http://security.debian.org/debian-security" class="bare">http://security.debian.org/debian-security</a> stable/updates/main amd64 Packages [213 kB]
+Get:6 <a href="http://deb.debian.org/debian" class="bare">http://deb.debian.org/debian</a> stable-updates/main amd64 Packages [7868 B]
+Fetched 8364 kB in 2s (3401 kB/s)
+Reading package lists&#8230;&#8203;
+. . .</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>(Optional) Build the base image for IG:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Unzip the IG <code>.zip</code> file.</p>
+</li>
+<li>
+<p>Change to the <span class="path"><code>identity-gateway</code></span> directory in the expanded <code>.zip</code>
+file output.</p>
+</li>
+<li>
+<p>Build the <code>ig</code> base image:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>docker build ig --tag <em>my-registry</em>/ig:7.0</strong>
+
+Sending build context to Docker daemon  54.19MB
+Step 1/7 : FROM gcr.io/forgerock-io/java-11:latest
+latest: Pulling from forgerock-io/java-11
+d50302ca539a: Already exists
+79c4c086a545: Pull complete
+dc6dba627cfa: Pull complete
+Digest: sha256:5c5fdae70dbabb58c6fa0609b4d5a51b049f562e337d8bd9ed8653f7078b3d88
+Status: Downloaded newer image for gcr.io/forgerock-io/java-11:latest
+ --&#8594; 4d0811d78b02
+Step 2/7 : ENV INSTALL_DIR /opt/ig
+ --&#8594; Running in 5fff26381d8f
+Removing intermediate container 5fff26381d8f
+ --&#8594; e5bb2b75f4fb
+Step 3/7 : COPY --chown=forgerock:root . "${INSTALL_DIR}"
+ --&#8594; 1f35484fefb8
+Step 4/7 : ENV IG_INSTANCE_DIR /var/ig
+ --&#8594; Running in 3526eaf403d5
+Removing intermediate container 3526eaf403d5
+ --&#8594; 194c0495a29d
+Step 5/7 : RUN mkdir -p "${IG_INSTANCE_DIR}"  &amp;&amp; chown -R forgerock:root "${IG_INSTANCE_DIR}" "${INSTALL_DIR}"     &amp;&amp; chmod -R g+rwx "${IG_INSTANCE_DIR}" "${INSTALL_DIR}"
+ --&#8594; Running in a9c4bbcb7df0
+Removing intermediate container a9c4bbcb7df0
+ --&#8594; b6ca5a1022a7
+Step 6/7 : USER 11111
+ --&#8594; Running in fd53e422afad
+Removing intermediate container fd53e422afad
+ --&#8594; 954148a95b46
+Step 7/7 : ENTRYPOINT ${INSTALL_DIR}/bin/start.sh ${IG_INSTANCE_DIR}
+ --&#8594; Running in 59353752d80a
+Removing intermediate container 59353752d80a
+ --&#8594; 610d9934bfd0
+Successfully built 610d9934bfd0
+Successfully tagged my-registry/ig:7.0</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Run the <span class="command"><code>docker images</code></span> to verify that you built the base images:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>docker images</strong>
+
+REPOSITORY                      TAG      IMAGE ID        CREATED        SIZE
+my-registry/am-base             7.0      d115125b1c3f    1 hour ago     795MB
+my-registry/amster              7.0      d9e1c735f415    1 hour ago     577MB
+my-registry/ds                  7.0      ac8e8ab0fda6    1 hour ago     196MB
+my-registry/idm                 7.0      0cc1b7f70ce6    1 hour ago     387MB
+my-registry/ig                  7.0      9728c30c1829    1 hour ago     249MB
+. . .</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Push the new base Docker images to your Docker registry.</p>
+<div class="paragraph">
+<p>See your registry provider documentation for detailed instructions. For most
+Docker registries, you run the <span class="command"><code>docker login</code></span> command to log in to
+the registry. Then, you run the <span class="command"><code>docker push</code></span> command to push a
+Docker image to the registry.</p>
+</div>
+<div class="paragraph">
+<p>However, some Docker registries have different requirements. For example, to
+push Docker images to Google Container Registry, you use Google Cloud SDK
+commands instead of using the <span class="command"><code>docker push</code></span> command.</p>
+</div>
+<div class="paragraph">
+<p>Push the following images:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><em>my-registry</em>/am-base:7.0</code></p>
+</li>
+<li>
+<p><code><em>my-registry</em>/amster:7.0</code></p>
+</li>
+<li>
+<p><code><em>my-registry</em>/ds:7.0</code></p>
+</li>
+<li>
+<p><code><em>my-registry</em>/idm:7.0</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re deploying your own IG base image, also push the
+<code><em>my-registry</em>/ig:7.0</code> image.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="developer_dockerfile_changes"><a class="anchor" href="#developer_dockerfile_changes"></a>Developer Dockerfile Changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After you&#8217;ve pushed your own base images to your Docker registry, update the
+Dockerfiles that your developers use when creating customized Docker images for
+the ForgeRock Identity Platform. The Dockerfiles can now reference your own base images
+instead of the evaluation-only images from ForgeRock.</p>
+</div>
+<div class="openblock procedure">
+<div class="title">Change Developer Dockerfiles to Use Your Base Images</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update the AM Dockerfile:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Change to the <span class="path"><code>/path/to/forgeops/docker/7.0/am</code></span>
+directory.</p>
+</li>
+<li>
+<p>Open the file, <span class="path"><code>Dockerfile</code></span>, in that directory.</p>
+</li>
+<li>
+<p>Change the line:</p>
+<div class="listingblock">
+<div class="content">
+<pre>FROM gcr.io/forgerock-io/am-base...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>FROM <em>my-registry</em>/am-base:7.0</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Make a similar change to the file,
+<span class="path"><code>/path/to/forgeops/docker/7.0/amster/Dockerfile</code></span>.</p>
+</li>
+<li>
+<p>Make a similar change to the file,
+<span class="path"><code>/path/to/forgeops/docker/7.0/ds/cts/Dockerfile</code></span>.</p>
+</li>
+<li>
+<p>Make a similar change to the file,
+<span class="path"><code>/path/to/forgeops/docker/7.0/ds/idrepo/Dockerfile</code></span>.</p>
+</li>
+<li>
+<p>Make a similar change to the file,
+<span class="path"><code>/path/to/forgeops/docker/7.0/idm/Dockerfile</code></span>.</p>
+</li>
+<li>
+<p>(Optional) Make a similar change to the file,
+<span class="path"><code>/path/to/forgeops/docker/7.0/ig/Dockerfile</code></span>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can now build customized Docker images for the ForgeRock Identity Platform based on your
+own Docker images and use them in production deployments.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The next time you run Skaffold, you must set the <code>--no-prune</code> and
+<code>--cache-artifacts</code> options to <code>false</code> to ensure that Skaffold loads the new
+images that you just built instead of loading previous images from cache. For
+example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>skaffold run --no-prune=false --cache-artifacts=false</strong></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="overview.html">Overview</a></span>
+  <span class="next"><a href="backup-restore.html">Overview</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+  <div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">ForgeOps</a></li>
+    <li>Deployment Topics</li>
+    <li><a href="base-docker-images.html">Base Docker Images</a></li>
+  </ul>
+</nav>
+</div>
+</main>
+</div>
+<backstage-site-footer></backstage-site-footer>
+<script src="https://cdn.forgerock.com/docs-ui/adoc/dev/vendor.antora-scripts.js"></script>
+<script src="https://cdn.forgerock.com/docs-ui/adoc/dev/forgerock.antora-scripts.js"></script>
+  </body>
+</html>

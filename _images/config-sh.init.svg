@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" viewBox="80 363 553 315" width="553" height="315">
+  <defs>
+    <font-face font-family="Courier New" font-size="18" panose-1="2 7 6 9 2 2 5 2 4 4" units-per-em="1000" underline-position="-232.91016" underline-thickness="100.09766" slope="0" x-height="443.3594" cap-height="591.7969" ascent="832.5195" descent="-300.29297" font-weight="700">
+      <font-face-src>
+        <font-face-name name="CourierNewPS-BoldMT"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="Helvetica" font-size="18" units-per-em="1000" underline-position="-75.68359" underline-thickness="49.316406" slope="0" x-height="522.9492" cap-height="717.28516" ascent="770.0195" descent="-229.98047" font-weight="400">
+      <font-face-src>
+        <font-face-name name="Helvetica"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica" font-size="16" units-per-em="1000" underline-position="-75.68359" underline-thickness="49.316406" slope="0" x-height="522.9492" cap-height="717.28516" ascent="770.0195" descent="-229.98047" font-weight="400">
+      <font-face-src>
+        <font-face-name name="Helvetica"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.17.4\n2020-09-02 20:34:34 +0000</metadata>
+  <g id="Canvas_1" stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>Canvas 1</title>
+    <rect fill="white" x="80" y="363" width="553" height="315"/>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_3">
+        <title>Folder</title>
+        <path d="M 318.4 363 L 295.6 363 C 291.42 363 288.038 366.43125 288.038 370.625 L 288 416.375 C 288 420.56875 291.42 424 295.6 424 L 356.4 424 C 360.58 424 364 420.56875 364 416.375 L 364 378.25 C 364 374.05625 360.58 370.625 356.4 370.625 L 326 370.625 L 318.4 363 Z" fill="#032b75"/>
+      </g>
+      <g id="Graphic_6">
+        <title>Folder</title>
+        <path d="M 344.4 454.08986 L 321.6 454.08986 C 317.42 454.08986 314.038 457.5211 314.038 461.71486 L 314 507.46486 C 314 511.6586 317.42 515.08986 321.6 515.08986 L 382.4 515.08986 C 386.58 515.08986 390 511.6586 390 507.46486 L 390 469.33986 C 390 465.1461 386.58 461.71486 382.4 461.71486 L 352 461.71486 L 344.4 454.08986 Z" fill="#032b75"/>
+      </g>
+      <g id="Graphic_8">
+        <title>Text</title>
+        <text transform="translate(293.59473 396.58986)" fill="white">
+          <tspan font-family="Courier New" font-size="18" font-weight="700" fill="white" x="0" y="15">config</tspan>
+        </text>
+      </g>
+      <g id="Graphic_10">
+        <title>Text</title>
+        <text transform="translate(335.79736 487.58986)" fill="white">
+          <tspan font-family="Courier New" font-size="18" font-weight="700" fill="white" x="0" y="15">7.0</tspan>
+        </text>
+      </g>
+      <g id="Line_22">
+        <path d="M 375 606.1797 C 375 606.1797 414.0894 674.45025 475 677 C 523.1336 679.0149 567.00765 639.2404 583.2962 622.4651" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_29">
+        <title>Folder</title>
+        <path d="M 367.4 545.1797 L 344.6 545.1797 C 340.42 545.1797 337.038 548.611 337.038 552.8047 L 337 598.5547 C 337 602.7485 340.42 606.1797 344.6 606.1797 L 405.4 606.1797 C 409.58 606.1797 413 602.7485 413 598.5547 L 413 560.4297 C 413 556.236 409.58 552.8047 405.4 552.8047 L 375 552.8047 L 367.4 545.1797 Z" fill="#f96700"/>
+      </g>
+      <g id="Graphic_32">
+        <title>Text</title>
+        <text transform="translate(358.79736 578.58986)" fill="white">
+          <tspan font-family="Courier New" font-size="18" font-weight="700" fill="white" x="0" y="15">cdk</tspan>
+        </text>
+      </g>
+      <g id="Graphic_34">
+        <title>Text</title>
+        <text transform="translate(457.98975 644.5899)" fill="black">
+          <tspan font-family="Helvetica" font-size="18" font-weight="400" fill="black" x="0" y="18">Copy</tspan>
+        </text>
+      </g>
+      <g id="Line_40">
+        <path d="M 293.34644 423.6557 L 293.34644 489.16486 L 314.0152 489.16486" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Line_42">
+        <path d="M 319.34644 514.74556 L 319.34644 580.2547 L 337.0152 580.2547" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_58">
+        <title>Folder</title>
+        <path d="M 525.7125 363 L 502.9125 363 C 498.7325 363 495.3505 366.43125 495.3505 370.625 L 495.3125 416.375 C 495.3125 420.56875 498.7325 424 502.9125 424 L 563.7125 424 C 567.8925 424 571.3125 420.56875 571.3125 416.375 L 571.3125 378.25 C 571.3125 374.05625 567.8925 370.625 563.7125 370.625 L 533.3125 370.625 L 525.7125 363 Z" fill="#032b75"/>
+      </g>
+      <g id="Graphic_57">
+        <title>Folder</title>
+        <path d="M 551.7125 454.08986 L 528.9125 454.08986 C 524.7325 454.08986 521.3505 457.5211 521.3505 461.71486 L 521.3125 507.46486 C 521.3125 511.6586 524.7325 515.08986 528.9125 515.08986 L 589.7125 515.08986 C 593.8925 515.08986 597.3125 511.6586 597.3125 507.46486 L 597.3125 469.33986 C 597.3125 465.1461 593.8925 461.71486 589.7125 461.71486 L 559.3125 461.71486 L 551.7125 454.08986 Z" fill="#032b75"/>
+      </g>
+      <g id="Graphic_56">
+        <title>Text</title>
+        <text transform="translate(500.9072 396.58986)" fill="white">
+          <tspan font-family="Courier New" font-size="18" font-weight="700" fill="white" x="0" y="15">docker</tspan>
+        </text>
+      </g>
+      <g id="Graphic_55">
+        <title>Text</title>
+        <text transform="translate(543.10986 487.58986)" fill="white">
+          <tspan font-family="Courier New" font-size="18" font-weight="700" fill="white" x="0" y="15">7.0</tspan>
+        </text>
+      </g>
+      <g id="Line_52">
+        <path d="M 500.65894 423.6557 L 500.65894 489.16486 L 521.3277 489.16486" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_60">
+        <ellipse cx="590" cy="575.6797" rx="42.0000671118797" ry="39.5000631171249" fill="white"/>
+        <path d="M 619.69845 547.74904 C 636.10054 563.17473 636.10054 588.1847 619.69845 603.6104 C 603.29644 619.0362 576.70356 619.0362 560.30155 603.6104 C 543.89946 588.1847 543.89946 563.17473 560.30155 547.74904 C 576.70356 532.32326 603.29644 532.32326 619.69845 547.74904" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8.0,8.0" stroke-width="2"/>
+        <text transform="translate(561.4 556.6797)" fill="black">
+          <tspan font-family="Helvetica" font-size="16" font-weight="400" fill="black" x="1.4671879" y="15">Staging </tspan>
+          <tspan font-family="Helvetica" font-size="16" font-weight="400" fill="black" x="11.701563" y="34">Area</tspan>
+        </text>
+      </g>
+      <g id="Line_62">
+        <path d="M 526.65894 514.74556 L 526.65894 575.6797 L 547 575.6797" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Graphic_63">
+        <title>Text</title>
+        <text transform="translate(97.91016 371.5)" fill="black">
+          <tspan font-family="Helvetica" font-size="18" font-weight="400" fill="black" x="0" y="18">Configuration Profiles</tspan>
+          <tspan font-family="Helvetica" font-size="18" font-weight="400" fill="black" x="40.069336" y="40">Master Directory</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

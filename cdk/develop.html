@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Custom Docker Image Development :: ForgeRock DevOps Documentation</title>
+    <link rel="canonical" href="https://ea.forgerock.com/docs/forgeops/forgeops/cdk/develop.html">
+    <link rel="prev" href="access.html">
+    <link rel="next" href="troubleshoot.html">
+    <meta name="generator" content="Antora 2.3.1">
+    <link rel="stylesheet" href="https://cdn.forgerock.com/docs-ui/adoc/dev/vendor.antora-styles.css">
+    <link rel="stylesheet" href="https://cdn.forgerock.com/docs-ui/adoc/dev/forgerock.antora-styles.css">
+  </head>
+  <body class="article">
+<backstage-site-header active-item="docs"></backstage-site-header>
+<div class="body">
+<div class="nav-container" data-component="forgeops" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">ForgeOps</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">Read This First</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../start/start-here.html">Start Here</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../start/start-here-skills.html">Assess Your Skill Level</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../forgeops.html">About the <code>forgeops</code> Repository (Pre-Release)</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text  nav-item-toggle">Cloud Developer's Kit (CDK)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="intro.html">About the CDK</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">CDK Architecture</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="minikube/concepts.html">On Minikube</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="cloud/concepts.html">On a Shared Cluster</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">Environment Setup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="minikube/setup/overview.html">Minikube</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="minikube/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="minikube/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="minikube/setup/vm.html">Minikube Virtual Machine</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="minikube/setup/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="minikube/setup/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="minikube/setup/docker.html">Minikube&#8217;s Docker Engine</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="cloud/setup/overview.html">Shared Cluster</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text  nav-item-toggle">GKE</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/gke/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/gke/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/gke/clusterinfo.html">Cluster Details</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/gke/context.html">Context for the Shared Cluster</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/gke/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/gke/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/gke/docker.html"><code>docker push</code> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text  nav-item-toggle">EKS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/eks/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/eks/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/eks/clusterinfo.html">Cluster Details</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/eks/context.html">Context for the Shared Cluster</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/eks/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/eks/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/eks/docker.html"><code>docker push</code> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text  nav-item-toggle">AKS</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/aks/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/aks/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/aks/clusterinfo.html">Cluster Details</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/aks/context.html">Context for the Shared Cluster</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/aks/namespace.html">Namespace</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/aks/hostname.html">Hostname Resolution</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="cloud/setup/aks/docker.html"><code>docker push</code> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="deploy.html">Deployment</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="access.html">UI and API Access</a>
+    
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    
+    <a class="nav-link" href="develop.html">Custom Docker Image Development</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="troubleshoot.html">CDK Troubleshooting</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="shutdown.html">Shutdown and Removal</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text  nav-item-toggle">Cloud Deployment Model (CDM)</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdm/overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdm/intro.html">About the CDM</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../cdm/architecture.html">CDM Architecture</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">CDM Cookbook</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text  nav-item-toggle">Environment Setup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../cdm/gke/setup/setup-env.html">GKE</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/project.html">Google Cloud Project Setup</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/cluster.html">Kubernetes Cluster Creation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/secret-agent.html">Secret Agent Operator</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/nginx.html">NGINX Ingress Controller</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/cert-manager.html">Certificate Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/prometheus.html">Prometheus, Grafana, and Alertmanager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/gke/setup/push.html"><span class="command"><code>docker push</code></span> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../cdm/eks/setup/setup-env.html">EKS</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/architecture.html">Architecture Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/aws-env.html">AWS Environment Setup</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/cluster.html">Kubernetes Cluster Creation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/secret-agent.html">Secret Agent Operator</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/nginx.html">NGINX Ingress Controller</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/cert-manager.html">Certificate Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/prometheus.html">Prometheus, Grafana, and Alertmanager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/eks/setup/push.html"><span class="command"><code>docker push</code></span> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-item-toggle">
+    <a class="nav-link" href="../cdm/aks/setup/setup-env.html">AKS</a>
+    </span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/subscription.html">Azure Subscription Setup</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/forgeops.html"><code>forgeops</code> Repository</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/cluster.html">Kubernetes Cluster Creation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/secret-agent.html">Secret Agent Operator</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/nginx.html">NGINX Ingress Controller</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/cert-manager.html">Certificate Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/prometheus.html">Prometheus, Grafana, and Alert Manager</a>
+    
+  </li>
+  <li class="nav-item" data-depth="4">
+    
+    <a class="nav-link" href="../cdm/aks/setup/push.html"><span class="command"><code>docker push</code></span> Setup</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../cdm/deploy.html">CDM Deployment</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../cdm/access.html">UI and API Access</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text  nav-item-toggle">CDM Removal</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdm/gke/remove.html">GKE</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdm/eks/remove.html">EKS</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../cdm/aks/remove.html">AKS</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../cdm/next-steps.html">Next Steps</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text  nav-item-toggle">Deployment Topics</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../deployment/overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../deployment/base-docker-images.html">Base Docker Images</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">Backup and Restore</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/backup-restore.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text  nav-item-toggle">Cloud Storage Setup</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../deployment/backup/gcs-backup.html">On Google Cloud</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../deployment/backup/aws-backup.html">On AWS</a>
+    
+  </li>
+  <li class="nav-item" data-depth="3">
+    
+    <a class="nav-link" href="../deployment/backup/azure-backup.html">On Azure</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/backup/backup-schedule.html">Enable DS Backup Schedules</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/backup/backup-restore.html">CDM Automatic Restore</a>
+    
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../deployment/monitoring.html">Monitoring</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../deployment/security.html">Security</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text  nav-item-toggle">CDM Benchmarks</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/benchmark/overview.html">Overview</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/benchmark/intro.html">About CDM Benchmarking</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/benchmark/sw.html">Third-Party Software</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/benchmark/testusers.html">Test User Generation</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/benchmark/authrate.html">Authentication Rate</a>
+    
+  </li>
+  <li class="nav-item" data-depth="2">
+    
+    <a class="nav-link" href="../deployment/benchmark/oauth2.html">OAuth 2.0 Authorization Code Flow</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../rn/rn.html">DevOps Release Notes</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../glossary.html">Glossary</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../support.html">Support From ForgeRock</a>
+    
+  </li>
+  <li class="nav-item" data-depth="1">
+    
+    <a class="nav-link" href="../legal.html">Legal Notices</a>
+    
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ForgeOps</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">ForgeOps</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+
+  <div class="content">
+<article class="doc">
+<h1 class="page">Custom Docker Image Development</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before you can develop custom Docker images, you must have
+<a href="deploy.html" class="page">deployed the ForgeRock Identity Platform</a> and
+<a href="access.html" class="page">learned how to access its administration GUIs
+and REST APIs</a>. Now you&#8217;re ready to configure the platform to meet your needs.
+As you configure the platform, you can decide at any point to build new
+custom Docker images that will incorporate the configuration changes you&#8217;ve
+made.</p>
+</div>
+<div class="paragraph">
+<p>When you develop custom Docker images, you iterate on the following process:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Access AM and IDM running in the CDK, and customize them
+using their GUIs and REST APIs.</p>
+</li>
+<li>
+<p>Export your customizations from the CDK to a Git repository on your
+local computer.</p>
+</li>
+<li>
+<p>Rebuild the Docker images for the platform with your new
+customizations.</p>
+</li>
+<li>
+<p>Redeploy the platform on the CDK.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Before you build customized Docker images for the platform, be sure
+you&#8217;re familiar with the <a href="#fr-data">types of data used by the platform</a>.
+This conceptual information helps you understand which type of data is included
+in custom Docker images.</p>
+</div>
+<div class="paragraph">
+<p>To develop customized Docker images, start with base images and a canonical
+configuration profile from ForgeRock. Then, build up a configuration profile,
+customizing the platform to meet your needs. The configuration profile is
+integrated into the customized Docker image:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/containerization-dev.svg" alt="Brief overview of containers for developers.">
+</div>
+</div>
+<div class="paragraph">
+<p>Before you deploy the platform in production, you must change from using
+ForgeRock&#8217;s evaluation-only base images to using base images you build yourself.
+Building your own base images is covered in
+<a href="../deployment/base-docker-images.html" class="page">Base Docker Images</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="custom_images_for_am"><a class="anchor" href="#custom_images_for_am"></a>Custom Images for AM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AM uses two Docker images, <code>am</code> and
+<code>amster</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>am</code> image contains your custom AM
+configuration.</p>
+</li>
+<li>
+<p>The <code>amster</code> image contains your custom AM
+run-time data.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With AM up and running, you can iteratively update the
+<code>am</code> Docker image:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Customize AM&#8217;s configuration and run-time data using the console and
+the REST APIs.</p>
+</li>
+<li>
+<p>Capture changes to the AM configuration by synchronizing them from the
+AM service running on Kubernetes back to the staging area and the master
+directory for configuration profiles in your <code>forgeops</code> repository clone.</p>
+</li>
+<li>
+<p>Run Skaffold to detect the changes, rebuild the <code>am</code>
+Docker image, and restart AM. You can then test changes you&#8217;ve made to
+the AM configuration based on the updated Docker image.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can also iteratively update the
+<code>amster</code> image:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Capture changes to AM run-time data by synchronizing the changes from
+the AM service running on Kubernetes back to the staging area and the
+master directory for configuration profiles in your <code>forgeops</code> repository clone.</p>
+<div class="paragraph">
+<p>AM run-time data includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>OAuth 2.0 clients</p>
+</li>
+<li>
+<p>OpenID Connect 1.0 clients</p>
+</li>
+<li>
+<p>IG, Web, Java, and SOAP STS agents</p>
+</li>
+<li>
+<p>Policies</p>
+</li>
+<li>
+<p>SAML v2.0 circles of trust and entities</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Run Skaffold to detect the changes and rebuild the
+<code>amster</code> Docker image.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="am_image"><a class="anchor" href="#am_image"></a><code>am</code> Image</h3>
+<div class="paragraph">
+<p>The <code>am</code> Docker image contains the AM
+configuration.</p>
+</div>
+<div class="paragraph">
+<p>Perform the following procedure iteratively when developing a customized
+<code>am</code> Docker image:</p>
+</div>
+<div class="openblock procedure">
+<div class="title">Create a Customized <code>am</code> Docker Image</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Perform version control activities on your <code>forgeops</code> repository clone:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Run the <span class="command"><code>git status</code></span> command.</p>
+</li>
+<li>
+<p>Review the state of the working directory and staging area.</p>
+</li>
+<li>
+<p>(Optional) Run the <span class="command"><code>git commit</code></span> command to commit changes to files that
+have been modified.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Modify the AM configuration using the AM console or the REST
+APIs.</p>
+<div class="paragraph">
+<p>For information about how to access the AM Admin UI or REST APIs, see
+<a href="access.html#am-services-cdk" class="page">AM Services</a>.</p>
+</div>
+</li>
+<li>
+<p>Export the changes you made to the AM configuration to your <code>forgeops</code>
+repository clone:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>cd /path/to/forgeops/bin</strong>
+$ <strong>./config.sh export --component am --version 7.0</strong>
+Exporting AM configuration..
+
+Any changed configuration files have been exported into
+docker/7.0/am/config. Check any changed files before saving back to the config
+folder to ensure correct formatting/functionality.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <span class="command"><code>config.sh export</code></span> command exports the modified parts of the
+AM configuration from the running ForgeRock Identity Platform to the
+<span class="path"><code>docker/7.0/am/config</code></span> directory.</p>
+</div>
+</li>
+<li>
+<p>Verify the changed files using the <span class="command"><code>config.sh diff -c am</code></span> command.</p>
+<div class="paragraph">
+<p>If any of the files contain hard-coded host names or passwords, replace them
+with configuration expressions. AM resolves configuration expressions
+when it starts up.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="#value-substitution">Property Value Substitution</a> for important information about
+configuring values that vary at run-time, such as passwords and host names, in
+containerized deployments.</p>
+</div>
+</li>
+<li>
+<p>After you&#8217;ve replaced all the hard-coded host names and passwords in exported
+files with configuration expressions, copy the exported files to your
+configuration profile.</p>
+<div class="paragraph">
+<p>For more information about the management of ForgeRock Identity Platform configurations in
+the <code>forgeops</code> repository, see
+<a href="#configuration-profiles">Configuration Profiles</a>.</p>
+</div>
+</li>
+<li>
+<p>Perform version control activities on your <code>forgeops</code> repository clone:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Run the <span class="command"><code>git status</code></span> command.</p>
+</li>
+<li>
+<p>Review the state of the working directory and staging area.</p>
+</li>
+<li>
+<p>(Optional) Run the <span class="command"><code>git commit</code></span> command to commit changes to
+files that have been modified.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Reinitialize the staging area with your configuration profile:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>cd /path/to/forgeops/bin</strong>
+$ <strong>./config.sh init --profile <em>my-profile</em> --component am --version 7.0</strong></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Execute the <span class="command"><code>skaffold run</code></span> command:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>cd /path/to/forgeops</strong>
+$ <strong>skaffold run</strong></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Skaffold builds a new <code>am</code> Docker image and redeploys
+AM.</p>
+</div>
+</li>
+<li>
+<p>To validate that AM has the expected configuration, start the console
+and verify that your configuration changes are present.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="amster_image"><a class="anchor" href="#amster_image"></a><code>amster</code> Image</h3>
+<div class="paragraph">
+<p>The <code>amster</code> Docker image contains AM run-time
+data.</p>
+</div>
+<div class="paragraph">
+<p>Perform the following procedure iteratively when developing a customized
+<code>amster</code> Docker image:</p>
+</div>
+<div class="openblock procedure">
+<div class="title">Create a Customized <code>amster</code> Docker Image</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Perform version control activities on your <code>forgeops</code> repository clone:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Run the <span class="command"><code>git status</code></span> command.</p>
+</li>
+<li>
+<p>Review the state of the working directory and staging area.</p>
+</li>
+<li>
+<p>(Optional) Run the <span class="command"><code>git commit</code></span> command to commit changes to files that
+have been modified.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Modify AM run-time data using the AM console or the REST APIs.</p>
+<div class="paragraph">
+<p>For information about how to access the AM console or REST APIs, see
+<a href="access.html#am-services-cdk" class="page">AM Services</a>.</p>
+</div>
+<div class="paragraph">
+<p>AM run-time data includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>OAuth 2.0 clients</p>
+</li>
+<li>
+<p>OpenID Connect 1.0 clients</p>
+</li>
+<li>
+<p>IG, Web, Java, and SOAP STS agents</p>
+</li>
+<li>
+<p>Policies</p>
+</li>
+<li>
+<p>SAML v2.0 circles of trust and entities</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Synchronize the changes you made to the AM configuration to your
+configuration profile in your <code>forgeops</code> repository clone:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>cd /path/to/forgeops/bin</strong>
+$ <strong>./config.sh sync --profile <em>my-profile</em> --component amster --version 7.0</strong>
+Exporting Amster configuration&#8230;&#8203;
+
+Skaffold is used to run the export job. Ensure your default-repo is set.
+
+Removing any existing Amster jobs&#8230;&#8203;
+job.batch "amster" deleted
+Deploying Amster job&#8230;&#8203;
+Waiting for Amster pod to come up.
+No resources found in david namespace.
+Amster job is responding..
+
+Executing Amster export within the amster pod
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future
+version. Use kubectl kubectl exec [POD]&#8201;&#8212;&#8201;[COMMAND] instead.
+
+Amster OpenAM Shell (7.0.0-SNAPSHOT build @build.number@, JVM: 11.0.8)
+Type ':help' or ':h' for help.
+-----------------------------------------------------------------------------
+am&gt; :load /tmp/do_export.amster
+Export completed successfully
+Copying the export to the ./tmp directory
+tar: Removing leading `/' from member names
+Dynamic config exported
+
+Shutting down Amster job&#8230;&#8203;
+
+Saving Amster configuration..
+
+
+<strong>* APPLYING FIXES </strong>*
+Adding back amsterVersion placeholder &#8230;&#8203;
+Adding back FQDN placeholder &#8230;&#8203;
+Removing 'userpassword-encrypted' fields &#8230;&#8203;
+Add back password placeholder with defaults
+
+<strong>* The above fixes have been made to the Amster files. If you have exported new
+files that should contain commons placeholders or passwords, please update the
+rules in this script.</strong>*</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <span class="command"><code>config.sh sync</code></span> command exports the modified AM
+configuration profile from the running ForgeRock Identity Platform to the staging area.
+Then, it saves the configuration profile as <code><em>my-profile</em></code> in the master
+directory for configuration profiles:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/config-sh.sync.svg" alt="This diagram shows how the config.sh command synchronizes a configuration profile.">
+</div>
+</div>
+<div class="paragraph">
+<p>For more information about the management of ForgeRock Identity Platform configuration
+profiles in the <code>forgeops</code> repository, see
+<a href="#configuration-profiles">Configuration Profiles</a>.</p>
+</div>
+</li>
+<li>
+<p>Examine each JSON file that was written to your configuration profile.</p>
+<div class="paragraph">
+<p>If any of the files contain hard-coded host names or passwords, replace them
+with configuration expressions. AM resolves configuration expressions
+when it starts up.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="#value-substitution">Property Value Substitution</a> for important information about
+configuring values that vary at run-time, such as passwords and host names, in
+containerized deployments.</p>
+</div>
+</li>
+<li>
+<p>Perform version control activities on your <code>forgeops</code> repository clone:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Run the <span class="command"><code>git status</code></span> command.</p>
+</li>
+<li>
+<p>Review the state of the working directory and staging area.</p>
+</li>
+<li>
+<p>(Optional) Run the <span class="command"><code>git commit</code></span> command to commit changes to files that
+have been modified.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Reinitialize the staging area with your configuration profile:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>cd /path/to/forgeops/bin</strong>
+$ <strong>./config.sh init --profile <em>my-profile</em> --component amster --version 7.0</strong></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Shut down your ForgeRock Identity Platform deployment and delete PVCs used by the
+deployment from your namespace. See
+<a href="shutdown.html" class="page">CDK Shutdown and Removal</a> for details.</p>
+</li>
+<li>
+<p>Redeploy the ForgeRock Identity Platform:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>cd /path/to/forgeops</strong>
+$ <strong>skaffold run</strong></pre>
+</div>
+</div>
+</li>
+<li>
+<p>To validate that AM has the expected changes to run-time data, start
+the console and verify that your changes are present.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="custom_images_for_idm"><a class="anchor" href="#custom_images_for_idm"></a>Custom Images for IDM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With IDM up and running, you can iteratively:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Customize IDM&#8217;s configuration using the Admin UI and the REST APIs.</p>
+</li>
+<li>
+<p>Capture your configuration changes by synchronizing them from the IDM
+service running on Kubernetes back to the staging area and the master directory
+for configuration profiles in your <code>forgeops</code> repository clone.</p>
+</li>
+<li>
+<p>Run Skaffold to detect the changes, rebuild the <code>idm</code>
+Docker image, and restart IDM. You can then test changes you&#8217;ve made to
+the IDM configuration based on the updated Docker image.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="idm_image"><a class="anchor" href="#idm_image"></a><code>idm</code> Image</h3>
+<div class="paragraph">
+<p>The <code>idm</code> Docker image contains the IDM
+configuration.</p>
+</div>
+<div class="paragraph">
+<p>Perform the following procedure iteratively when developing a customized
+<code>idm</code> Docker image:</p>
+</div>
+<div class="openblock procedure">
+<div class="title">Create a Customized <code>idm</code> Docker Image</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Perform version control activities on your <code>forgeops</code> repository clone:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Run the <span class="command"><code>git status</code></span> command.</p>
+</li>
+<li>
+<p>Review the state of the working directory and staging area.</p>
+</li>
+<li>
+<p>(Optional) Run the <span class="command"><code>git commit</code></span> command to commit changes to files that
+have been modified.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Modify the IDM configuration using the IDM Admin UI or the REST
+APIs.</p>
+<div class="paragraph">
+<p>For information about how to access the IDM Admin UI or REST APIs, see
+<a href="access.html#idm-services" class="page">IDM Services</a>.</p>
+</div>
+<div class="paragraph">
+<p>When modifying the IDM configuration, use configuration expressions, not
+hard-coded values, for all host names and passwords.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="#value-substitution">Property Value Substitution</a> for important information about
+configuring values that vary at run-time, such as passwords and host names, in
+containerized deployments.</p>
+</div>
+</li>
+<li>
+<p>Synchronize the changes you made to the IDM configuration to your
+<code>forgeops</code> repository clone:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>cd /path/to/forgeops/bin</strong>
+$ <strong>./config.sh sync --profile <em>my-profile</em> --component idm --version 7.0</strong>
+tar: Removing leading `/' from member names</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <span class="command"><code>config.sh sync</code></span> command exports the modified IDM
+configuration from the running ForgeRock Identity Platform to the staging area. Then, it
+saves the configuration profile as <code><em>my-profile</em></code> in the master directory
+for configuration profiles:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/config-sh.sync.svg" alt="This diagram shows how the config.sh command synchronizes a configuration profile.">
+</div>
+</div>
+<div class="paragraph">
+<p>For more information about the management of ForgeRock Identity Platform configurations in
+the <code>forgeops</code> repository, see
+<a href="#configuration-profiles">Configuration Profiles</a>.</p>
+</div>
+</li>
+<li>
+<p>Execute the <span class="command"><code>skaffold run</code></span> command:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>cd /path/to/forgeops</strong>
+$ <strong>skaffold run</strong></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Skaffold builds a new <code>idm</code> Docker image and redeploys
+IDM.</p>
+</div>
+</li>
+<li>
+<p>Perform version control activities on your <code>forgeops</code> repository clone:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Run the <span class="command"><code>git status</code></span> command.</p>
+</li>
+<li>
+<p>Review the state of the working directory and staging area.</p>
+</li>
+<li>
+<p>(Optional) Run the <span class="command"><code>git commit</code></span> command to commit changes to files that
+have been modified.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>To validate that IDM has the expected configuration, start the Admin
+UI, and verify that your configuration changes are present.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="value-substitution"><a class="anchor" href="#value-substitution"></a>Property Value Substitution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ForgeRock recommends using
+<a href="https://ea.forgerock.com/docs/idm/setup-guide/using-property-substitution.html">property
+value substitution</a> for all passwords in the ForgeRock Identity Platform configuration in
+containerized deployments. Property value substitution eases promotion of the
+ForgeRock Identity Platform configuration from a development environment to a test or
+production environment.</p>
+</div>
+<div class="paragraph">
+<p>You should also use property value substitution for host names and any other
+configuration values that will change as you promote your deployment from a
+development environment to a test or production environment.</p>
+</div>
+<div class="paragraph">
+<p>To use property value substitution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For AM, edit exported JSON files, replacing hard-coded values for
+passwords, host names, and other fields with configuration expressions.</p>
+</li>
+<li>
+<p>For IDM, specify values for passwords, host names, and other fields
+using configuration expressions in the IDM Admin UI, or when using the
+REST API.</p>
+</li>
+<li>
+<p>Specify values for configuration expressions in the <code>data</code> section of the
+config map in the
+<span class="path"><code>/path/to/forgeops/kustomize/overlay/7.0/all/kustomization.yaml</code></span>
+file. Use a key/value pair for each value to be substituted, specifying the
+configuration expression as the key.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Specifying passwords as described in the preceding section is <em>extremely
+insecure</em>. The passwords appear in cleartext in a Kubernetes config map.</p>
+</div>
+<div class="paragraph">
+<p>It is expected that a future version of the platform will be able to
+resolve configuration expressions for passwords from password management
+systems; for example, HashiCorp Vault and Google Cloud Key Management System
+(KMS). For more information, see
+<a href="https://bugster.forgerock.org/jira/browse/OPENIDM-13262">IDM issue #13262</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fr-data"><a class="anchor" href="#fr-data"></a>About Data Used by the Platform</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The ForgeRock Identity Platform uses two types of data:
+<a href="#configuration-data">configuration data</a> and <a href="#run-time-data">run-time data</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="configuration-data"><a class="anchor" href="#configuration-data"></a>Configuration Data</h3>
+<div class="paragraph">
+<p>Configuration data consists of properties and settings used by the
+ForgeRock Identity Platform. You update configuration data during the development phase of
+ForgeRock Identity Platform implementation. You should not change configuration data during
+the testing and production phases.</p>
+</div>
+<div class="paragraph">
+<p>You change configuration data iteratively in a development environment. After
+changing configuration data, you rebuild Docker images and restart
+ForgeRock Identity Platform services when you&#8217;re ready to test sets of changes. If you make
+incorrect changes to configuration data, the platform might become
+inoperable. After testing modifications to configuration data, you promote your
+changes to test and production environments.</p>
+</div>
+<div class="paragraph">
+<p>Examples of configuration data include AM realms, AM
+authentication trees, IDM social identity provider definitions, and
+IDM data mapping models for reconciliation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuration-profiles"><a class="anchor" href="#configuration-profiles"></a>Configuration Profiles</h3>
+<div class="paragraph">
+<p>A ForgeRock Identity Platform <em>configuration profile</em> is a named set of configuration data
+that describes the operational characteristics of a running ForgeRock
+deployment.</p>
+</div>
+<div class="paragraph">
+<p>Configuration profiles reside in two locations in the <code>forgeops</code> repository:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>The master directory</strong>. Holds a
+<a href="https://github.com/ForgeRock/forgeops/blob/master/README.md#configuration">canonical configuration profile for the CDK</a>
+and user-customized configuration profiles. User-customized configuration
+profiles in this directory are considered to be the <em>source of truth</em> for
+ForgeRock Identity Platform deployments.</p>
+<div class="paragraph">
+<p>The master directory for configuration profiles is located at the path
+<span class="path"><code>/path/to/forgeops/config/7.0</code></span>. You use Git to manage
+the configuration profiles in this directory.</p>
+</div>
+</li>
+<li>
+<p><strong>The staging area</strong>. Holds a single configuration profile. You copy a profile
+from the master directory to the staging area before building a customized
+Docker image for the ForgeRock Identity Platform.</p>
+<div class="paragraph">
+<p>The staging area is located in subdirectories of the path,
+<span class="path"><code>/path/to/forgeops/docker/7.0</code></span>. Configuration profiles
+copied to the staging area are transient and are not managed with Git.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <span class="command"><code>config.sh</code></span> script lets you copy configuration profiles between
+the master directory and the staging area. It also lets you copy profiles from
+Kubernetes pods running ForgeRock Identity Platform components to the staging area.</p>
+</div>
+<div class="paragraph">
+<p>You run this script before you build a customized Docker image for the
+platform. The script lets you specify which configuration profile to copy
+to the staging area. Skaffold uses this profile when it builds a Docker image.</p>
+</div>
+<div class="paragraph">
+<p>For example, when you start developing customized images for the
+platform, you run the <span class="command"><code>config.sh init</code></span> command to initialize
+the staging area with the canonical CDK profile:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/config-sh.init.svg" alt="This diagram shows how the staging area is initialized from the canonical ${cdk.abbr} profile.">
+</div>
+</div>
+<div class="paragraph">
+<p>You run the <span class="command"><code>config.sh sync</code></span> command to synchronize configuration
+changes you&#8217;ve made in a running deployment back to the staging area, and then
+to the master directory:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/config-sh.sync.svg" alt="This diagram shows how the config.sh command synchronizes a configuration profile.">
+</div>
+</div>
+<div class="paragraph">
+<p>For more information about the <span class="command"><code>config.sh</code></span> script, see
+<a href="https://github.com/ForgeRock/forgeops/blob/master/README.md#managing-configurations">Managing Configurations</a>
+in the <code>forgeops</code> repository&#8217;s top-level README file.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="run-time-data"><a class="anchor" href="#run-time-data"></a>Run-Time Data</h3>
+<div class="paragraph">
+<p>Run-time data consists of identities, policies, applications, and data objects
+used by the ForgeRock Identity Platform. You might extract sample run-time data while
+developing configuration data. Run-time data is volatile throughout
+ForgeRock Identity Platform implementation. Expect it to change even when the
+ForgeRock Identity Platform is in production.</p>
+</div>
+<div class="paragraph">
+<p>You usually use sample data for run-time data. Run-time data that&#8217;s changed
+during development is not typically promoted to test and production
+environments. There&#8217;s no need to modify Docker images or restart ForgeRock Identity Platform
+services when run-time data is modified.</p>
+</div>
+<div class="paragraph">
+<p>Examples of run-time data include AM and IDM identities, AM
+policies, AM OAuth 2.0 client definitions, and IDM relationships.</p>
+</div>
+<div class="paragraph">
+<p>In the ForgeRock Identity Platform, run-time data is stored in databases and is not
+file-based. For more information about how run-time data is stored in
+AM and IDM, see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://ea.forgerock.com/docs/am/install-guide/prepare-ext-stores.html">Preparing
+External Stores</a> in the AM documentation.</p>
+</li>
+<li>
+<p><a href="https://ea.forgerock.com/docs/idm/objects-guide/repository.html">Store Managed
+Objects in the Repository</a> in the IDM documentation.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="access.html">UI and API Access</a></span>
+  <span class="next"><a href="troubleshoot.html">CDK Troubleshooting</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+  <div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">ForgeOps</a></li>
+    <li>Cloud Developer's Kit (CDK)</li>
+    <li><a href="develop.html">Custom Docker Image Development</a></li>
+  </ul>
+</nav>
+</div>
+</main>
+</div>
+<backstage-site-footer></backstage-site-footer>
+<script src="https://cdn.forgerock.com/docs-ui/adoc/dev/vendor.antora-scripts.js"></script>
+<script src="https://cdn.forgerock.com/docs-ui/adoc/dev/forgerock.antora-scripts.js"></script>
+  </body>
+</html>
