@@ -94,7 +94,7 @@ spec:
         volumeMounts:
         - mountPath: /home/forgerock/openam
           name: fbc
-      terminationGracePeriodSeconds: 10
+      terminationGracePeriodSeconds: 30
       # Shared volume that holds the AM configuration.
       volumes:
       - name: fbc

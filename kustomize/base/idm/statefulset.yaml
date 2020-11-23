@@ -69,7 +69,7 @@ spec:
               value: "true"
             path: /openidm/info/ping
             port: 8080
-          initialDelaySeconds: 30
+          initialDelaySeconds: 90
           periodSeconds: 30
           timeoutSeconds: 5
         name: openidm
