@@ -1,7 +1,14 @@
-FROM gcr.io/forgerock-io/amster:7.1.0-IDCLOUD-ba6bb6ab62bda8049906827a62b5709c2eabb6aa
+FROM gcr.io/forgerock-io/amster:7.1.0-IDCLOUD-da79b63be2ac9319c7716dbdb06d387bd2ee1dc3
 
 USER root
-RUN apt-get install -y openldap-utils jq
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV APT_OPTS="--no-install-recommends --yes"
+RUN apt-get update \
+        && apt-get install -y openldap-utils jq \
+        && apt-get clean \
+        && rm -r /var/lib/apt/lists /var/cache/apt/archives
+
 USER forgerock
 
 ENV SERVER_URI /am
