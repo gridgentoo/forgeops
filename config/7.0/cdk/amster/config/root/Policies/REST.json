@@ -1,0 +1,29 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "amsterVersion" : "&{version}",
+    "entityType" : "Policies",
+    "entityId" : "REST",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "REST",
+    "name" : "REST",
+    "active" : true,
+    "description" : "",
+    "resources" : [ "*://jpa.pentest.forgeops.com:*/rest/*", "*://wpa.pentest.forgeops.com:*/rest/*" ],
+    "applicationName" : "agents-ps",
+    "actionValues" : {
+      "GET" : true,
+      "PUT" : true
+    },
+    "subject" : {
+      "type" : "AuthenticatedUsers"
+    },
+    "resourceTypeUuid" : "76656a38-5f8e-401b-83aa-4ccb74ce88d2",
+    "lastModifiedBy" : "id=amadmin,ou=user,ou=am-config",
+    "lastModifiedDate" : "2021-03-22T09:13:25.903Z",
+    "createdBy" : "id=amadmin,ou=user,ou=am-config",
+    "creationDate" : "2021-03-18T12:22:07.443Z"
+  }
+}

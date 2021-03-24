@@ -1,0 +1,33 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "amsterVersion" : "&{version}",
+    "entityType" : "Policies",
+    "entityId" : "TransactionID",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "TransactionID",
+    "name" : "TransactionID",
+    "active" : true,
+    "description" : "",
+    "resources" : [ "*://wpa.pentest.forgeops.com:*/web/transaction/*", "*://jpa.pentest.forgeops.com:*/web/transaction/*" ],
+    "applicationName" : "agents-ps",
+    "actionValues" : {
+      "GET" : true
+    },
+    "subject" : {
+      "type" : "AuthenticatedUsers"
+    },
+    "condition" : {
+      "type" : "Transaction",
+      "authenticationStrategy" : "AuthenticateToServiceConditionAdvice",
+      "strategySpecifier" : "transaction-chain"
+    },
+    "resourceTypeUuid" : "76656a38-5f8e-401b-83aa-4ccb74ce88d2",
+    "lastModifiedBy" : "id=amadmin,ou=user,ou=am-config",
+    "lastModifiedDate" : "2021-03-18T12:58:31.181Z",
+    "createdBy" : "id=amadmin,ou=user,ou=am-config",
+    "creationDate" : "2021-03-18T12:23:49.234Z"
+  }
+}

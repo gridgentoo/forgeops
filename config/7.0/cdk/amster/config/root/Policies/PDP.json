@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "amsterVersion" : "&{version}",
+    "entityType" : "Policies",
+    "entityId" : "PDP",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "PDP",
+    "name" : "PDP",
+    "active" : true,
+    "description" : "",
+    "resources" : [ "*://jpa.pentest.forgeops.com:*/pdp/preservation", "*://wpa.pentest.forgeops.com:*/pdp/preservation" ],
+    "applicationName" : "agents-ps",
+    "actionValues" : {
+      "POST" : true
+    },
+    "subject" : {
+      "type" : "AuthenticatedUsers"
+    },
+    "resourceTypeUuid" : "76656a38-5f8e-401b-83aa-4ccb74ce88d2",
+    "lastModifiedBy" : "id=amadmin,ou=user,ou=am-config",
+    "lastModifiedDate" : "2021-03-22T14:50:17.545Z",
+    "createdBy" : "id=amadmin,ou=user,ou=am-config",
+    "creationDate" : "2021-03-18T12:20:17.585Z"
+  }
+}

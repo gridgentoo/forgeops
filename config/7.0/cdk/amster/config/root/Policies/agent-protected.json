@@ -1,0 +1,29 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "amsterVersion" : "&{version}",
+    "entityType" : "Policies",
+    "entityId" : "agent-protected",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "agent-protected",
+    "name" : "agent-protected",
+    "active" : true,
+    "description" : "",
+    "resources" : [ "*://jpa.pentest.forgeops.com:*/web/restricted/*", "*://wpa.pentest.forgeops.com:*/web/restricted/*" ],
+    "applicationName" : "agents-ps",
+    "actionValues" : {
+      "POST" : true,
+      "GET" : true
+    },
+    "subject" : {
+      "type" : "AuthenticatedUsers"
+    },
+    "resourceTypeUuid" : "76656a38-5f8e-401b-83aa-4ccb74ce88d2",
+    "lastModifiedBy" : "id=amadmin,ou=user,ou=am-config",
+    "lastModifiedDate" : "2021-03-18T12:47:17.783Z",
+    "createdBy" : "id=amadmin,ou=user,ou=am-config",
+    "creationDate" : "2021-03-18T12:18:40.115Z"
+  }
+}

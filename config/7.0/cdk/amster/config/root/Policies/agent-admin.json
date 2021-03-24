@@ -1,0 +1,30 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "amsterVersion" : "&{version}",
+    "entityType" : "Policies",
+    "entityId" : "agent-admin",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "agent-admin",
+    "name" : "agent-admin",
+    "active" : true,
+    "description" : "",
+    "resources" : [ "*://wpa.pentest.forgeops.com:*/web/admin/*", "*://jpa.pentest.forgeops.com:*/web/admin/*" ],
+    "applicationName" : "agents-ps",
+    "actionValues" : {
+      "POST" : true,
+      "GET" : true
+    },
+    "subject" : {
+      "type" : "Identity",
+      "subjectValues" : [ "id=15ef8fc8-6747-443f-8e12-01e290284aef,ou=user,ou=am-config" ]
+    },
+    "resourceTypeUuid" : "76656a38-5f8e-401b-83aa-4ccb74ce88d2",
+    "lastModifiedBy" : "id=amadmin,ou=user,ou=am-config",
+    "lastModifiedDate" : "2021-03-18T12:16:24.133Z",
+    "createdBy" : "id=amadmin,ou=user,ou=am-config",
+    "creationDate" : "2021-03-18T12:15:34.159Z"
+  }
+}
