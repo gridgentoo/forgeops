@@ -478,6 +478,11 @@ save_config()
 			sed -i '' 's/\"userpassword\" : null/\"userpassword\" : \"\&{ig.rs.client.secret|password}\"/g' ${CLIENT_ROOT}/resource-server.json
 			sed -i '' 's/\"userpassword\" : null/\"userpassword\" : \"\&{pit.client.secret|password}\"/g' ${CLIENT_ROOT}/oauth2.json
 			sed -i '' 's/\"userpassword\" : null/\"userpassword\" : \"\&{ig.agent.password|password}\"/g' ${IGAGENT_ROOT}/ig-agent.json
+			# New stuff
+			# application : ig_agent_pentest : 23kgHkY9v6CPeFAQ
+			sed -i '' 's/\"userpassword\" : null/\"userpassword\" : \"23kgHkY9v6CPeFAQ\"/g' ${IGAGENT_ROOT}/ig_agent_pentest.json
+			# OAuth2 Client : ig_oauth2_app : rpbECKZx7FzjQJts
+			sed -i '' 's/\"userpassword\" : null/\"userpassword\" : \"rpbECKZx7FzjQJts\"/g' ${CLIENT_ROOT}/ig_oauth2_app.json
 
 			#****** COPY FIXED FILES ******#
 			cp -R "$DOCKER_ROOT/amster/config"  "$PROFILE_ROOT/amster"
