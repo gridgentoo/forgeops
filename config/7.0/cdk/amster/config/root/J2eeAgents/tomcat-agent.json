@@ -125,7 +125,7 @@
       "redirectAttemptLimit" : 0,
       "status" : "Active",
       "userAttributeName" : "employeenumber",
-      "userpassword" : "FRp@ssw0rd89!",
+      "userpassword" : "FRp@ssw0rd89!"
     },
     "advancedJ2EEAgentConfig" : {
       "jwtCacheSize" : 5000,

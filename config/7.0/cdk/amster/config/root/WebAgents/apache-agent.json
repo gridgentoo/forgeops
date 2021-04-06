@@ -131,7 +131,7 @@
       "auditAccessType" : "LOG_NONE",
       "fqdnDefault" : "wpa.pentest.forgeops.com",
       "cdssoRootUrl" : [ "agentRootURL=https://wpa.pentest.forgeops.com:443/", "agentRootURL=http://wpa.pentest.forgeops.com:80/" ],
-      "userpassword" : "FRp@ssw0rd89!",
+      "userpassword" : "FRp@ssw0rd89!"
     },
     "_type" : {
       "_id" : "WebAgent",
