@@ -1,0 +1,19 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "amsterVersion" : "&{version}",
+    "entityType" : "CircleOfTrust",
+    "entityId" : "Circle of Trust",
+    "pathParams" : { }
+  },
+  "data" : {
+    "_id" : "Circle of Trust",
+    "status" : "active",
+    "trustedProviders" : [ "openam|saml2", "sp|saml2" ],
+    "_type" : {
+      "_id" : "circlesoftrust",
+      "name" : "Circle of Trust",
+      "collection" : true
+    }
+  }
+}
