@@ -8,8 +8,8 @@
   },
   "data" : {
     "_id" : "Circle of Trust",
+    "trustedProviders" : [ "sp|saml2", "openam|saml2" ],
     "status" : "active",
-    "trustedProviders" : [ "openam|saml2", "sp|saml2" ],
     "_type" : {
       "_id" : "circlesoftrust",
       "name" : "Circle of Trust",
