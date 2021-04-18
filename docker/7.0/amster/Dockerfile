@@ -1,4 +1,4 @@
-FROM gcr.io/forgerock-io/amster/pit1:7.2.0-756455070672c5c16672427ac25065ab1aaf4f96
+FROM gcr.io/forgerock-io/amster:7.2.0-756455070672c5c16672427ac25065ab1aaf4f96
 
 USER root
 
