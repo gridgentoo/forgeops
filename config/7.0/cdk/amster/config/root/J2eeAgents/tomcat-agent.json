@@ -144,7 +144,7 @@
       "ssoExchangeCacheSize" : 100,
       "postDataCacheTtl" : 300000,
       "missingPostDataPreservationEntryUri" : [ "" ],
-      "customProperties" : [ ],
+      "customProperties" : [ "org.forgerock.agents.original.ip.check.mode.map=DENY" ],
       "ssoExchangeCacheTTL" : 5,
       "policyCacheSize" : 5000,
       "clientHostnameHeader" : null,
