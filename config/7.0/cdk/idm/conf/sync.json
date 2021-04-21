@@ -1,0 +1,170 @@
+{
+    "_id": "sync",
+    "mappings": [
+        {
+            "target": "managed/user",
+            "source": "system/csvfile/__ACCOUNT__",
+            "name": "systemCsvfile__ACCOUNT___managedUser",
+            "consentRequired": false,
+            "icon": null,
+            "displayName": "systemCsvfile__ACCOUNT___managedUser",
+            "properties": [
+                {
+                    "target": "mail",
+                    "source": "mail"
+                },
+                {
+                    "target": "sn",
+                    "source": "sn"
+                },
+                {
+                    "target": "givenName",
+                    "source": "__NAME__"
+                },
+                {
+                    "target": "userName",
+                    "source": "__NAME__"
+                },
+                {
+                    "target": "password",
+                    "source": "__PASSWORD__"
+                }
+            ],
+            "policies": [
+                {
+                    "action": "EXCEPTION",
+                    "situation": "AMBIGUOUS"
+                },
+                {
+                    "action": "EXCEPTION",
+                    "situation": "SOURCE_MISSING"
+                },
+                {
+                    "action": "EXCEPTION",
+                    "situation": "MISSING"
+                },
+                {
+                    "action": "EXCEPTION",
+                    "situation": "FOUND_ALREADY_LINKED"
+                },
+                {
+                    "action": "DELETE",
+                    "situation": "UNQUALIFIED"
+                },
+                {
+                    "action": "EXCEPTION",
+                    "situation": "UNASSIGNED"
+                },
+                {
+                    "action": "EXCEPTION",
+                    "situation": "LINK_ONLY"
+                },
+                {
+                    "action": "IGNORE",
+                    "situation": "TARGET_IGNORED"
+                },
+                {
+                    "action": "IGNORE",
+                    "situation": "SOURCE_IGNORED"
+                },
+                {
+                    "action": "IGNORE",
+                    "situation": "ALL_GONE"
+                },
+                {
+                    "action": "UPDATE",
+                    "situation": "CONFIRMED"
+                },
+                {
+                    "action": "UPDATE",
+                    "situation": "FOUND"
+                },
+                {
+                    "action": "CREATE",
+                    "situation": "ABSENT"
+                }
+            ]
+        },
+        {
+            "target": "system/csvfile/__ACCOUNT__",
+            "source": "managed/user",
+            "name": "managedUser_systemCsvfile__ACCOUNT__",
+            "consentRequired": false,
+            "icon": null,
+            "displayName": "managedUser_systemCsvfile__ACCOUNT__",
+            "properties": [
+                {
+                    "target": "__NAME__",
+                    "source": "_id"
+                },
+                {
+                    "target": "__PASSWORD__",
+                    "source": "password"
+                },
+                {
+                    "target": "mail",
+                    "source": "mail"
+                },
+                {
+                    "target": "sn",
+                    "source": "sn"
+                }
+            ],
+            "policies": [
+                {
+                    "action": "EXCEPTION",
+                    "situation": "AMBIGUOUS"
+                },
+                {
+                    "action": "EXCEPTION",
+                    "situation": "SOURCE_MISSING"
+                },
+                {
+                    "action": "EXCEPTION",
+                    "situation": "MISSING"
+                },
+                {
+                    "action": "EXCEPTION",
+                    "situation": "FOUND_ALREADY_LINKED"
+                },
+                {
+                    "action": "DELETE",
+                    "situation": "UNQUALIFIED"
+                },
+                {
+                    "action": "EXCEPTION",
+                    "situation": "UNASSIGNED"
+                },
+                {
+                    "action": "EXCEPTION",
+                    "situation": "LINK_ONLY"
+                },
+                {
+                    "action": "IGNORE",
+                    "situation": "TARGET_IGNORED"
+                },
+                {
+                    "action": "IGNORE",
+                    "situation": "SOURCE_IGNORED"
+                },
+                {
+                    "action": "IGNORE",
+                    "situation": "ALL_GONE"
+                },
+                {
+                    "action": "UPDATE",
+                    "situation": "CONFIRMED"
+                },
+                {
+                    "action": "UPDATE",
+                    "situation": "FOUND"
+                },
+                {
+                    "action": "CREATE",
+                    "situation": "ABSENT"
+                }
+            ],
+            "links": "systemCsvfile__ACCOUNT___managedUser"
+        }
+    ]
+}

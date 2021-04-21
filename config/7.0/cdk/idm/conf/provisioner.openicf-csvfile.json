@@ -1,0 +1,84 @@
+{
+    "_id": "provisioner.openicf/csvfile",
+    "connectorRef": {
+        "connectorHostRef": "connectorserver",
+        "displayName": "CSV File Connector",
+        "bundleVersion": "(1.5.0.0,1.6.0.0]",
+        "systemType": "provisioner.openicf",
+        "bundleName": "org.forgerock.openicf.connectors.csvfile-connector",
+        "connectorName": "org.forgerock.openicf.csvfile.CSVFileConnector"
+    },
+    "poolConfigOption": {
+        "maxObjects": 10,
+        "maxIdle": 10,
+        "maxWait": 150000,
+        "minEvictableIdleTimeMillis": 120000,
+        "minIdle": 1
+    },
+    "resultsHandlerConfig": {
+        "enableNormalizingResultsHandler": false,
+        "enableFilteredResultsHandler": false,
+        "enableCaseInsensitiveFilter": false,
+        "enableAttributesToGetSearchResultsHandler": true
+    },
+    "operationTimeout": {
+        "CREATE": -1,
+        "UPDATE": -1,
+        "DELETE": -1,
+        "TEST": -1,
+        "SCRIPT_ON_CONNECTOR": -1,
+        "SCRIPT_ON_RESOURCE": -1,
+        "GET": -1,
+        "RESOLVEUSERNAME": -1,
+        "AUTHENTICATE": -1,
+        "SEARCH": -1,
+        "VALIDATE": -1,
+        "SYNC": -1,
+        "SCHEMA": -1
+    },
+    "configurationProperties": {
+        "headerPassword": "password",
+        "spaceReplacementString": "_",
+        "csvFile": "/home/jon.branch/1k.csv",
+        "newlineString": "\n",
+        "headerUid": "uid",
+        "quoteCharacter": "\"",
+        "fieldDelimiter": ",",
+        "syncFileRetentionCount": "3"
+    },
+    "enabled": true,
+    "objectTypes": {
+        "__ACCOUNT__": {
+            "$schema": "http://json-schema.org/draft-03/schema",
+            "id": "__ACCOUNT__",
+            "type": "object",
+            "nativeType": "__ACCOUNT__",
+            "properties": {
+                "__PASSWORD__": {
+                    "type": "string",
+                    "nativeName": "__PASSWORD__",
+                    "nativeType": "JAVA_TYPE_GUARDEDSTRING",
+                    "flags": [
+                        "NOT_READABLE",
+                        "NOT_RETURNED_BY_DEFAULT"
+                    ]
+                },
+                "mail": {
+                    "type": "string",
+                    "nativeName": "mail",
+                    "nativeType": "string"
+                },
+                "__NAME__": {
+                    "type": "string",
+                    "nativeName": "__NAME__",
+                    "nativeType": "string"
+                },
+                "sn": {
+                    "type": "string",
+                    "nativeName": "sn",
+                    "nativeType": "string"
+                }
+            }
+        }
+    }
+}
