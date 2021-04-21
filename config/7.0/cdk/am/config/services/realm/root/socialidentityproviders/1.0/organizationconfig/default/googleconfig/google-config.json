@@ -1,0 +1,37 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "SocialIdentityProviders",
+    "entityId" : "default/googleConfig/google-config",
+    "uid" : "ou=google-config,ou=googleConfig,ou=default,ou=OrganizationConfig,ou=1.0,ou=SocialIdentityProviders,ou=services,ou=am-config",
+    "sunServiceID" : "instance",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default/googleConfig/google-config",
+    "_type" : {
+      "_id" : "SocialIdentityProviders",
+      "name" : "SocialIdentityProviders",
+      "collection" : false
+    },
+    "introspectEndpoint" : null,
+    "jwtEncryptionMethod" : "NONE",
+    "clientId" : "848303390660-k2d4ur3og9j9k00khdcfe2mj1rtt7c1g.apps.googleusercontent.com",
+    "jwksUriEndpoint" : null,
+    "jwtEncryptionAlgorithm" : "NONE",
+    "clientSecret" : "AQIC/KrdUt4SHUUtXP0rfYwJxw0eGDF5KtQOSdFUVVe8fCUlT8Qu9Ag/jg==",
+    "acrValues" : [
+      
+    ],
+    "redirectAfterFormPostURI" : null,
+    "redirectURI" : "https://pentest.iam.forgeops.com/am",
+    "jwtSigningAlgorithm" : "NONE",
+    "scopeDelimiter" : " ",
+    "requestObjectAudience" : null
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "authenticationTreesService",
+    "entityId" : "default/UsernameTree",
+    "uid" : "ou=UsernameTree,ou=default,ou=OrganizationConfig,ou=1.0,ou=authenticationTreesService,ou=services,ou=am-config",
+    "sunServiceID" : "tree",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : [
+      "UsernameTree"
+    ]
+  },
+  "data" : {
+    "_id" : "default/UsernameTree",
+    "_type" : {
+      "_id" : "authenticationTreesService",
+      "name" : "authenticationTreesService",
+      "collection" : false
+    },
+    "entryNodeId" : "eab0b058-c8b5-42b7-a170-6f9f89bc9918",
+    "nodes" : {
+      "eab0b058-c8b5-42b7-a170-6f9f89bc9918" : {
+        "x" : 241,
+        "y" : 219.76666259765625,
+        "connections" : {
+          "outcome" : "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+        },
+        "nodeType" : "UsernameCollectorNode",
+        "displayName" : "Username Collector"
+      }
+    },
+    "staticNodes" : {
+      "startNode" : {
+        "x" : 50,
+        "y" : 250
+      },
+      "70e691a5-1e33-4ac3-a356-e7b6d60d92e0" : {
+        "x" : 500,
+        "y" : 50
+      },
+      "e301438c-0bd0-429c-ab0c-66126501069a" : {
+        "x" : 500,
+        "y" : 350
+      }
+    },
+    "description" : "Passwordless authentication hack\nDelete me",
+    "identityResource" : "managed/user"
+  }
+}

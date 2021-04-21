@@ -1,0 +1,24 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "RequiredAttributesDecisionNode",
+    "entityId" : "default/bcfc920d-71fa-437d-bbaa-43638244489b",
+    "uid" : "ou=bcfc920d-71fa-437d-bbaa-43638244489b,ou=default,ou=OrganizationConfig,ou=1.0,ou=RequiredAttributesDecisionNode,ou=services,ou=am-config",
+    "sunServiceID" : "instance",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default/bcfc920d-71fa-437d-bbaa-43638244489b",
+    "_type" : {
+      "_id" : "RequiredAttributesDecisionNode",
+      "name" : "RequiredAttributesDecisionNode",
+      "collection" : false
+    },
+    "identityResource" : "managed/user"
+  }
+}

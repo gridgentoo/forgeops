@@ -1,0 +1,24 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "CreateObjectNode",
+    "entityId" : "default/73652ea6-0045-4627-a5d6-10898de60de5",
+    "uid" : "ou=73652ea6-0045-4627-a5d6-10898de60de5,ou=default,ou=OrganizationConfig,ou=1.0,ou=CreateObjectNode,ou=services,ou=am-config",
+    "sunServiceID" : "instance",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default/73652ea6-0045-4627-a5d6-10898de60de5",
+    "_type" : {
+      "_id" : "CreateObjectNode",
+      "name" : "CreateObjectNode",
+      "collection" : false
+    },
+    "identityResource" : "managed/user"
+  }
+}

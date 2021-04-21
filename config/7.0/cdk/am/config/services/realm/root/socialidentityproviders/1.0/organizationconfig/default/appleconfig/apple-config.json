@@ -1,0 +1,70 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "SocialIdentityProviders",
+    "entityId" : "default/appleConfig/apple-config",
+    "uid" : "ou=apple-config,ou=appleConfig,ou=default,ou=OrganizationConfig,ou=1.0,ou=SocialIdentityProviders,ou=services,ou=am-config",
+    "sunServiceID" : "instance",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : [
+      "apple-config"
+    ]
+  },
+  "data" : {
+    "_id" : "default/appleConfig/apple-config",
+    "_type" : {
+      "_id" : "SocialIdentityProviders",
+      "name" : "SocialIdentityProviders",
+      "collection" : false
+    },
+    "introspectEndpoint" : null,
+    "enabled" : true,
+    "scopeDelimiter" : " ",
+    "privateKeyJwtExpTime" : 600,
+    "redirectURI" : "https://pentest.iam.forgeops.com/am/oauth2/client/form_post/apple-config",
+    "acrValues" : [
+      
+    ],
+    "responseMode" : "FORM_POST",
+    "jwksUriEndpoint" : null,
+    "jwtRequestParameterOption" : "NONE",
+    "encryptedIdTokens" : false,
+    "requestObjectAudience" : null,
+    "tokenEndpoint" : "https://appleid.apple.com/auth/token",
+    "transform" : "484e6246-dbc6-4288-97e6-54e55431402e",
+    "authorizationEndpoint" : "https://appleid.apple.com/auth/authorize",
+    "clientAuthenticationMethod" : "CLIENT_SECRET_POST",
+    "enableNativeNonce" : true,
+    "encryptJwtRequestParameter" : false,
+    "uiConfig" : {
+      "buttonImage" : "images/apple-logo.png",
+      "buttonCustomStyle" : "background-color: #000000; color: #ffffff; border-color: #000000;",
+      "buttonClass" : "",
+      "iconClass" : "fa-apple",
+      "buttonCustomStyleHover" : "background-color: #000000; color: #ffffff; border-color: #000000;",
+      "iconBackground" : "#000000",
+      "iconFontColor" : "white",
+      "buttonDisplayName" : "Apple"
+    },
+    "scopes" : [
+      "name",
+      "email"
+    ],
+    "userInfoEndpoint" : null,
+    "userInfoResponseType" : "JSON",
+    "clientId" : "com.forgerock.ame.av.signinwithapple.service",
+    "issuer" : "https://appleid.apple.com",
+    "pkceMethod" : "S256",
+    "authenticationIdKey" : "sub",
+    "jwtEncryptionAlgorithm" : "NONE",
+    "jwtEncryptionMethod" : "NONE",
+    "wellKnownEndpoint" : "https://appleid.apple.com/.well-known/openid-configuration",
+    "redirectAfterFormPostURI" : null,
+    "jwtSigningAlgorithm" : "NONE",
+    "clientSecret" : "AQIC/KrdUt4SHUXeWF3G+4UqlauC9yRdrhesEzZyFhly8YXxyCK8kUEBTB+OCSzifkxhZfLoiV83HnB5gSuSfMfvI3onOYXtiOADyQGdRU74etXDwYAAfEedn0cWgGQiBuzihkIbY4Rm50RucLoau4tpWzv/nyXdoU2fjJRKit+XUpM4KH1U2XYfqXrfNwkBJHf6y4bffvCB+Lg1MCdS9oU7QROTjQFKYx0ScnBwEvc2iXQMztXNrAkGS13510fjWS8vS9QE3OU3DMNY4+bAoZmDyQUg7/T3SySMi2jSZdc14fKuZD0owMLlpMGEbfPxm+mWV6sipJA8J0waEJ1WH+6GGzSsdajXkxVuBfpj974+FIdGme2HGjoELFqcB7fzWKt4TioDhTBfrZt2saTiP/1Pp5NL213GwEZCm3JKex/VBTuhtI6hyjiOqXuKLkFgGYp/"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "SocialProviderHandlerNode",
+    "entityId" : "default/6cd142b2-3aed-4acc-88e0-21aa7f6803d3",
+    "uid" : "ou=6cd142b2-3aed-4acc-88e0-21aa7f6803d3,ou=default,ou=OrganizationConfig,ou=1.0,ou=SocialProviderHandlerNode,ou=services,ou=am-config",
+    "sunServiceID" : "instance",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default/6cd142b2-3aed-4acc-88e0-21aa7f6803d3",
+    "_type" : {
+      "_id" : "SocialProviderHandlerNode",
+      "name" : "SocialProviderHandlerNode",
+      "collection" : false
+    },
+    "usernameAttribute" : "userName",
+    "clientType" : "BROWSER",
+    "script" : "58c824ae-84ed-4724-82cd-db128fc3f6c"
+  }
+}
