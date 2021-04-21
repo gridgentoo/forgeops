@@ -1,0 +1,48 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "iPlanetAMAuthService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthService,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "iPlanetAMAuthService",
+      "name" : "iPlanetAMAuthService",
+      "collection" : false
+    },
+    "postauthprocess" : {
+      "userAttributeSessionMapping" : [
+        
+      ],
+      "usernameGeneratorEnabled" : true,
+      "loginSuccessUrl" : [
+        "/am/console"
+      ],
+      "usernameGeneratorClass" : "com.sun.identity.authentication.spi.DefaultUserIDGenerator",
+      "loginPostProcessClass" : [
+        "com.sun.identity.authentication.spi.JwtReplayPassword"
+      ],
+      "loginFailureUrl" : [
+        
+      ]
+    },
+    "userprofile" : {
+      "aliasAttributeName" : [
+        "uid"
+      ]
+    },
+    "core" : {
+      "orgConfig" : "ldapService",
+      "adminAuthModule" : "ldapService"
+    }
+  }
+}

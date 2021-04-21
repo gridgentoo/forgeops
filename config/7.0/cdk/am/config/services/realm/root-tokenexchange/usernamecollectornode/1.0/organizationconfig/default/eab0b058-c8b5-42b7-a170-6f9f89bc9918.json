@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "UsernameCollectorNode",
+    "entityId" : "default/eab0b058-c8b5-42b7-a170-6f9f89bc9918",
+    "uid" : "ou=eab0b058-c8b5-42b7-a170-6f9f89bc9918,ou=default,ou=OrganizationConfig,ou=1.0,ou=UsernameCollectorNode,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : "instance",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default/eab0b058-c8b5-42b7-a170-6f9f89bc9918",
+    "_type" : {
+      "_id" : "UsernameCollectorNode",
+      "name" : "UsernameCollectorNode",
+      "collection" : false
+    }
+  }
+}

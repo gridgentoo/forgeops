@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "DataStoreDecisionNode",
+    "entityId" : "default/7d1deabe-cd98-49c8-943f-ca12305775f3",
+    "uid" : "ou=7d1deabe-cd98-49c8-943f-ca12305775f3,ou=default,ou=OrganizationConfig,ou=1.0,ou=DataStoreDecisionNode,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : "instance",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default/7d1deabe-cd98-49c8-943f-ca12305775f3",
+    "_type" : {
+      "_id" : "DataStoreDecisionNode",
+      "name" : "DataStoreDecisionNode",
+      "collection" : false
+    }
+  }
+}

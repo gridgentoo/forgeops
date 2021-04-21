@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "sunAMDelegationService",
+    "entityId" : "sunAMDelegationService",
+    "uid" : "ou=sunAMDelegationService,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "top",
+      "sunService"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "sunAMDelegationService",
+    "_type" : {
+      "_id" : "sunAMDelegationService",
+      "name" : "sunAMDelegationService",
+      "collection" : false
+    }
+  }
+}

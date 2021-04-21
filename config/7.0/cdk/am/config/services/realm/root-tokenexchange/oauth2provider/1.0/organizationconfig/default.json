@@ -1,0 +1,50 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "OAuth2Provider",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=OrganizationConfig,ou=1.0,ou=OAuth2Provider,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : [
+      "default"
+    ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "OAuth2Provider",
+      "name" : "OAuth2Provider",
+      "collection" : false
+    },
+    "advancedOAuth2Config" : {
+      "responseTypeClasses" : [
+        "code|org.forgerock.oauth2.core.AuthorizationCodeResponseTypeHandler",
+        "id_token|org.forgerock.openidconnect.IdTokenResponseTypeHandler",
+        "device_code|org.forgerock.oauth2.core.TokenResponseTypeHandler",
+        "token|org.forgerock.oauth2.core.TokenResponseTypeHandler"
+      ],
+      "grantTypes" : [
+        "implicit",
+        "refresh_token",
+        "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "password",
+        "client_credentials",
+        "urn:ietf:params:oauth:grant-type:device_code",
+        "authorization_code",
+        "urn:openid:params:grant-type:ciba",
+        "urn:ietf:params:oauth:grant-type:uma-ticket",
+        "urn:ietf:params:oauth:grant-type:token-exchange",
+        "urn:ietf:params:oauth:grant-type:jwt-bearer"
+      ]
+    },
+    "coreOAuth2Config" : {
+      "accessTokenMayActScript" : "5eceee65-6a34-41bf-9ce5-b49dd68c3b2b",
+      "oidcMayActScript" : "5eceee65-6a34-41bf-9ce5-b49dd68c3b2b"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "authenticationTreesService",
+    "entityId" : "default/ig-oauth2-journey",
+    "uid" : "ou=ig-oauth2-journey,ou=default,ou=OrganizationConfig,ou=1.0,ou=authenticationTreesService,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : "tree",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default/ig-oauth2-journey",
+    "_type" : {
+      "_id" : "authenticationTreesService",
+      "name" : "authenticationTreesService",
+      "collection" : false
+    },
+    "entryNodeId" : "4a8d4198-9ed4-4cda-b148-66c2bdf58003",
+    "nodes" : {
+      "4a8d4198-9ed4-4cda-b148-66c2bdf58003" : {
+        "x" : 443.21875,
+        "y" : 186.015625,
+        "connections" : {
+          "outcome" : "9fc52152-98ee-49bb-a93e-9072215434e9"
+        },
+        "nodeType" : "UsernameCollectorNode",
+        "displayName" : "Username Collector"
+      },
+      "9fc52152-98ee-49bb-a93e-9072215434e9" : {
+        "x" : 387.21875,
+        "y" : 288.015625,
+        "connections" : {
+          "outcome" : "70b6b2ab-c3cc-4777-b304-eaa4f8d9716a"
+        },
+        "nodeType" : "PasswordCollectorNode",
+        "displayName" : "Password Collector"
+      },
+      "70b6b2ab-c3cc-4777-b304-eaa4f8d9716a" : {
+        "x" : 427,
+        "y" : 483.015625,
+        "connections" : {
+          "true" : "70e691a5-1e33-4ac3-a356-e7b6d60d92e0",
+          "false" : "e301438c-0bd0-429c-ab0c-66126501069a"
+        },
+        "nodeType" : "DataStoreDecisionNode",
+        "displayName" : "Data Store Decision"
+      }
+    },
+    "staticNodes" : {
+      "startNode" : {
+        "x" : 50,
+        "y" : 250
+      },
+      "70e691a5-1e33-4ac3-a356-e7b6d60d92e0" : {
+        "x" : 857,
+        "y" : 252
+      },
+      "e301438c-0bd0-429c-ab0c-66126501069a" : {
+        "x" : 859,
+        "y" : 562
+      }
+    },
+    "description" : null,
+    "identityResource" : "managed/user"
+  }
+}

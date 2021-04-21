@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "RequiredAttributesDecisionNode",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=OrganizationConfig,ou=1.0,ou=RequiredAttributesDecisionNode,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "RequiredAttributesDecisionNode",
+      "name" : "RequiredAttributesDecisionNode",
+      "collection" : false
+    }
+  }
+}

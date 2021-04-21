@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "EmailSuspendNode",
+    "entityId" : "EmailSuspendNode",
+    "uid" : "ou=EmailSuspendNode,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "top",
+      "sunService"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "EmailSuspendNode",
+    "_type" : {
+      "_id" : "EmailSuspendNode",
+      "name" : "EmailSuspendNode",
+      "collection" : false
+    }
+  }
+}

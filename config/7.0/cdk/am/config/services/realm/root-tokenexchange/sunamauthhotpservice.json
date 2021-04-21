@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "sunAMAuthHOTPService",
+    "entityId" : "sunAMAuthHOTPService",
+    "uid" : "ou=sunAMAuthHOTPService,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "top",
+      "sunService"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "sunAMAuthHOTPService",
+    "_type" : {
+      "_id" : "sunAMAuthHOTPService",
+      "name" : "sunAMAuthHOTPService",
+      "collection" : false
+    }
+  }
+}

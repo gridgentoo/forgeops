@@ -1,0 +1,24 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "sunAMAuthDataStoreService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=OrganizationConfig,ou=1.0,ou=sunAMAuthDataStoreService,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "sunAMAuthDataStoreService",
+      "name" : "sunAMAuthDataStoreService",
+      "collection" : false
+    },
+    "authenticationLevel" : 0
+  }
+}

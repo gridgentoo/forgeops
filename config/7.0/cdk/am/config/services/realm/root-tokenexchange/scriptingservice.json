@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "ScriptingService",
+    "entityId" : "ScriptingService",
+    "uid" : "ou=ScriptingService,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "top",
+      "sunService"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "ScriptingService",
+    "_type" : {
+      "_id" : "ScriptingService",
+      "name" : "ScriptingService",
+      "collection" : false
+    }
+  }
+}

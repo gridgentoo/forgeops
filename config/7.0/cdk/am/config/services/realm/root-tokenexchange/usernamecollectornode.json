@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "UsernameCollectorNode",
+    "entityId" : "UsernameCollectorNode",
+    "uid" : "ou=UsernameCollectorNode,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "top",
+      "sunService"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "UsernameCollectorNode",
+    "_type" : {
+      "_id" : "UsernameCollectorNode",
+      "name" : "UsernameCollectorNode",
+      "collection" : false
+    }
+  }
+}

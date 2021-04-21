@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "KbaCreateNode",
+    "entityId" : "KbaCreateNode",
+    "uid" : "ou=KbaCreateNode,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "top",
+      "sunService"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "KbaCreateNode",
+    "_type" : {
+      "_id" : "KbaCreateNode",
+      "name" : "KbaCreateNode",
+      "collection" : false
+    }
+  }
+}

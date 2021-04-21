@@ -1,0 +1,81 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "authenticationTreesService",
+    "entityId" : "default/SocialAuthentication",
+    "uid" : "ou=SocialAuthentication,ou=default,ou=OrganizationConfig,ou=1.0,ou=authenticationTreesService,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : "tree",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default/SocialAuthentication",
+    "_type" : {
+      "_id" : "authenticationTreesService",
+      "name" : "authenticationTreesService",
+      "collection" : false
+    },
+    "entryNodeId" : "7ac92bf1-ac64-4b45-ac5b-bd421229cb2e",
+    "nodes" : {
+      "7ac92bf1-ac64-4b45-ac5b-bd421229cb2e" : {
+        "x" : 170,
+        "y" : 69.76666259765625,
+        "connections" : {
+          "socialAuthentication" : "6cd142b2-3aed-4acc-88e0-21aa7f6803d3"
+        },
+        "nodeType" : "SelectIdPNode",
+        "displayName" : "Select Identity Provider"
+      },
+      "6cd142b2-3aed-4acc-88e0-21aa7f6803d3" : {
+        "x" : 211,
+        "y" : 168.76666259765625,
+        "connections" : {
+          "ACCOUNT_EXISTS" : "70e691a5-1e33-4ac3-a356-e7b6d60d92e0",
+          "NO_ACCOUNT" : "bcfc920d-71fa-437d-bbaa-43638244489b"
+        },
+        "nodeType" : "SocialProviderHandlerNode",
+        "displayName" : "Social Provider Handler Node"
+      },
+      "bcfc920d-71fa-437d-bbaa-43638244489b" : {
+        "x" : 283,
+        "y" : 329.76666259765625,
+        "connections" : {
+          "true" : "73652ea6-0045-4627-a5d6-10898de60de5",
+          "false" : "e301438c-0bd0-429c-ab0c-66126501069a"
+        },
+        "nodeType" : "RequiredAttributesDecisionNode",
+        "displayName" : "Required Attributes Present"
+      },
+      "73652ea6-0045-4627-a5d6-10898de60de5" : {
+        "x" : 580,
+        "y" : 352.76666259765625,
+        "connections" : {
+          "FAILURE" : "e301438c-0bd0-429c-ab0c-66126501069a",
+          "CREATED" : "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+        },
+        "nodeType" : "CreateObjectNode",
+        "displayName" : "Create Object"
+      }
+    },
+    "staticNodes" : {
+      "startNode" : {
+        "x" : 50,
+        "y" : 250
+      },
+      "70e691a5-1e33-4ac3-a356-e7b6d60d92e0" : {
+        "x" : 692,
+        "y" : 186
+      },
+      "e301438c-0bd0-429c-ab0c-66126501069a" : {
+        "x" : 701,
+        "y" : 630
+      }
+    },
+    "description" : "Allow user to authenticate with a third party social identity provider",
+    "identityResource" : "managed/user"
+  }
+}

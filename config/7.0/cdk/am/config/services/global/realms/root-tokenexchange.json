@@ -1,0 +1,32 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "",
+    "entityId" : "L3Rva2VuZXhjaGFuZ2U",
+    "uid" : "o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "sunRealmService",
+      "top"
+    ],
+    "pathParams" : { },
+    "ou" : [
+      
+    ]
+  },
+  "data" : {
+    "_id" : "root-tokenexchange",
+    "_type" : {
+      "_id" : "",
+      "name" : "",
+      "collection" : false
+    },
+    "parentPath" : "/",
+    "active" : true,
+    "name" : "tokenexchange",
+    "aliases" : [
+      "",
+      "oauth2.example.com"
+    ]
+  }
+}

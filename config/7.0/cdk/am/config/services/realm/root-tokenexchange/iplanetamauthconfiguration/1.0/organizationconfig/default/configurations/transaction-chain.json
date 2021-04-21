@@ -1,0 +1,24 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "iPlanetAMAuthConfiguration",
+    "entityId" : "default/Configurations/transaction-chain",
+    "uid" : "ou=transaction-chain,ou=Configurations,ou=default,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthConfiguration,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : "NamedConfiguration",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default/Configurations/transaction-chain",
+    "_type" : {
+      "_id" : "iPlanetAMAuthConfiguration",
+      "name" : "iPlanetAMAuthConfiguration",
+      "collection" : false
+    },
+    "authChainConfiguration" : "<AttributeValuePair><Value>DataStore REQUIRED </Value></AttributeValuePair>"
+  }
+}

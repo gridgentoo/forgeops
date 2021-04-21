@@ -1,0 +1,32 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "ScriptingService",
+    "entityId" : "default/scriptConfigurations/5eceee65-6a34-41bf-9ce5-b49dd68c3b2b",
+    "uid" : "ou=5eceee65-6a34-41bf-9ce5-b49dd68c3b2b,ou=scriptConfigurations,ou=default,ou=OrganizationConfig,ou=1.0,ou=ScriptingService,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : "scriptConfiguration",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "default/scriptConfigurations/5eceee65-6a34-41bf-9ce5-b49dd68c3b2b",
+    "_type" : {
+      "_id" : "ScriptingService",
+      "name" : "ScriptingService",
+      "collection" : false
+    },
+    "createdBy" : "null",
+    "lastModifiedDate" : "0",
+    "lastModifiedBy" : "null",
+    "name" : "Example may_act Claim Script",
+    "context" : "OAUTH2_MAY_ACT",
+    "description" : null,
+    "language" : "GROOVY",
+    "creationDate" : "0",
+    "script" : "aW1wb3J0IG9yZy5mb3JnZXJvY2suanNvbi5Kc29uVmFsdWUKdG9rZW4uc2V0TWF5QWN0KAogIEpzb25WYWx1ZS5qc29uKEpzb25WYWx1ZS5vYmplY3QoCiAgICBKc29uVmFsdWUuZmllbGQoImNsaWVudF9pZCIsICJmb3JnZXJvY2tEZW1vQ29uZmlkZW50aWFsQ2xpZW50IiksCiAgICBKc29uVmFsdWUuZmllbGQoInN1YiIsICIodXNyIUZvcmdlcm9ja0RlbW8yKSIpKSkpOw=="
+  }
+}

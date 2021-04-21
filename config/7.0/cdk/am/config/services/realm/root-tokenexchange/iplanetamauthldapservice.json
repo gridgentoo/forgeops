@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "iPlanetAMAuthLDAPService",
+    "entityId" : "iPlanetAMAuthLDAPService",
+    "uid" : "ou=iPlanetAMAuthLDAPService,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "top",
+      "sunService"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "iPlanetAMAuthLDAPService",
+    "_type" : {
+      "_id" : "iPlanetAMAuthLDAPService",
+      "name" : "iPlanetAMAuthLDAPService",
+      "collection" : false
+    }
+  }
+}

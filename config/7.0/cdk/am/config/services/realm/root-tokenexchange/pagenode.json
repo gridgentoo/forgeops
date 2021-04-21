@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/tokenexchange",
+    "entityType" : "PageNode",
+    "entityId" : "PageNode",
+    "uid" : "ou=PageNode,ou=services,o=tokenexchange,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [
+      "top",
+      "sunService"
+    ],
+    "pathParams" : { },
+    "ou" : null
+  },
+  "data" : {
+    "_id" : "PageNode",
+    "_type" : {
+      "_id" : "PageNode",
+      "name" : "PageNode",
+      "collection" : false
+    }
+  }
+}
