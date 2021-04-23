@@ -1,0 +1,53 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "SocialIdentityProviders",
+    "entityId" : "default/oidcConfig/financial-service",
+    "uid" : "ou=financial-service,ou=oidcConfig,ou=default,ou=OrganizationConfig,ou=1.0,ou=SocialIdentityProviders,ou=services,ou=am-config",
+    "sunServiceID" : "instance",
+    "objectClass" : [ "top", "sunServiceComponent" ],
+    "pathParams" : { },
+    "ou" : [ "financial-service" ]
+  },
+  "data" : {
+    "_id" : "default/oidcConfig/financial-service",
+    "_type" : {
+      "_id" : "SocialIdentityProviders",
+      "name" : "SocialIdentityProviders",
+      "collection" : false
+    },
+    "authorizationEndpoint" : "https://pentest-op.iam.forgeops.com/am/oauth2/authorize",
+    "redirectURI" : "https://pentest.iam.forgeops.com/am",
+    "jwtEncryptionAlgorithm" : "NONE",
+    "clientAuthenticationMethod" : "CLIENT_SECRET_POST",
+    "enableNativeNonce" : true,
+    "redirectAfterFormPostURI" : null,
+    "userInfoResponseType" : "JSON",
+    "jwtEncryptionMethod" : "NONE",
+    "encryptedIdTokens" : false,
+    "jwtRequestParameterOption" : "VALUE",
+    "pkceMethod" : "S256",
+    "wellKnownEndpoint" : "https://pentest-op.iam.forgeops.com/am/oauth2/.well-known/openid-configuration",
+    "responseMode" : "DEFAULT",
+    "authenticationIdKey" : "sub",
+    "userInfoEndpoint" : "https://pentest-op.iam.forgeops.com/am/oauth2/userinfo",
+    "tokenEndpoint" : "https://pentest-op.iam.forgeops.com/am/oauth2/access_token",
+    "privateKeyJwtExpTime" : 600,
+    "encryptJwtRequestParameter" : false,
+    "clientId" : "FinancialService",
+    "acrValues" : [ ],
+    "jwtSigningAlgorithm" : "RS256",
+    "scopes" : [ "openid", "profile", "email" ],
+    "scopeDelimiter" : " ",
+    "issuer" : "https://pentest-op.iam.forgeops.com/am/oauth2",
+    "jwksUriEndpoint" : null,
+    "introspectEndpoint" : "https://pentest-op.iam.forgeops.com/am/oauth2/introspect",
+    "requestObjectAudience" : null,
+    "transform" : "58d29080-4563-480b-89bb-1e7719776a21",
+    "uiConfig" : {
+      "buttonDisplayName" : "Financial Service OP"
+    },
+    "enabled" : true,
+    "clientSecret" : "AQICWfWtEeXbta+GP9ixALR7oDVuYTzEhJq1"
+  }
+}
