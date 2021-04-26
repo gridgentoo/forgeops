@@ -8,10 +8,35 @@
 set -o errexit
 set -o pipefail
 
+#####
+# Code for ForgeRock staff only
+#####
+FO_ENV=${FO_ENV:-env}
+# Load and enforce tags
+cd "$(dirname "$0")" && . ../../bin/lib-entsec-asset-tag-policy.sh
+if [[ -f $HOME/.forgeops.${FO_ENV}.sh ]];
+then
+    . $HOME/.forgeops.${FO_ENV}.sh
+fi
+IS_FORGEROCK=$(IsForgeRock)
+if [ "$IS_FORGEROCK" == "yes" ];
+then
+    if ! EnforceEntSecTags;
+    then
+        echo "ForgeRock staff are required to add specific labels to their"
+        echo "Kubernetes clusters. Configure $HOME/.forgeops.${ENV}.sh so that"
+        echo "these labels are added to your clusters."
+        exit 1
+    fi
+    ASSET_LABELS="--labels es_zone=${ES_ZONE},es_ownedby=${ES_OWNEDBY},es_managedby=${ES_MANAGEDBY},es_businessunit=${ES_BUSINESSUNIT},es_useremail=${ES_USEREMAIL},billing_entity=${BILLING_ENTITY}"
+    ADDITIONAL_OPTS+="${ASSET_LABELS} "
+fi
+#####
+# End code for ForgeRock staff only
+#####
+
 # Cluster name.
 NAME=${NAME:-small}
-
-
 # Default these values from the users configuration
 PROJECT_ID=$(gcloud config list --format 'value(core.project)')
 PROJECT=${PROJECT:-$PROJECT_ID}
@@ -20,36 +45,7 @@ PROJECT=${PROJECT:-$PROJECT_ID}
 R=$(gcloud config list --format 'value(compute.region)')
 REGION=${REGION:-$R}
 
-GCLOUD_ACCT_EMAIL=$(gcloud config list account --format 'value(core.account)')
-SLUG_NAME=$(echo $GCLOUD_ACCT_EMAIL | awk -F "@" '{print $1 }' | sed 's/\./_/g')
-ES_USEREMAIL=${ES_USEREMAIL:-$SLUG_NAME}
-ES_ZONE=${ES_ZONE:-"empherical"}
-
-IS_FORGEROCK=$([[ "$GCLOUD_ACCT_EMAIL" =~ forgerock.com ]] && echo "yes" || echo "no")
-
-ES_BUSINESSUNIT=${ES_BUSINESSUNIT:-"engineering"}
-BILLING_ENTITY=${BILLING_ENTITY:-"us"}
-
 echo "Deploying to region: $REGION"
-
-I_AM_CDM=${I_AM_CDM:-0}
-ES_OWNEDBY=${ES_OWNEDBY:="unset"}
-ES_MANAGEDBY=${ES_MANAGEDBY:="unset"}
-
-if [ "$I_AM_CDM" == "1" ];
-then
-    ES_OWNEDBY="cdm"
-    ES_MANAGEDBY="cdm"
-fi
-
-if [ "$ES_OWNEDBY" == "unset" ] && [ "$IS_FORGEROCK" == "yes" ]; then
-    echo "please set ES_OWNEDBY for Enterprise Security Tag Rules"
-    exit 1
-fi
-if [ "$ES_MANAGEDBY" == "unset" ] && [ "$IS_FORGEROCK" == "yes" ]; then
-    echo "Please set ES_MANAGEDBY for Enterprise Security Tag Rules" 
-    exit 1
-fi
 
 if [ -z "$REGION" ]; then
   echo "Please set region in your gcloud config 'gcloud config set compute/region <region>' or in <my-cluster>.sh";
@@ -67,14 +63,6 @@ DS_MACHINE=${DS_MACHINE:-n2-standard-8}
 # Create a separate node pool for ds
 CREATE_DS_POOL="${CREATE_DS_POOL:-false}"
 ADDITIONAL_OPTS=""
-
-# myname-<firstname>-<lastname>.  For example “openam-john-doe” or “benchmark-cluster-john-doe”
-
-if [ "$IS_FORGEROCK" == "yes" ];
-then
-    ASSET_LABELS="--labels es_zone=${ES_ZONE},es_ownedby=${ES_OWNEDBY},es_managedby=${ES_MANAGEDBY},es_businessunit=${ES_BUSINESSUNIT},es_useremail=${ES_USEREMAIL},billing_entity=${BILLING_ENTITY}"
-    ADDITIONAL_OPTS+="${ASSET_LABELS} "
-fi
 
 # Get current user
 CREATOR="${USER:-unknown}"
@@ -137,7 +125,7 @@ gcloud beta container --project "$PROJECT" clusters create "$NAME" \
     --subnetwork "$SUB_NETWORK" \
     --default-max-pods-per-node "110" \
     --no-enable-master-authorized-networks \
-    --addons HorizontalPodAutoscaling,ConfigConnector \
+    --addons HorizontalPodAutoscaling,ConfigConnector,GcePersistentDiskCsiDriver \
     --workload-pool "$PROJECT.svc.id.goog" \
     --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 --max-unavailable-upgrade 0 \
     $ADDITIONAL_OPTS  # Note: Do not quote this variable. It needs to expand
@@ -173,6 +161,16 @@ parameters:
 provisioner: kubernetes.io/gce-pd
 reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
+EOF
+
+# Create the volume snapshot class
+kubectl create -f - <<EOF
+apiVersion: snapshot.storage.k8s.io/v1beta1
+kind: VolumeSnapshotClass
+metadata:
+  name: ds-snapshot-class
+driver: pd.csi.storage.gke.io
+deletionPolicy: Delete
 EOF
 
 # Create prod namespace for sample CDM deployment

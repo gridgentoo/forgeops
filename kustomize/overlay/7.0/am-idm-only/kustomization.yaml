@@ -2,9 +2,9 @@ namespace: fbc
 resources:
   - ../../../base/kustomizeConfig
   - ../../../base/am-cdk
-  - ../../../base/idm
+  - ../../../base/idm-cdk
   - ../../../base/rcs-agent
-  - ../../../base/7.0/ingress
+  - ../../../base/ingress
   - ../../../base/end-user-ui
   - ../../../base/login-ui
   - ../../../base/admin-ui

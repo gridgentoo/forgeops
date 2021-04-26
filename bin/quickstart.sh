@@ -137,7 +137,7 @@ deploylocalmanifest () {
     (cd kustomize/dev/image-defaulter && kustomize edit remove resource ../../../kustomize/*/*/* ../../../kustomize/*/*)
     case "${1}" in
     "base")
-        INSTALL_COMPONENTS=("dev/kustomizeConfig" "base/secrets" "base/7.0/ingress" "base/git-server" "dev/scripts")
+        INSTALL_COMPONENTS=("dev/kustomizeConfig" "base/secrets" "base/ingress" "base/git-server" "dev/scripts")
         ;;
     "ds")
         INSTALL_COMPONENTS=("base/ds-idrepo") #no "ds-cts" in dev-mode
@@ -220,6 +220,11 @@ timeout() { perl -e 'alarm shift; exec @ARGV' "$@"; }
 ########################################################################################
 ################################### MAIN STARTS HERE ###################################
 ########################################################################################
+echo $'\e[5;31m'
+echo "**********************************************************************************"
+echo "*************THIS SCRIPT IS DEPRECATED. USE /bin/cdk INSTEAD**********************"
+echo "**********************************************************************************"
+echo $'\e[0m'
 UNINSTALL_COMPONENT=false
 PRINT_SECRETS=false
 LOCAL_MODE=false

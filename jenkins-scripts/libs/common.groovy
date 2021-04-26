@@ -38,6 +38,7 @@ dockerImages = [
         'ds-cts'    : DockerImagePromotion.load('docker/7.0/ds/cts/Dockerfile', 'gcr.io/forgerock-io/ds', steps),
         'ds-util'   : DockerImagePromotion.load('docker/7.0/ds/dsutil/Dockerfile', 'gcr.io/forgerock-io/ds', steps),
         'ds-idrepo' : DockerImagePromotion.load('docker/7.0/ds/idrepo/Dockerfile', 'gcr.io/forgerock-io/ds', steps),
+        'ds-proxy'  : DockerImagePromotion.load('docker/7.0/ds/proxy/Dockerfile', 'gcr.io/forgerock-io/ds', steps),
         'idm'       : DockerImagePromotion.load('docker/7.0/idm/Dockerfile', 'gcr.io/forgerock-io/idm', steps),
         'ig'        : DockerImagePromotion.load('docker/7.0/ig/Dockerfile', 'gcr.io/forgerock-io/ig', steps),
 ]
@@ -49,6 +50,7 @@ productToRepo = [
         'ds-cts' : 'opendj',
         'ds-util' : 'opendj',
         'ds-idrepo' : 'opendj',
+        'ds-proxy' : 'opendj',
         'idm' : 'openidm',
         'ig' : 'openig',
 ]
@@ -65,10 +67,13 @@ String getCurrentTag(String productName) {
 }
 
 /** Does the branch support PaaS releases */
+// TODO Improve the code below to take into account new sustaining branches
+// We should only promote version >= 7.1.0
+// To be discussed with Bruno and Robin
 boolean branchSupportsIDCloudReleases() {
     return 'master' in [env.CHANGE_TARGET, env.BRANCH_NAME] \
-            || (!isPR() && "${env.BRANCH_NAME}".startsWith('idcloud-')) \
-            || (isPR() && "${env.CHANGE_TARGET}".startsWith('idcloud-'))
+            || (!isPR() && ("${env.BRANCH_NAME}".startsWith('idcloud-') || "${env.BRANCH_NAME}" == 'sustaining/7.1.x')) \
+            || (isPR() && ("${env.CHANGE_TARGET}".startsWith('idcloud-') || "${env.CHANGE_TARGET}" == 'sustaining/7.1.x'))
 }
 
 def getCurrentProductCommitHashes() {

@@ -266,7 +266,6 @@ patch_container() {
 # Copy the product config $1 to the docker directory.
 init_config()
 {
-    echo $@
     if [[ -d "${PROFILE_ROOT}/$1" ]]
     then
 	    for p in "${@}"; do
@@ -276,10 +275,11 @@ init_config()
         return
     fi
     # get patch profile name
-    patch_profile=$(basename "${PROFILE_ROOT}")
-
-    echo "patch profile found, this doesn't support component selection"
-    patch_container cdk "$patch_profile"
+    if [[ -d "${PROFILE_ROOT}/../$1" ]];
+    then
+        echo "cp -r ${PROFILE_ROOT}/../$1" "$DOCKER_ROOT"
+        cp -r "${PROFILE_ROOT}/../$1" "$DOCKER_ROOT"
+    fi
 }
 
 # Show the differences between the source configuration and the current Docker configuration
@@ -489,6 +489,7 @@ save_config()
 
 			printf "\n*** The above fixes have been made to the Amster files. If you have exported new files that should contain commons placeholders or passwords, please update the rules in this script.***\n\n"
 			;;
+
 		*)
 			printf "\nSaving AM configuration..\n\n"
 			#****** REMOVE EXISTING FILES ******#
@@ -499,6 +500,21 @@ save_config()
 			cp -R "$DOCKER_ROOT/am/config"  "$PROFILE_ROOT/am"
 		esac
 	done
+}
+
+add_profile ()
+{
+
+    # if the version isn't 7.0 use it as the branch for platform-images
+    [[ $_arg_version == "7.0" ]] && branch_name=$_arg_version
+    if ! ${script_dir}/platform-config --profile fidc --branch-name "${branch_name}"
+    then
+        echo "Failed to clone addon profile"
+        exit 1;
+    fi
+    # add amster
+    cp -r "${script_dir}/../config/7.0/cdk/amster" "$DOCKER_ROOT"
+
 }
 
 # chdir to the script root/..
@@ -514,6 +530,12 @@ else
 fi
 
 case "$_arg_operation" in
+
+init-addon-profile)
+	clean_config idm ig amster am
+    add_profile
+    ;;
+
 init)
 	clean_config "${COMPONENTS[@]}"
 	init_config "${COMPONENTS[@]}"

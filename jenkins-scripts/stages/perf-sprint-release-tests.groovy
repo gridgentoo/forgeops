@@ -11,97 +11,138 @@
 import com.forgerock.pipeline.reporting.PipelineRunLegacyAdapter
 
 void runStage(PipelineRunLegacyAdapter pipelineRun) {
+    node('perf-long-cloud') {
+        def forgeopsPath = localGitUtils.checkoutForgeops()
 
-    def stageName = 'PERF Sprint Release'
-    def normalizedStageName = dashboard_utils.normalizeStageName(stageName)
+        def config_common = [
+                STASH_LODESTAR_BRANCH: commonModule.LODESTAR_GIT_COMMIT,
+                EXT_FORGEOPS_PATH    : forgeopsPath,
+                PIPELINE_NAME        : 'ForgeOps - Perf-Sprint-Release',
+                CHECK_REGRESSION     : true,
+                MAX_VARIATION        : '0.10',
+                CLUSTER_DOMAIN       : 'perf-sprint-release.forgeops.com',
+                TIMEOUT              : '12',
+                TIMEOUT_UNIT         : 'HOURS',
+        ]
 
-    pipelineRun.pushStageOutcome(normalizedStageName, stageDisplayName: stageName) {
-        node('perf-long-cloud') {
-            stage(stageName) {
-                def forgeopsPath = localGitUtils.checkoutForgeops()
+        def parentStageName = 'PERF Sprint Release'
+        def tags = ['performance', 'sprint_release']
 
-                dir('lodestar') {
-                    def config_common = [
-                        STASH_LODESTAR_BRANCH   : commonModule.LODESTAR_GIT_COMMIT,
-                        EXT_FORGEOPS_PATH       : forgeopsPath,
-                        PIPELINE_NAME           : 'ForgeOps - Perf-Sprint-Release',
-                        CHECK_REGRESSION        : true,
-                        MAX_VARIATION           : '0.10',
-                        CLUSTER_DOMAIN          : 'perf-sprint-release.forgeops.com',
-                        TIMEOUT                 : '12',
-                        TIMEOUT_UNIT            : 'HOURS',
-                    ]
+        // perf am authn rest test
+        if (params.PerfSprintRelease_authn_rest.toBoolean()) {
+            def stageName = "${parentStageName} am_authn"
+            def normalizedStageName = dashboard_utils.normalizeStageName(stageName)
 
-                    def stagesCloud = [:]
+            pipelineRun.pushStageOutcome([tags : tags, stageDisplayName : stageName], normalizedStageName) {
+                stage(stageName) {
+                    dir('lodestar') {
+                        def stagesCloud = [:]
+                        stagesCloud[normalizedStageName] = dashboard_utils.pyrockStageCloud('authn_rest')
 
-                    // perf am authn rest test
-                    def subStageName = 'am_authn_long'
-                    stagesCloud[subStageName] = dashboard_utils.pyrockStageCloud('authn_rest')
+                        dashboard_utils.determineUnitOutcome(stagesCloud[normalizedStageName]) {
+                            def config = config_common.clone()
+                            config += [
+                                    TEST_NAME                  : 'authn_rest',
+                                    DEPLOYMENT_RESTOREBUCKETURL: 'gs://performance-bucket-us-east1/nemanja/3ds-10M-bis',
+                                    DEPLOYMENT_MAKEBACKUP      : false,
+                                    CONFIGFILE_NAME            : 'conf-stability.yaml',
+                                    BASELINE_RPS               : '2550',
+                            ]
 
-                    dashboard_utils.determineUnitOutcome(stagesCloud[subStageName]) {
-                        def config = config_common.clone()
-                        config += [
-                            TEST_NAME                  : "authn_rest",
-                            DEPLOYMENT_RESTOREBUCKETURL: 'gs://performance-bucket-us-east1/nemanja/3ds-10M-bis',
-                            DEPLOYMENT_MAKEBACKUP      : false,
-                            CONFIGFILE_NAME            : 'conf-stability.yaml',
-                            BASELINE_RPS               : '2550',
-                        ]
+                            withGKEPyrockNoStages(config)
+                        }
 
-                        withGKEPyrockNoStages(config)
+                        return dashboard_utils.finalLodestarOutcome(stagesCloud, stageName)
                     }
+                }
+            }
+        }
 
-                    // perf am access token test
-                    subStageName = 'am_access_token_long'
-                    stagesCloud[subStageName] = dashboard_utils.pyrockStageCloud('access_token')
+        // perf am access token test
+        if (params.PerfSprintRelease_access_token.toBoolean()) {
+            def stageName = "${parentStageName} am_access_token"
+            def normalizedStageName = dashboard_utils.normalizeStageName(stageName)
 
-                    dashboard_utils.determineUnitOutcome(stagesCloud[subStageName]) {
-                        def config = config_common.clone()
-                        config += [
-                            TEST_NAME                  : "access_token",
-                            DEPLOYMENT_RESTOREBUCKETURL: 'gs://performance-bucket-us-east1/nemanja/3ds-10M-bis',
-                            DEPLOYMENT_MAKEBACKUP      : false,
-                            BASELINE_RPS               : '[2733,2453]',
-                            CONFIGFILE_NAME            : 'conf-stability.yaml',
-                        ]
+            pipelineRun.pushStageOutcome([tags : tags, stageDisplayName : stageName], normalizedStageName) {
+                stage(stageName) {
+                    dir('lodestar') {
+                        def stagesCloud = [:]
+                        stagesCloud[normalizedStageName] = dashboard_utils.pyrockStageCloud('access_token')
 
-                        withGKEPyrockNoStages(config)
+                        dashboard_utils.determineUnitOutcome(stagesCloud[normalizedStageName]) {
+                            def config = config_common.clone()
+                            config += [
+                                    TEST_NAME                  : 'access_token',
+                                    DEPLOYMENT_RESTOREBUCKETURL: 'gs://performance-bucket-us-east1/nemanja/3ds-10M-bis',
+                                    DEPLOYMENT_MAKEBACKUP      : false,
+                                    BASELINE_RPS               : '[2733,2453]',
+                                    CONFIGFILE_NAME            : 'conf-stability.yaml',
+                            ]
+
+                            withGKEPyrockNoStages(config)
+                        }
+
+                        return dashboard_utils.finalLodestarOutcome(stagesCloud, stageName)
                     }
+                }
+            }
+        }
 
-                    // perf platform test
-                    subStageName = 'platform_long'
-                    stagesCloud[subStageName] = dashboard_utils.pyrockStageCloud('platform')
+        // perf platform test
+        if (params.PerfSprintRelease_platform.toBoolean()) {
+            def stageName = "${parentStageName} platform"
+            def normalizedStageName = dashboard_utils.normalizeStageName(stageName)
 
-                    dashboard_utils.determineUnitOutcome(stagesCloud[subStageName]) {
-                        def config = config_common.clone()
-                        config += [
-                            TEST_NAME                  : "platform",
-                            DEPLOYMENT_RESTOREBUCKETURL: 'gs://performance-bucket-us-east1/nemanja/platform-backup',
-                            DEPLOYMENT_MAKEBACKUP      : false,
-                            BASELINE_RPS               : '[1983,1722,1136,360]',
-                            CONFIGFILE_NAME            : 'conf-restore-1m-stability.yaml'
-                        ]
+            pipelineRun.pushStageOutcome([tags : tags, stageDisplayName : stageName], normalizedStageName) {
+                stage(stageName) {
+                    dir('lodestar') {
+                        def stagesCloud = [:]
+                        stagesCloud[normalizedStageName] = dashboard_utils.pyrockStageCloud('platform')
 
-                        withGKEPyrockNoStages(config)
+                        dashboard_utils.determineUnitOutcome(stagesCloud[normalizedStageName]) {
+                            def config = config_common.clone()
+                            config += [
+                                    TEST_NAME                  : 'platform',
+                                    DEPLOYMENT_RESTOREBUCKETURL: 'gs://performance-bucket-us-east1/nemanja/platform-backup',
+                                    DEPLOYMENT_MAKEBACKUP      : false,
+                                    BASELINE_RPS               : '[1983,1722,1136,360]',
+                                    CONFIGFILE_NAME            : 'conf-restore-1m-stability.yaml'
+                            ]
+
+                            withGKEPyrockNoStages(config)
+                        }
+
+                        return dashboard_utils.finalLodestarOutcome(stagesCloud, stageName)
                     }
+                }
+            }
+        }
 
-                    // perf IDM Crud test
-                    subStageName = 'idm_crud_long'
-                    stagesCloud[subStageName] = dashboard_utils.pyrockStageCloud('simple_managed_users')
+        // perf IDM Crud test
+        if (params.PerfSprintRelease_simple_managed_users.toBoolean()) {
+            def stageName = "${parentStageName} idm_crud"
+            def normalizedStageName = dashboard_utils.normalizeStageName(stageName)
 
-                    dashboard_utils.determineUnitOutcome(stagesCloud[subStageName]) {
-                        def config = config_common.clone()
-                        config += [
-                                TEST_NAME                  : "simple_managed_users",
-                                CONFIGFILE_NAME            : 'conf-restore-backup-1m-stability.yaml',
-                                DEPLOYMENT_RESTOREBUCKETURL: 'gs://performance-bucket-us-east1/tinghua/1m',
-                                DEPLOYMENT_MAKEBACKUP      : false,
-                        ]
+            pipelineRun.pushStageOutcome([tags : tags, stageDisplayName : stageName], normalizedStageName) {
+                stage(stageName) {
+                    dir('lodestar') {
+                        def stagesCloud = [:]
+                        stagesCloud[normalizedStageName] = dashboard_utils.pyrockStageCloud('simple_managed_users')
 
-                        withGKEPyrockNoStages(config)
+                        dashboard_utils.determineUnitOutcome(stagesCloud[normalizedStageName]) {
+                            def config = config_common.clone()
+                            config += [
+                                    TEST_NAME                  : 'simple_managed_users',
+                                    CONFIGFILE_NAME            : 'conf-restore-backup-1m-stability.yaml',
+                                    DEPLOYMENT_RESTOREBUCKETURL: 'gs://performance-bucket-us-east1/tinghua/1m',
+                                    DEPLOYMENT_MAKEBACKUP      : false,
+                            ]
+
+                            withGKEPyrockNoStages(config)
+                        }
+
+                        return dashboard_utils.finalLodestarOutcome(stagesCloud, stageName)
                     }
-
-                    return dashboard_utils.finalLodestarOutcome(stagesCloud, stageName)
                 }
             }
         }
