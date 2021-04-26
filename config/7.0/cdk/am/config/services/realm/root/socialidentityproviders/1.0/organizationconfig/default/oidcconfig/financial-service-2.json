@@ -1,0 +1,64 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "SocialIdentityProviders",
+    "entityId" : "default/oidcConfig/financial-service-2",
+    "uid" : "ou=financial-service-2,ou=oidcConfig,ou=default,ou=OrganizationConfig,ou=1.0,ou=SocialIdentityProviders,ou=services,ou=am-config",
+    "sunServiceID" : "instance",
+    "objectClass" : [
+      "top",
+      "sunServiceComponent"
+    ],
+    "pathParams" : { },
+    "ou" : [
+      "financial-service-2"
+    ]
+  },
+  "data" : {
+    "_id" : "default/oidcConfig/financial-service-2",
+    "_type" : {
+      "_id" : "SocialIdentityProviders",
+      "name" : "SocialIdentityProviders",
+      "collection" : false
+    },
+    "tokenEndpoint" : "https://pentest-op.iam.forgeops.com/am/oauth2/access_token",
+    "privateKeyJwtExpTime" : 600,
+    "jwtRequestParameterOption" : "VALUE",
+    "userInfoResponseType" : "JSON",
+    "redirectAfterFormPostURI" : null,
+    "responseMode" : "DEFAULT",
+    "redirectURI" : "https://pentest.iam.forgeops.com/am",
+    "jwtEncryptionAlgorithm" : "RSA-OAEP",
+    "requestObjectAudience" : null,
+    "wellKnownEndpoint" : "https://pentest-op.iam.forgeops.com/am/oauth2/.well-known/openid-configuration",
+    "authenticationIdKey" : "sub",
+    "scopeDelimiter" : " ",
+    "introspectEndpoint" : "https://pentest-op.iam.forgeops.com/am/oauth2/introspect",
+    "transform" : "58d29080-4563-480b-89bb-1e7719776a21",
+    "encryptJwtRequestParameter" : false,
+    "jwtSigningAlgorithm" : "RS256",
+    "clientId" : "FinancialService",
+    "clientAuthenticationMethod" : "PRIVATE_KEY_JWT",
+    "authorizationEndpoint" : "https://pentest-op.iam.forgeops.com/am/oauth2/authorize",
+    "encryptedIdTokens" : false,
+    "scopes" : [
+      "openid",
+      "profile",
+      "email"
+    ],
+    "jwksUriEndpoint" : null,
+    "enabled" : false,
+    "pkceMethod" : "S256",
+    "jwtEncryptionMethod" : "AES_128_CBC_HMAC_SHA_256",
+    "acrValues" : [
+      
+    ],
+    "uiConfig" : {
+      "buttonDisplayName" : "Financial Service OP 2"
+    },
+    "clientSecret" : "AQICWfWtEeXbta+GP9ixALR7oDVuYTzEhJq1",
+    "issuer" : "https://pentest-op.iam.forgeops.com/am/oauth2",
+    "enableNativeNonce" : true,
+    "userInfoEndpoint" : "https://pentest-op.iam.forgeops.com/am/oauth2/userinfo"
+  }
+}
