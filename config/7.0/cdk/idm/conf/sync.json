@@ -41,7 +41,7 @@
                 },
                 {
                     "action": "EXCEPTION",
-                    "situation": "MISSING"
+                    "situation": "CREATE"
                 },
                 {
                     "action": "EXCEPTION",
@@ -95,7 +95,7 @@
             "properties": [
                 {
                     "target": "__NAME__",
-                    "source": "_id"
+                    "source": "userName"
                 },
                 {
                     "target": "__PASSWORD__",
