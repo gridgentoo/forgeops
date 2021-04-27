@@ -21,12 +21,6 @@
       "name" : "iPlanetAMAuthService",
       "collection" : false
     },
-    "trees" : {
-      "suspendedAuthenticationTimeout" : 5,
-      "authenticationSessionsStateManagement" : "JWT",
-      "authenticationSessionsMaxDuration" : 5,
-      "authenticationSessionsWhitelist" : false
-    },
     "accountlockout" : {
       "lockoutAttributeValue" : null,
       "lockoutDurationMultiplier" : 1,
