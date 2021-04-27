@@ -21,6 +21,10 @@
       "name" : "iPlanetAMAuthService",
       "collection" : false
     },
+    "core" : {
+      "orgConfig" : "Login",
+      "adminAuthModule" : "ldapService"
+    },
     "postauthprocess" : {
       "userAttributeSessionMapping" : [
         
@@ -41,10 +45,6 @@
       "aliasAttributeName" : [
         "uid"
       ]
-    },
-    "core" : {
-      "orgConfig" : "ldapService",
-      "adminAuthModule" : "ldapService"
     }
   }
 }
