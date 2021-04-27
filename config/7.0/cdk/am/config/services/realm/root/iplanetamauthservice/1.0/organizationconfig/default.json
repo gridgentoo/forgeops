@@ -21,6 +21,19 @@
       "name" : "iPlanetAMAuthService",
       "collection" : false
     },
+    "accountlockout" : {
+      "lockoutAttributeValue" : null,
+      "lockoutDurationMultiplier" : 1,
+      "loginFailureDuration" : 300,
+      "lockoutDuration" : 10,
+      "lockoutAttributeName" : null,
+      "storeInvalidAttemptsInDataStore" : true,
+      "invalidAttemptsDataAttributeName" : null,
+      "lockoutWarnUserCount" : 0,
+      "lockoutEmailAddress" : null,
+      "loginFailureLockoutMode" : true,
+      "loginFailureCount" : 5
+    },
     "core" : {
       "orgConfig" : "Login",
       "adminAuthModule" : "ldapService"
