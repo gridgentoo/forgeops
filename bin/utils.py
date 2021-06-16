@@ -93,11 +93,7 @@ def run(cmd, *cmdArgs, stdin=None, cstdout=False, cstderr=False, cwd=None, env=N
     runcmd = f'{cmd} {" ".join(cmdArgs)}'
     stde_pipe = subprocess.PIPE if cstderr else None
     stdo_pipe = subprocess.PIPE if cstdout else None
-<<<<<<< HEAD
-    _r = subprocess.run(runcmd.split(), stdout=stdo_pipe, stderr=stde_pipe,
-=======
     _r = subprocess.run(shlex.split(runcmd), stdout=stdo_pipe, stderr=stde_pipe,
->>>>>>> d590811a1 (feat: Refactored config command)
                         check=True, input=stdin, cwd=cwd, env=env)
     return _r.returncode == 0, _r.stdout, _r.stderr
 
