@@ -39,7 +39,7 @@ examples:
 """
 SCRIPT = pathlib.Path(__file__)
 SCRIPT_DIR = SCRIPT.parent.resolve()
-DOCKER_BASE = SCRIPT_DIR.joinpath('../docker/7.0').resolve()
+DOCKER_BASE = SCRIPT_DIR.joinpath('../docker').resolve()
 
 PLATFORM_COMPONENTS = {
     'am': ('am',),
