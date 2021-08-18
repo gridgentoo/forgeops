@@ -2,6 +2,8 @@ FROM gcr.io/forgerock-io/amster:7.1.0-2021-3-1ede77350a59d12697d1360d9b4179eee67
 
 USER root
 
+COPY debian-buster-sources.list /etc/apt/sources.list
+
 ENV DEBIAN_FRONTEND=noninteractive
 ENV APT_OPTS="--no-install-recommends --yes"
 RUN apt-get update \

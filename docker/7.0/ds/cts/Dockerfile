@@ -1,5 +1,8 @@
 FROM gcr.io/forgerock-io/ds:7.1.0-2021-3-b8de5cb166547f2c348a6f95fca9c350272f8084
 USER root
+
+COPY debian-buster-sources.list /etc/apt/sources.list
+
 RUN chown -R forgerock:root /opt/opendj
 USER forgerock
 COPY --chown=forgerock:root common  /opt/opendj/
