@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+"""Configsaver script  - Experimental, not supported
+imports/exports files to from the config server
+runs git commands on the config server
+
+"""
+
+import argparse
+import os
+import shlex
+import subprocess
+import sys
+import utils
+
+
+parser = argparse.ArgumentParser(description='Config Saver')
+parser.add_argument('-n', '--namespace', default='',
+                        help='Target namespace (default: current namespace)')
+
+subparser = parser.add_subparsers(dest='cmd', required=True, help='select action to perform')
+
+
+parser_import = subparser.add_parser('import', help='import json configuration files')
+parser_import.add_argument('import_args', nargs='*', help='Files to import')
+parser_export = subparser.add_parser('export', help='Export files')
+parser_git = subparser.add_parser('git', help='Run git commands')
+parser_git.add_argument('git_args', nargs='*')
+
+args = parser.parse_args()
+ctx_namespace = utils.get_namespace()
+namespace = getattr(args, 'namespace', None) or ctx_namespace
+
+# Run a git command in the config server
+if args.cmd == 'git':
+    _gs = " ".join(str(x) for x in args.git_args)
+    cmd = f'kubectl -n {namespace} exec deploy/config-server -- bash -c \'cd $CONFIG_DIR; git {_gs}\''
+    print(cmd)
+    _r = subprocess.run(shlex.split(cmd), stderr=subprocess.STDOUT)
+    sys.exit(_r.returncode)
+
+# TODO: Needs to be completed.
+# Should calculate relative path locally in forgopes, and translate to a path in the server
+if args.cmd == 'import':
+    # import a json file
+    # print(f'{args.import_args}')
+    for path in args.import_args:
+        if not os.path.exists(path):
+            print(f'path/file {path} does not exist')
+            sys.exit(1)
+        pod = ''
+        try:
+            pod = utils.get_pod_by_label(namespace,'app=config-server')
+            print(f'pod is {pod}')
+        except Exception as e:
+            print(e)
+            sys.exit(1)
+        # TODO: This relies on knowledge of the git path in the config server. OK?
+        rootDir = '/git/frconfig'
+
+        # calculate path in the server
+        rpath = rootDir if os.path.isdir(path) else f'{rootDir}/{path}'
+
+        cmd = f'kubectl -n {namespace} cp {path}  {pod}:{rpath}'
+        print(cmd)
+        _r = subprocess.run(shlex.split(cmd), stderr=subprocess.STDOUT)
+
+# export...
+
+
+

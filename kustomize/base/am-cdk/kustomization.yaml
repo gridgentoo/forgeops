@@ -12,3 +12,12 @@ resources:
 - service.yaml
 # Need k8s 1.18+ to enable HPA
 # - hpa.yaml
+images:
+- name: conf
+  newName: gcr.io/forgeops-public/config_client
+- name: am
+  newName: gcr.io/forgerock-io/am-base/pull-requests
+  newTag: 7.2.0-PR-14982-2-9ea1639198d9d40c12866e8f4522abcd6a73656a
+  newTag: 7.2.0-PR-14982-3-9ea1639198d9d40c12866e8f4522abcd6a73656a
+  # newName: gcr.io/forgerock-io/am-base/pit1
+  # newTag: 7.2.0-latest-postcommit

@@ -13,25 +13,24 @@ spec:
       annotations:
         "cluster-autoscaler.kubernetes.io/safe-to-evict": "true"
     spec:
+      securityContext:
+        runAsUser: 11111
+        runAsGroup: 0
       initContainers:
-      - name: fbc-init
-        image: idm
+      - name: config
+        image: conf
         imagePullPolicy: Always
         volumeMounts:
         - mountPath: /fbc
           name: fbc
-        command:
-        - /bin/bash
-        - -c
-        - |
-          if [ -d /fbc/conf ];
-          then
-            echo "Existing openidm configuration found. Skipping copy"
-          else
-            echo "Copying docker image configuration files to the shared volume"
-            cd /opt/openidm
-            cp -vr ui conf script /fbc
-          fi
+        env:
+        - name: CONFIG_SERVER
+          value: "config-server:50051"
+        - name: "CONFIG_DIR"
+          value: "/fbc"
+        - name: "CONFIG_PRODUCT"
+          value: "idm"
+
       - name: truststore-init
         image: idm
         imagePullPolicy: Always
@@ -48,6 +47,7 @@ spec:
           value: changeit
         - name: IDM_PEM_TRUSTSTORE
           value: "/var/run/secrets/truststore/cacerts"
+
       containers:
       - name: openidm
         image: idm
@@ -88,6 +88,8 @@ spec:
             configMapKeyRef:
               name: platform-config
               key: RCS_AGENT_ENABLED
+        - name: JAVA_OPS
+          value: "-XX:MaxRAMPercentage=65 -XX:InitialRAMPercentage=65 -XX:MaxTenuringThreshold=1 -Djava.security.egd=file:/dev/urandom -XshowSettings:vm"
         envFrom:
         - configMapRef:
             name: idm
@@ -141,13 +143,16 @@ spec:
         - mountPath: /opt/openidm/audit
           name: audit-logs
         - mountPath: /var/run/openidm/logging
-          name: idm-logging-properties
+          name: idm-properties
+        - mountPath: /opt/openidm/resolver
+          name: idm-properties
         - name: fbc
           mountPath: /opt/openidm/conf
           subPath: conf
-        - name: fbc
-          mountPath: /opt/openidm/ui
-          subPath: ui
+        # Dont overlay ui
+        # - name: fbc
+        #   mountPath: /opt/openidm/ui
+        #   subPath: ui
         - name: fbc
           mountPath: /opt/openidm/script
           subPath: script
@@ -167,7 +172,7 @@ spec:
         emptyDir: {}
       - name: audit-logs
         emptyDir: {}
-      - name: idm-logging-properties
+      - name: idm-properties
         configMap:
-           name: idm-logging-properties
+           name: idm-properties
 

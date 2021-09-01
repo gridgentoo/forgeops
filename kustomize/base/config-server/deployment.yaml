@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server
+spec:
+  selector:
+    matchLabels:
+      app: config-server
+  template:
+    metadata:
+      labels:
+        app: config-server
+    spec:
+      # So the pod can read/write the pvc
+      securityContext:
+        fsGroup: 0
+      containers:
+      - name: config-server
+        image: gcr.io/forgeops-public/config_server:latest
+        imagePullPolicy: Always
+        env:
+        - name: GIT_REPO
+          value: https://stash.forgerock.org/scm/cloud/forgeops.git
+        - name: CONFIG_DIR
+          value: /git/frconfig
+        # When we use ssh secrets for cloning, update this
+        # - name: GIT_SSH_PATH
+        #   value: /var/run/secrets/ssh
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "300m"
+        volumeMounts:
+        - mountPath: /git
+          name: git-pvc
+        ports:
+        - containerPort: 50051
+      volumes:
+      - name: git-pvc
+        persistentVolumeClaim:
+          claimName: git-pvc

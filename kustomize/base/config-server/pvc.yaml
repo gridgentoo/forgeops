@@ -1,0 +1,15 @@
+# Where the repo changes are saved. We may want to create this seperately from
+# the deployment
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: git-pvc
+  annotations:
+    pv.beta.kubernetes.io/gid: "0"
+spec:
+  resources:
+    requests:
+      storage: 2Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce

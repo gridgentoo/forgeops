@@ -18,28 +18,32 @@ spec:
         runAsUser: 11111
         runAsGroup: 0
       initContainers:
-      # This init container copies the "immutable" configuration from the Docker image
-      # to shared volume that is mounted by the am container. Putting this on an emptyDir volume
-      # preserves configuration across pod restarts (for example, if AM crashes or suffers an OOM kill from k8s).
-      # This is most useful in development environments, so users do not lose their changes if the pod restarts.
-      - name: fbc-init
-        image: am
+      # - name: fbc-init
+      #   image: am
+      #   volumeMounts:
+      #   - mountPath: /fbc
+      #     name: fbc
+      #   command:
+      #   - /bin/bash
+      #   - -c
+      #   - |
+      #     cd /home/forgerock/openam
+      #     cp -r .homeVersion * /fbc
+
+      - name: config
+        image: conf
         imagePullPolicy: Always
         volumeMounts:
         - mountPath: /fbc
           name: fbc
-        command:
-        - /bin/bash
-        - -c
-        - |
-          if [ -d /fbc/config ];
-          then
-            echo "Existing openam configuration found. Skipping copy"
-          else
-            echo "Copying docker image configuration files to the shared volume"
-            cd /home/forgerock/openam
-            cp -r .git .homeVersion * /fbc
-          fi
+        env:
+        - name: CONFIG_SERVER
+          value: "config-server:50051"
+        - name: "CONFIG_DIR"
+          value: "/fbc"
+        - name: "CONFIG_PRODUCT"
+          value: "am"
+
       - name: truststore-init
         image: am
         imagePullPolicy: Always
@@ -56,6 +60,7 @@ spec:
           value: changeit
         - name: AM_PEM_TRUSTSTORE
           value: "/var/run/secrets/truststore/cacerts"
+
       containers:
       - name: openam
         image: am
@@ -76,6 +81,16 @@ spec:
           value: changeit
         - name: AM_STORES_USER_TYPE
           value: LDAPv3ForForgeRockIAM
+        - name: CATALINA_USER_OPTS
+          # value: "-Dcom.forgerock.am.fileconfig.basepaths=/home/forgerock/openam/config/services,/home/forgerock/openam/fbc/config/service -Dcom.forgerock.am.fileconfig.filelocation=/home/forgerock/openam/fbc/config/service"
+          # value: "-Dcom.forgerock.am.fileconfig.basepaths=/home/forgerock/openam/config/services,/home/forgerock/openam/fbc/config/service"
+          # our config first, then standard docker config. Changes still go to openam/config
+          # value: "-Dcom.forgerock.am.fileconfig.basepaths=/home/forgerock/openam/fbc/config/service,/home/forgerock/openam/config/services"
+          # Our config first and save to our config. Results in config store not available
+          # value: "-Dcom.forgerock.am.fileconfig.basepaths=/home/forgerock/openam/fbc/config/service,/home/forgerock/openam/config/services -Dcom.forgerock.am.fileconfig.filelocation=/home/forgerock/openam/fbc/config/service"
+          # Suggestion from Jay
+          value: "-Dcom.forgerock.am.fileconfig.basepaths=/home/forgerock/fbc/services,/home/forgerock/openam/config/services -Dcom.forgerock.am.fileconfig.filelocation=/home/forgerock/fbc/services"
+
         envFrom:
         - secretRef:
             name: am-env-secrets
@@ -117,8 +132,35 @@ spec:
           mountPath: /var/run/secrets/am
         - name: amster-key
           mountPath: /var/run/secrets/amster
+        # TODO: Check path
         - name: fbc
-          mountPath: /home/forgerock/openam
+          mountPath: /home/forgerock/fbc
+          # mountPath: /home/forgerock/openam/config
+          subPath: config
+      # Config saver
+      - name: config-save
+        image: conf
+        imagePullPolicy: Always
+        args: ["5"]
+        env:
+        - name: CONFIG_SERVER
+          value: "config-server:50051"
+        - name: "CONFIG_DIR"
+          value: "/fbc"
+        - name: "CONFIG_PRODUCT"
+          value: "am"
+        resources:
+          limits:
+            memory: 200Mi
+            cpu: 100m
+          requests:
+            memory: 180Mi
+            cpu: 100m
+        volumeMounts:
+        - name: fbc
+          mountPath: /fbc
+
+      # TODO - add sidecar to check for changes
       terminationGracePeriodSeconds: 10
       # Shared volume that holds the AM configuration.
       volumes:
