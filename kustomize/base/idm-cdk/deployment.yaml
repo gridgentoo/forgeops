@@ -17,8 +17,27 @@ spec:
         runAsUser: 11111
         runAsGroup: 0
       initContainers:
-      - name: config
-        image: conf
+      - name: fbc-init
+        image: idm
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /fbc
+          name: fbc
+        command:
+        - /bin/bash
+        - -c
+        - |
+          if [ -d /fbc/conf ];
+          then
+            echo "Existing openidm configuration found. Skipping copy"
+          else
+            echo "Copying docker image configuration files to the shared volume"
+            cd /opt/openidm
+            cp -r ui conf script /fbc
+          fi
+
+      - name: config-init
+        image: config-client
         imagePullPolicy: Always
         volumeMounts:
         - mountPath: /fbc
@@ -89,7 +108,7 @@ spec:
               name: platform-config
               key: RCS_AGENT_ENABLED
         - name: JAVA_OPS
-          value: "-XX:MaxRAMPercentage=65 -XX:InitialRAMPercentage=65 -XX:MaxTenuringThreshold=1 -Djava.security.egd=file:/dev/urandom -XshowSettings:vm"
+          value: "-XX:MaxRAMPercentage=65 -XX:InitialRAMPercentage=65 -XX:MaxTenuringThreshold=1 -Djava.security.egd=file:/dev/urandom -XshowSettings:vm -XX:+PrintFlagsFinal"
         envFrom:
         - configMapRef:
             name: idm
@@ -156,6 +175,28 @@ spec:
         - name: fbc
           mountPath: /opt/openidm/script
           subPath: script
+      # Config saver
+      - name: config-saver
+        image: config-client
+        imagePullPolicy: Always
+        args: ["5"]
+        env:
+        - name: CONFIG_SERVER
+          value: "config-server:50051"
+        - name: "CONFIG_DIR"
+          value: "/fbc"
+        - name: "CONFIG_PRODUCT"
+          value: "idm"
+        resources:
+          limits:
+            memory: 200Mi
+            cpu: 100m
+          requests:
+            memory: 180Mi
+            cpu: 100m
+        volumeMounts:
+        - name: fbc
+          mountPath: /fbc
       terminationGracePeriodSeconds: 10
       volumes:
       - name: fbc

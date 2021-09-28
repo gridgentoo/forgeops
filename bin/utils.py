@@ -75,8 +75,8 @@ size_paths = {
 }
 
 bundles = {
-    'base': ['dev/kustomizeConfig', 'base/ingress', 'dev/scripts'],
-	'base-cdm': ['base/kustomizeConfig', 'base/ingress', 'dev/scripts'],
+    'base': ['dev/kustomizeConfig', 'base/ingress', 'dev/scripts', 'base/config-server'],
+	'base-cdm': ['base/kustomizeConfig', 'base/ingress', 'dev/scripts', 'base/config-server'],
     'ds': ['base/ds-idrepo'],
     'ds-cdm': ['base/ds-idrepo', 'base/ds-cts'],
     'ds-old': ['base/ds/idrepo', 'base/ds/cts'],
@@ -274,7 +274,7 @@ def generate_package(component, size, ns, fqdn, ctx, custom_path=None):
         run('kustomize', f'edit add patch --name platform-config --kind ConfigMap --version v1 --patch \'{json.dumps(fqdnpatchjson)}\'',
             cwd=profile_dir)
         run('kustomize', f'edit add patch --name platform-config --kind ConfigMap --version v1 --patch \'{json.dumps(sizepatchjson)}\'',
-            cwd=profile_dir) 
+            cwd=profile_dir)
     _, contents, _ = run('kustomize', f'build {profile_dir}', cstdout=True)
     contents = contents.decode('ascii')
     contents = contents.replace('namespace: default', f'namespace: {ns}')

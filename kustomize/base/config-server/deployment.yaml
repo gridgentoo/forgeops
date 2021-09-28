@@ -16,7 +16,7 @@ spec:
         fsGroup: 0
       containers:
       - name: config-server
-        image: gcr.io/forgeops-public/config_server:latest
+        image: config-server
         imagePullPolicy: Always
         env:
         - name: GIT_REPO

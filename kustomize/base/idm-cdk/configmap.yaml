@@ -257,5 +257,6 @@ data:
 
     # TODO: Move this to commons secrets
     # The client secret for the idm/am integration
-    rs.client.secret=idm-resource-server-client-secret
+    rs.client.secret=idm-resource-server
+
 

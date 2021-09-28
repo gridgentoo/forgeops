@@ -6,20 +6,27 @@ images:
 - name: git-server
   newName: gcr.io/forgeops-public/git-server
 - name: .*am
-  newName: gcr.io/forgeops-public/am
-  newTag: dev
+  newName: gcr.io/forgerock-io/am-base/pit1
+  newTag: 7.2.0-latest-postcommit
 - name: .*amster.*
   newName: gcr.io/forgerock-io/amster/pit1
   newTag: 7.2.0-latest-postcommit
 - name: .*idm
-  newName: gcr.io/forgeops-public/idm
-  newTag: dev
+  newName: gcr.io/forgerock-io/idm/pit1
+  newTag: 7.2.0-latest-postcommit
 - name: .*ds-cts.*
   newName: gcr.io/forgeops-public/ds-cts
   newTag: dev
 - name: .*ds-idrepo.*
   newName: gcr.io/forgeops-public/ds-idrepo
   newTag: dev
-- name: .*ig.*
+- name: .*ig
   newName: gcr.io/forgeops-public/ig
   newTag: dev
+- name: config-client
+  newName: gcr.io/forgeops-public/config_client
+  newTag: latest
+- name: config-server
+  newName: gcr.io/forgeops-public/config_server
+  newTag: latest
+

@@ -30,8 +30,8 @@ spec:
       #     cd /home/forgerock/openam
       #     cp -r .homeVersion * /fbc
 
-      - name: config
-        image: conf
+      - name: config-init
+        image: config-client
         imagePullPolicy: Always
         volumeMounts:
         - mountPath: /fbc
@@ -138,8 +138,8 @@ spec:
           # mountPath: /home/forgerock/openam/config
           subPath: config
       # Config saver
-      - name: config-save
-        image: conf
+      - name: config-saver
+        image: config-client
         imagePullPolicy: Always
         args: ["5"]
         env:
