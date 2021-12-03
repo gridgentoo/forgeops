@@ -5,8 +5,6 @@
 # The CTS and proxy schemas have not changed for 7.x
 AM_CTS="am-cts:6.5"
 DS_PROXIED_SERVER="ds-proxied-server:7.0"
-PEM_KEYS_DIRECTORY="pem-keys-directory"
-PEM_TRUSTSTORE_DIRECTORY="pem-trust-directory"
 
 setup-profile --profile ${AM_CTS} \
               --set am-cts/tokenExpirationPolicy:am-sessions-only \
@@ -30,8 +28,8 @@ dsconfig set-synchronization-provider-prop \
 ##    set-password-policy-prop --policy-name "Default Password Policy" --set default-password-storage-scheme:"Salted SHA-512"
 #EOF
 
-mkdir -p $PEM_TRUSTSTORE_DIRECTORY
-mkdir -p $PEM_KEYS_DIRECTORY
+# mkdir -p $PEM_TRUSTSTORE_DIRECTORY
+# mkdir -p $PEM_KEYS_DIRECTORY
 
 # Set up a PEM Trust Manager Provider
 dsconfig --offline --no-prompt --batch <<EOF
@@ -59,7 +57,7 @@ set-administration-connector-prop \
             --set trust-manager-provider:"PEM Trust Manager"
 EOF
 
-# Delete the default PCKS12 provider. 
+# Delete the default PCKS12 provider.
 dsconfig --offline --no-prompt --batch <<EOF
 delete-trust-manager-provider \
             --provider-name "PKCS12"
@@ -93,7 +91,7 @@ set-administration-connector-prop \
             --set key-manager-provider:"PEM Key Manager"
 EOF
 
-# Delete the default PCKS12 provider. 
+# Delete the default PCKS12 provider.
 dsconfig --offline --no-prompt --batch <<EOF
 delete-key-manager-provider \
             --provider-name "PKCS12"

@@ -16,13 +16,13 @@ spec:
       labels:
         tier: ds
     spec:
-      topologySpreadConstraints:
-      - maxSkew: 1
-        topologyKey: topology.kubernetes.io/zone
-        whenUnsatisfiable: DoNotSchedule
-        labelSelector:
-          matchLabels:
-            app: ds
+      # topologySpreadConstraints:
+      # - maxSkew: 1
+      #   topologyKey: topology.kubernetes.io/zone
+      #   whenUnsatisfiable: DoNotSchedule
+      #   labelSelector:
+      #     matchLabels:
+      #       app: ds
       initContainers:
       - name: initialize
         image: ds
@@ -88,13 +88,6 @@ spec:
           mountPath: /opt/opendj/data
         - name: passwords
           mountPath: /var/run/secrets/opendj-passwords
-        # These are not required at runtime because the init entrypoint sets up all the
-        # keys in /var/run/secrets/keys.
-        # When DS can directly consume the cert-manager secrets, these can be reenabled.
-        # - name: ds-ssl-keypair
-        #   mountPath: /var/run/secrets/ds-ssl-keypair
-        # - name: ds-master-keypair
-        #   mountPath: /var/run/secrets/ds-master-keypair
         - name: keys
           mountPath: /var/run/secrets/keys
       securityContext:
@@ -115,11 +108,11 @@ spec:
         secret:
           secretName: ds-ssl-keypair
           defaultMode: 384
-      # Where the ds keys will get copied to. 
+      # Where the ds keys will get copied to.
       - name: keys
         emptyDir: {}
   updateStrategy:
-    type: RollingUpdate 
+    type: RollingUpdate
   volumeClaimTemplates:
   - metadata:
       name: data

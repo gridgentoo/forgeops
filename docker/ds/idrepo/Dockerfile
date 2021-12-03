@@ -17,6 +17,21 @@ COPY --chown=forgerock:root uma /opt/opendj/uma
 # Ldif for the alpha/bravo realm config
 COPY --chown=forgerock:root idrepo/*.ldif  /var/tmp/
 
+
+# The ds deployment uses PEM based certificates. This sets the location of the certs.
+# This is set at docker *build* time. If you change this at runtime you must edit the config.ldif.
+ENV PEM_KEYS_DIRECTORY "/var/run/secrets/keys/ds"
+ENV PEM_TRUSTSTORE_DIRECTORY "/var/run/secrets/keys/truststore"
+
+# These are the default locations of cert-manager generated PEM files are mounted.
+# These files must be copied to appropriate location and format expected by the DS PEM manager
+# TO change these location you must also change the ds-setup.sh script.
+ENV SSL_CERT_DIR "/var/run/secrets/ds-ssl-keypair"
+ENV MASTER_CERT_DIR  "/var/run/secrets/ds-master-keypair"
+# This is not currently needed as we use the truststore from the ssl-keypair above
+
+# ENV TRUSTSTORE_DIR "/var/run/secrets/truststore"
+
 # This primes the idrepo datastore with the required base policy entries in ou=am-config
 # AM does not yet dynamically create the realm policy entries when it attaches to a new dynamic config
 # store - as is the case with File Based Config.

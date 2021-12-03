@@ -9,8 +9,6 @@ AM_IDENTITY_STORE="am-identity-store:7.1"
 IDM_REPO="idm-repo:7.2"
 AM_CTS="am-cts:6.5"
 DS_PROXIED_SERVER="ds-proxied-server:7.0"
-PEM_KEYS_DIRECTORY="pem-keys-directory"
-PEM_TRUSTSTORE_DIRECTORY="pem-trust-directory"
 
 # We also create the CTS backend for small deployments or development
 # environments where a separate CTS is not warranted.
@@ -34,9 +32,6 @@ setup-profile --profile ${CONFIG} \
 ##    set-password-storage-scheme-prop --scheme-name "Salted SHA-512" --set enabled:true
 ##    set-password-policy-prop --policy-name "Default Password Policy" --set default-password-storage-scheme:"Salted SHA-512"
 #EOF
-
-mkdir -p $PEM_TRUSTSTORE_DIRECTORY
-mkdir -p $PEM_KEYS_DIRECTORY
 
 # Set up a PEM Trust Manager Provider
 dsconfig --offline --no-prompt --batch <<EOF
@@ -64,7 +59,7 @@ set-administration-connector-prop \
             --set trust-manager-provider:"PEM Trust Manager"
 EOF
 
-# Delete the default PCKS12 provider. 
+# Delete the default PCKS12 provider.
 dsconfig --offline --no-prompt --batch <<EOF
 delete-trust-manager-provider \
             --provider-name "PKCS12"
@@ -98,7 +93,7 @@ set-administration-connector-prop \
             --set key-manager-provider:"PEM Key Manager"
 EOF
 
-# Delete the default PCKS12 provider. 
+# Delete the default PCKS12 provider.
 dsconfig --offline --no-prompt --batch <<EOF
 delete-key-manager-provider \
             --provider-name "PKCS12"

@@ -50,9 +50,39 @@ spec:
       - key: "WorkerDedicatedDS"
         operator: "Exists"
       initContainers:
+      # DS can not directly use the formatted certs file names created by cert-manager
+      # This init container copies the certs to the expected names.
+      # This is consistent with the ds-operator ds image
+      - name: copy-keys
+        image: ds
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          set -x
+          mkdir -p $PEM_TRUSTSTORE_DIRECTORY
+          mkdir -p $PEM_KEYS_DIRECTORY
+
+          # Copy the SSL certs. We also copy the ssl ca.crt to be used as the truststore
+          cat $SSL_CERT_DIR/tls.crt $SSL_CERT_DIR/tls.key  >$PEM_KEYS_DIRECTORY/ssl-key-pair
+          cp $SSL_CERT_DIR/ca.crt $PEM_TRUSTSTORE_DIRECTORY/trust.pem
+
+          cat $MASTER_CERT_DIR/tls.key $MASTER_CERT_DIR/tls.crt $MASTER_CERT_DIR/ca.crt > $PEM_KEYS_DIRECTORY/master-key
+
+
+        volumeMounts:
+          - mountPath: /var/run/secrets/keys
+            name: keys
+          - mountPath: /var/run/secrets/truststore
+            name: truststore
+          - mountPath: /var/run/secrets/ds-master-keypair
+            name: ds-master-keypair
+          - mountPath: /var/run/secrets/ds-ssl-keypair
+            name: ds-ssl-keypair
+
       - name: initialize
         image: ds
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         command: ["/opt/opendj/scripts/init-and-restore.sh"]
         volumeMounts:
         - name: data
@@ -61,15 +91,8 @@ spec:
           mountPath: /opt/opendj/secrets
         - name: secrets
           mountPath: /var/run/secrets/opendj
-        - name: secrets
-          mountPath: /opt/opendj/pem-keys-directory/ssl-key-pair
-          subPath: ssl-key-pair-combined.pem
-        - name: secrets
-          mountPath: /opt/opendj/pem-keys-directory/master-key
-          subPath: master-key-pair-combined.pem
-        - name: truststore
-          mountPath: /opt/opendj/pem-trust-directory/cacerts.pem
-          subPath: cacerts
+        - name: keys
+          mountPath: /var/run/secrets/keys
         - name: cloud-credentials-cache
           mountPath: /var/run/secrets/cloud-credentials-cache/
         - name: passwords
@@ -108,7 +131,7 @@ spec:
       containers:
       - name: ds
         image: ds
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         args:
         - start-ds
         env:
@@ -162,21 +185,12 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /opt/opendj/data
-#       - name: backup
-#         mountPath: /opt/opendj/bak
         - name: secrets
           mountPath: /opt/opendj/secrets
         - name: secrets
           mountPath: /var/run/secrets/opendj
-        - name: secrets
-          mountPath: /opt/opendj/pem-keys-directory/ssl-key-pair
-          subPath: ssl-key-pair-combined.pem
-        - name: secrets
-          mountPath: /opt/opendj/pem-keys-directory/master-key
-          subPath: master-key-pair-combined.pem
-        - name: truststore
-          mountPath: /opt/opendj/pem-trust-directory/cacerts.pem
-          subPath: cacerts
+        - name: keys
+          mountPath: /var/run/secrets/keys
         - name: cloud-credentials-cache
           mountPath: /var/run/secrets/cloud-credentials-cache/
       securityContext:
@@ -193,9 +207,20 @@ spec:
           secretName: ds-passwords
       - name: cloud-credentials-cache
         emptyDir: {}
+      # Volume where we copy keys for ds consumption
+      - name: keys
+        emptyDir: {}
       - name: truststore
         secret:
-          secretName: truststore-pem
+          secretName: ds-ssl-keypair
+          defaultMode: 384
+      - name: ds-ssl-keypair
+        secret:
+          secretName: ds-ssl-keypair
+          defaultMode: 384
+      - name: ds-master-keypair
+        secret:
+          secretName: ds-master-keypair
           defaultMode: 384
   updateStrategy:
     type: RollingUpdate

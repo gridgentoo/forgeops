@@ -8,7 +8,6 @@ commonLabels:
   # Prometheus selector
   # component: ds
   affinity: directory
-namespace: warren
 resources:
 - service.yaml
 - statefulset.yaml

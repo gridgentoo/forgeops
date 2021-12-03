@@ -9,6 +9,50 @@ images:
 - name: amster
   newName: gcr.io/forgerock-io/amster/pit1
   newTag: 7.2.0-latest-postcommit
+<<<<<<< HEAD:kustomize/deploy/image-defaulter/kustomization.yaml
+- name: ds-cts
+  newName: gcr.io/forgeops-public/ds-cts
+  newTag: dev
+- name: ds-idrepo
+  newName: gcr.io/forgeops-public/ds-idrepo
+  newTag: dev
+- name: git-server
+  newName: gcr.io/forgeops-public/git-server
+- name: idm
+||||||| parent of 58a115ad0... fix: Fix image-defaulter regex strings:kustomize/dev/image-defaulter/kustomization.yaml
+- name: .*idm
+=======
+<<<<<<< HEAD
+- name: .*idm
+>>>>>>> 58a115ad0... fix: Fix image-defaulter regex strings:kustomize/dev/image-defaulter/kustomization.yaml
+  newName: gcr.io/forgeops-public/idm
+  newTag: dev
+<<<<<<< HEAD:kustomize/deploy/image-defaulter/kustomization.yaml
+- name: ig
+||||||| parent of 58a115ad0... fix: Fix image-defaulter regex strings:kustomize/dev/image-defaulter/kustomization.yaml
+# Both the idrepo and cts instances use the same directory server ds image.
+- name: gcr.io/forgeops-public/ds
+  newName: gcr.io/forgeops-public/ds
+  newTag: 7.2-dev
+- name: .*ig.*
+=======
+# Both the idrepo and cts instances use the same directory server ds image.
+- name: gcr.io/forgeops-public/ds
+  newName: gcr.io/forgeops-public/ds
+  newTag: 7.2-dev
+- name: .*ig.*
+||||||| constructed merge base
+- name: .*idm
+  newName: gcr.io/forgeops-public/idm
+  newTag: dev
+- name: .*ds-cts.*
+  newName: gcr.io/forgeops-public/ds-cts
+  newTag: dev
+- name: .*ds-idrepo.*
+  newName: gcr.io/forgeops-public/ds-idrepo
+  newTag: dev
+- name: .*ig.*
+=======
 - name: ds-cts
   newName: gcr.io/forgeops-public/ds-cts
   newTag: dev
@@ -21,5 +65,7 @@ images:
   newName: gcr.io/forgeops-public/idm
   newTag: dev
 - name: ig
+>>>>>>> fix: Fix image-defaulter regex strings
+>>>>>>> 58a115ad0... fix: Fix image-defaulter regex strings:kustomize/dev/image-defaulter/kustomization.yaml
   newName: gcr.io/forgeops-public/ig
   newTag: dev
