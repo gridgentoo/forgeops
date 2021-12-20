@@ -9,8 +9,8 @@ RUN rm -f bundle/org.apache.felix.webconsole*.jar  && \
     rm -f bundle/openidm-felix-webconsole-*.jar
 
 # Removes unwanted default config bundled out of the box.
-RUN rm conf/felix.webconsole.json
-RUN rm conf/selfservice.propertymap.json
+RUN rm -f conf/felix.webconsole.json
+RUN rm -f conf/selfservice.propertymap.json
 
 # Remove this once https://bugster.forgerock.org/jira/browse/OPENIDM-16100 is integrated
 # This sets the RAM based on cgroups to 65% of the container memory
