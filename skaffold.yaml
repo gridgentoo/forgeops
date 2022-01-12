@@ -80,13 +80,8 @@ kind: Config
     - *AM
     - *AMSTER
     - *IDM
-    - *DS-CTS
-    - *DS-IDREPO
-    - *DS-PROXY
-    - *IG
     - *DS
-    # Skip building LDIF-IMPORTER. We use a fixed tag for now
-    # - *LDIF-IMPORTER
+    - *IG
 
 ## End YAML Anchors
 
@@ -114,10 +109,6 @@ profiles:
       envTemplate:
         template: "{{.IMAGE_TAG}}"
     artifacts: *default-artifacts
-  deploy:
-    kustomize:
-      paths:
-      - ./kustomize/overlay/all
 
 
 # CDM s/m/l profiles. (For cdm-mini, use default profile.)
@@ -186,39 +177,11 @@ profiles:
     artifacts:
     - *DS
     tagPolicy: *default-tag-policy
-  # deploy:
-  #   kustomize:
-  #     paths:
-  #     - ./kustomize/base/ds-idrepo
-  #     - ./kustomize/base/ds-cts
-
-- name: ds-cts
-  build:
-    artifacts:
-    - *DS-CTS
-    # - *DS-PROXY
-    tagPolicy: *default-tag-policy
-  deploy:
-    kustomize:
-      paths:
-      - ./kustomize/base/ds-cts
-
-- name: ds-idrepo
-  build:
-    artifacts:
-    - *DS-IDREPO
-    # - *DS-PROXY
-    tagPolicy: *default-tag-policy
   deploy:
     kustomize:
       paths:
       - ./kustomize/base/ds-idrepo
-
-- name: ds
-  build:
-    artifacts:
-    - *DS-DYNAMIC
-    tagPolicy: *default-tag-policy
+      - ./kustomize/base/ds-cts
 
 - name: ig
   build:
@@ -230,117 +193,3 @@ profiles:
       paths:
       - ./kustomize/base/ig
 
-
-###################################################################
-#######EVERYTHING BELOW THIS LINE WILL BE DEPRECATED###############
-###################################################################
-
-# default.iam.forgeops.com
-- name: forgeops
-  build: *default-build
-  deploy:
-    kustomize:
-      paths:
-      - ./kustomize/overlay/forgeops
-
-- name: ldif-importer
-  build:
-    artifacts:
-    - *LDIF-IMPORTER
-    tagPolicy: *default-tag-policy
-  deploy:
-    kustomize:
-      paths:
-      - ./kustomize/base/ldif-importer
-
-- name: dev
-  build: *default-build
-  deploy:
-    kustomize:
-      paths:
-      - ./kustomize/overlay/dev
-
-# Platform deployment without default UI projects. UI to be installed separately, for development
-- name: no-ui
-  build: *default-build
-  deploy:
-    kustomize:
-      paths:
-      - ./kustomize/overlay/noui
-
-# Sample profiles to launch / test just a specific product
-- name: ig-only
-  build:
-    artifacts:
-    - *IG
-    tagPolicy:
-      sha256: {}
-  deploy:
-    kustomize:
-      paths:
-      - ./kustomize/overlay/internal-profiles/ig-only
-
-- name: am-only
-  build:
-    artifacts:
-    - *AM
-    - *AMSTER
-    - *DS-CTS
-    - *DS-IDREPO
-    - *LDIF-IMPORTER
-    tagPolicy:
-      gitCommit:
-        variant: AbbrevCommitSha
-  deploy:
-    kustomize:
-      paths:
-      - ./kustomize/overlay/internal-profiles/am-only
-
-- name: idm-only
-  build:
-    artifacts:
-    - *IDM
-    - *DS-IDREPO
-    tagPolicy:
-      sha256: {}
-  deploy:
-    kustomize:
-      paths:
-      - ./kustomize/overlay/internal-profiles/idm-only
-
-- name: ds-only
-  build:
-    artifacts:
-    - *DS-CTS
-    - *DS-IDREPO
-    tagPolicy:
-      sha256: {}
-  deploy:
-    kustomize:
-      paths:
-      - ./kustomize/overlay/internal-profiles/ds-only
-
-- name: amster-export
-  build:
-    artifacts:
-    - *AMSTER
-    tagPolicy:
-      gitCommit:
-        variant: AbbrevCommitSha
-  deploy:
-    kustomize:
-      paths:
-      - ./kustomize/overlay/amster-export
-
-- name: clouddns
-  build:
-    artifacts:
-    - *DS-CTS
-    - *DS-IDREPO
-    - *LDIF-IMPORTER
-    tagPolicy:
-      sha256: { }
-  deploy:
-    kustomize:
-      paths:
-      - ./kustomize/overlay/multi-cluster/clouddns

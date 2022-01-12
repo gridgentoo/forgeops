@@ -1,5 +1,12 @@
 # Directory Server (DS) Customization and Utilities
 
+
+** NOTE **
+
+The current production image is the in the `ds` folder. This is the image used by the ds-operator.
+
+The ds-cts and ds-idrepo are the pre 7.2.0 images - and here for reference.
+
 ## Directory Folders
 
 * ds - Generic DS image used by the ds-operator or for fully "mutable" directory deployments. See [ds/README.md](ds/README-DS.md) for more information. This is

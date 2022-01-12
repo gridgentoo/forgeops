@@ -2,8 +2,8 @@ commonLabels:
   app.kubernetes.io/part-of: "forgerock"
 resources:
 - ../../base/kustomizeConfig
-- ../../base/ds/cts
-- ../../base/ds/idrepo
+- ../../base/ds-cts
+- ../../base/ds-idrepo
 - ../../base/am-cdk
 - ../../base/amster
 - ../../base/idm-cdk
@@ -12,7 +12,6 @@ resources:
 - ../../base/login-ui
 - ../../base/admin-ui
 - ../../base/ingress
-- ../../base/ldif-importer
 
 # Transaction Id Tacing
 patches:

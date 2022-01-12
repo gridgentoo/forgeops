@@ -13,7 +13,6 @@ resources:
 - ../../base/login-ui
 - ../../base/admin-ui
 - ../../base/ingress
-- ../../base/ldif-importer
 - ../../base/pdb
 
 patches:
