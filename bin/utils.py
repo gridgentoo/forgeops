@@ -299,7 +299,7 @@ def waitforsecrets(ns):
         _runwithtimeout(_waitforresource, [ns, 'secret', secret], 60)
 
 
-def wait_for_ds(ns, directoryservices_name, timeout_secs=300):
+def wait_for_ds(ns, directoryservices_name, timeout_secs=500):
     """
     Wait for DS pods to be ready after ds-operator deployment.
     ns: target namespace.
@@ -573,7 +573,7 @@ def install_dependencies():
     If dependencies are found in K8s, this function does not modify or reinstall the components.
     """
     check_base_toolset()
-    
+
     print('Checking cert-manager and related CRDs:', end=' ')
     try:
         run('kubectl', 'get crd certificaterequests.cert-manager.io',
@@ -855,8 +855,8 @@ def get_deployed_size(namespace):
     "Size" can be one of the following: mini, small, medium, large, cdk.
     """
 
-    try: 
-        deployed_sz = get_configmap_value(namespace, 'platform-config', 'FORGEOPS_PLATFORM_SIZE') 
+    try:
+        deployed_sz = get_configmap_value(namespace, 'platform-config', 'FORGEOPS_PLATFORM_SIZE')
         return deployed_sz
     except:
         return None

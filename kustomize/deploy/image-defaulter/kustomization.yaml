@@ -11,7 +11,7 @@ images:
   newTag: 7.2.0-latest-postcommit
 - name: ds
   newName: gcr.io/forgeops-public/ds
-  newTag: dev
+  newTag: 7.2.0
 - name: ds-cts
   newName: gcr.io/forgeops-public/ds-cts
   newTag: dev

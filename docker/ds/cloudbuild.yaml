@@ -2,27 +2,6 @@
 # This is run by a trigger. To run manually, from the forgeops root directory:
 # gcloud builds submit --project forgeops-public --config docker/ds/cloudbuild.yaml
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  dir: docker/ds
-  args: [ 'build',
-    '-t', 'gcr.io/forgeops-public/ds-idrepo:latest',
-    '-t', 'gcr.io/forgeops-public/ds-idrepo:7.1-dev',
-    '-t', 'gcr.io/forgeops-public/ds-idrepo:7-dev',
-    '-f', 'idrepo/Dockerfile', '.' ]
-- name: 'gcr.io/cloud-builders/docker'
-  dir: docker/ds
-  args: [ 'build',
-    '-t', 'gcr.io/forgeops-public/ds-cts:latest',
-    '-t', 'gcr.io/forgeops-public/ds-cts:7.1-dev',
-    '-t', 'gcr.io/forgeops-public/ds-cts:7-dev',
-    '-f', 'cts/Dockerfile', '.' ]
-- name: 'gcr.io/cloud-builders/docker'
-  dir: docker/ds
-  args: [ 'build',
-    '-t', 'gcr.io/forgeops-public/ds-proxy:latest',
-    '-t', 'gcr.io/forgeops-public/ds-proxy:7.1-dev',
-    '-t', 'gcr.io/forgeops-public/ds-proxy:7-dev',
-    '-f', 'proxy/Dockerfile', '.' ]
   # This is the mutable docker image used by the newest ds-operator.
 - name: 'gcr.io/cloud-builders/docker'
   dir: docker/ds/ds
@@ -30,18 +9,12 @@ steps:
     '-t', 'gcr.io/forgeops-public/ds:latest',
     '-t', 'gcr.io/forgeops-public/ds:7.2-dev',
     '-t', 'gcr.io/forgeops-public/ds:7-dev',
+    '-t', 'gcr.io/forgeops-public/ds:7.2.0',
+
     '-f', './Dockerfile', '.' ]
 images: [
-    'gcr.io/forgeops-public/ds-idrepo:latest',
-    'gcr.io/forgeops-public/ds-idrepo:7.1-dev',
-    'gcr.io/forgeops-public/ds-idrepo:7-dev',
-    'gcr.io/forgeops-public/ds-cts:latest',
-    'gcr.io/forgeops-public/ds-cts:7.1-dev',
-    'gcr.io/forgeops-public/ds-cts:7-dev',
-    'gcr.io/forgeops-public/ds-proxy:latest',
-    'gcr.io/forgeops-public/ds-proxy:7.1-dev',
-    'gcr.io/forgeops-public/ds-proxy:7-dev',
     'gcr.io/forgeops-public/ds:7-dev',
     'gcr.io/forgeops-public/ds:7.2-dev',
+    'gcr.io/forgeops-public/ds:7.2.0',
     'gcr.io/forgeops-public/ds:latest'
    ]
