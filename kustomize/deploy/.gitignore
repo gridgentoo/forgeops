@@ -1,0 +1,7 @@
+# This is a temporary gitignore to be used until we release
+# it prevents accidental commits to the deploy/ directory
+apps/
+ds/
+secrets/
+ui/
+base/
