@@ -22,8 +22,8 @@ spec:
     # the Certificate contains a ``certificate.spec.acme`` stanza.
     dns01:
       providers:
-      # The certificate object uses the below provider to challenge the certificate's requested domain in Google's CloudDNS.
-      # CloudDNS is used as provider for forgeops.com domain only.
+      # The certificate object uses the below provider to challenge the certificate's requested domain in Google's Cloud DNS.
+      # Cloud DNS is used as provider for forgeops.com domain only.
       # Additional providers can be configured.
       - name: prod-dns
         clouddns:
